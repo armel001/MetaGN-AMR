@@ -1,0 +1,7 @@
+name: host_depletion
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - minimap2
+  - samtools

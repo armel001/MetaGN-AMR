@@ -1,0 +1,178 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Creating conda environment workflow/envs/nanoplot.yaml...
+Downloading and installing remote packages.
+Cleaning up conda package tarballs.
+Environment for /data/armel/git/MetagenAMR-main/workflow/rules/../envs/nanoplot.yaml created (location: .snakemake/conda/af2d6864052bb65a8b2fce89823e14d9_)
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+nanoplot               4
+plot_ARGs_all_R        1
+total                  6
+
+Select jobs to execute...
+Execute 5 jobs...
+[Wed Jul 30 14:44:36 2025]
+localrule nanoplot:
+    input: resources/reads/CMC_CLY.fastq.gz
+    output: results/CMC_CLY/qc/CMC_CLY_Nanoplot
+    jobid: 1
+    reason: Missing output files: results/CMC_CLY/qc/CMC_CLY_Nanoplot; Software environment definition has changed since last execution
+    wildcards: sample=CMC_CLY
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/af2d6864052bb65a8b2fce89823e14d9_
+[Wed Jul 30 14:44:36 2025]
+localrule plot_ARGs_all_R:
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    output: results/summary/r_all_ARGs.png, results/summary/r_all_ARGs_counts.tsv
+    jobid: 30
+    reason: Missing output files: results/summary/r_all_ARGs_counts.tsv, results/summary/r_all_ARGs.png
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/c7086733d53bb4829268fec163c19721_
+[Wed Jul 30 14:44:36 2025]
+localrule nanoplot:
+    input: resources/reads/CMC_MTM.fastq.gz
+    output: results/CMC_MTM/qc/CMC_MTM_Nanoplot
+    jobid: 3
+    reason: Missing output files: results/CMC_MTM/qc/CMC_MTM_Nanoplot; Software environment definition has changed since last execution
+    wildcards: sample=CMC_MTM
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/af2d6864052bb65a8b2fce89823e14d9_
+[Wed Jul 30 14:44:36 2025]
+localrule nanoplot:
+    input: resources/reads/CMC_MNR.fastq.gz
+    output: results/CMC_MNR/qc/CMC_MNR_Nanoplot
+    jobid: 2
+    reason: Missing output files: results/CMC_MNR/qc/CMC_MNR_Nanoplot; Software environment definition has changed since last execution
+    wildcards: sample=CMC_MNR
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/af2d6864052bb65a8b2fce89823e14d9_
+[Wed Jul 30 14:44:36 2025]
+localrule nanoplot:
+    input: resources/reads/CMC_BKN.fastq.gz
+    output: results/CMC_BKN/qc/CMC_BKN_Nanoplot
+    jobid: 4
+    reason: Missing output files: results/CMC_BKN/qc/CMC_BKN_Nanoplot; Software environment definition has changed since last execution
+    wildcards: sample=CMC_BKN
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/af2d6864052bb65a8b2fce89823e14d9_
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/r_plot_ARGs_all.smk", line 10:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7086733d53bb4829268fec163c19721_'; set -euo pipefail;  
+        mkdir -p results/summary
+        Rscript /data/armel/git/MetagenAMR-main/workflow/scripts/r_plot_ARGs_all.R results/summary/r_all_ARGs.png results/summary/r_all_ARGs_counts.tsv results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv' returned non-zero exit status 1.
+[Wed Jul 30 14:44:38 2025]
+Error in rule plot_ARGs_all_R:
+    message: None
+    jobid: 30
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    output: results/summary/r_all_ARGs.png, results/summary/r_all_ARGs_counts.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7086733d53bb4829268fec163c19721_
+    shell:
+        
+        mkdir -p results/summary
+        Rscript /data/armel/git/MetagenAMR-main/workflow/scripts/r_plot_ARGs_all.R results/summary/r_all_ARGs.png results/summary/r_all_ARGs_counts.tsv results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+        
+        (command exited with non-zero exit code)
+ImproperOutputException in rule nanoplot in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 1:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule nanoplot:
+    output: results/CMC_BKN/qc/CMC_BKN_Nanoplot
+    wildcards: sample=CMC_BKN
+    affected files:
+        results/CMC_BKN/qc/CMC_BKN_Nanoplot
+Removing output files of failed job nanoplot since they might be corrupted:
+results/CMC_BKN/qc/CMC_BKN_Nanoplot
+Skipped removing non-empty directory results/CMC_BKN/qc/CMC_BKN_Nanoplot
+ImproperOutputException in rule nanoplot in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 1:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule nanoplot:
+    output: results/CMC_MNR/qc/CMC_MNR_Nanoplot
+    wildcards: sample=CMC_MNR
+    affected files:
+        results/CMC_MNR/qc/CMC_MNR_Nanoplot
+Removing output files of failed job nanoplot since they might be corrupted:
+results/CMC_MNR/qc/CMC_MNR_Nanoplot
+Skipped removing non-empty directory results/CMC_MNR/qc/CMC_MNR_Nanoplot
+ImproperOutputException in rule nanoplot in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 1:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule nanoplot:
+    output: results/CMC_CLY/qc/CMC_CLY_Nanoplot
+    wildcards: sample=CMC_CLY
+    affected files:
+        results/CMC_CLY/qc/CMC_CLY_Nanoplot
+Removing output files of failed job nanoplot since they might be corrupted:
+results/CMC_CLY/qc/CMC_CLY_Nanoplot
+Skipped removing non-empty directory results/CMC_CLY/qc/CMC_CLY_Nanoplot
+ImproperOutputException in rule nanoplot in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 1:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule nanoplot:
+    output: results/CMC_MTM/qc/CMC_MTM_Nanoplot
+    wildcards: sample=CMC_MTM
+    affected files:
+        results/CMC_MTM/qc/CMC_MTM_Nanoplot
+Removing output files of failed job nanoplot since they might be corrupted:
+results/CMC_MTM/qc/CMC_MTM_Nanoplot
+Skipped removing non-empty directory results/CMC_MTM/qc/CMC_MTM_Nanoplot
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Wed Jul 30 14:49:42 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 1
+    input: resources/reads/CMC_CLY.fastq.gz
+    output: results/CMC_CLY/qc/CMC_CLY_Nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/af2d6864052bb65a8b2fce89823e14d9_
+    shell:
+        NanoPlot --fastq resources/reads/CMC_CLY.fastq.gz -o results/CMC_CLY/qc/CMC_CLY_Nanoplot -t 24
+        (command exited with non-zero exit code)
+[Wed Jul 30 14:49:42 2025]
+Error in rule plot_ARGs_all_R:
+    message: None
+    jobid: 30
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    output: results/summary/r_all_ARGs.png, results/summary/r_all_ARGs_counts.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7086733d53bb4829268fec163c19721_
+    shell:
+        
+        mkdir -p results/summary
+        Rscript /data/armel/git/MetagenAMR-main/workflow/scripts/r_plot_ARGs_all.R results/summary/r_all_ARGs.png results/summary/r_all_ARGs_counts.tsv results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+        
+        (command exited with non-zero exit code)
+[Wed Jul 30 14:49:42 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 3
+    input: resources/reads/CMC_MTM.fastq.gz
+    output: results/CMC_MTM/qc/CMC_MTM_Nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/af2d6864052bb65a8b2fce89823e14d9_
+    shell:
+        NanoPlot --fastq resources/reads/CMC_MTM.fastq.gz -o results/CMC_MTM/qc/CMC_MTM_Nanoplot -t 24
+        (command exited with non-zero exit code)
+[Wed Jul 30 14:49:42 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 2
+    input: resources/reads/CMC_MNR.fastq.gz
+    output: results/CMC_MNR/qc/CMC_MNR_Nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/af2d6864052bb65a8b2fce89823e14d9_
+    shell:
+        NanoPlot --fastq resources/reads/CMC_MNR.fastq.gz -o results/CMC_MNR/qc/CMC_MNR_Nanoplot -t 24
+        (command exited with non-zero exit code)
+[Wed Jul 30 14:49:42 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 4
+    input: resources/reads/CMC_BKN.fastq.gz
+    output: results/CMC_BKN/qc/CMC_BKN_Nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/af2d6864052bb65a8b2fce89823e14d9_
+    shell:
+        NanoPlot --fastq resources/reads/CMC_BKN.fastq.gz -o results/CMC_BKN/qc/CMC_BKN_Nanoplot -t 24
+        (command exited with non-zero exit code)
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-07-30T144249.060576.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

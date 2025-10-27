@@ -1,0 +1,115 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Creating conda environment workflow/envs/porechop.yaml...
+Downloading and installing remote packages.
+Cleaning up conda package tarballs.
+Environment for /data/armel/git/MetagenAMR-main/workflow/rules/../envs/porechop.yaml created (location: .snakemake/conda/2ac72101414847c11936a83efa1608b6_)
+Creating conda environment workflow/envs/flye.yaml...
+Downloading and installing remote packages.
+Cleaning up conda package tarballs.
+Environment for /data/armel/git/MetagenAMR-main/workflow/rules/../envs/flye.yaml created (location: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_)
+Creating conda environment workflow/envs/python_plot.yaml...
+Downloading and installing remote packages.
+Cleaning up conda package tarballs.
+Environment for /data/armel/git/MetagenAMR-main/workflow/rules/../envs/python_plot.yaml created (location: .snakemake/conda/648a792305b94d4621100f75306660c6_)
+Creating conda environment workflow/envs/kraken2.yaml...
+Downloading and installing remote packages.
+Cleaning up conda package tarballs.
+Environment for /data/armel/git/MetagenAMR-main/workflow/rules/../envs/kraken2.yaml created (location: .snakemake/conda/b3104353ef5e6e8c16bab62fb7ea30b3_)
+Creating conda environment workflow/envs/abricate.yaml...
+Downloading and installing remote packages.
+Cleaning up conda package tarballs.
+Environment for /data/armel/git/MetagenAMR-main/workflow/rules/../envs/abricate.yaml created (location: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_)
+Creating conda environment workflow/envs/host_depletion.yaml...
+Downloading and installing remote packages.
+Cleaning up conda package tarballs.
+Environment for /data/armel/git/MetagenAMR-main/workflow/rules/../envs/host_depletion.yaml created (location: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_)
+Creating conda environment workflow/envs/nanoplot.yaml...
+Downloading and installing remote packages.
+Cleaning up conda package tarballs.
+Environment for /data/armel/git/MetagenAMR-main/workflow/rules/../envs/nanoplot.yaml created (location: .snakemake/conda/358b659c6fdedcb3ca81f22891d4ca33_)
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+abricate              1
+all                   1
+flye_assembly         1
+host_depletion        1
+kraken2               1
+nanoplot              1
+plot_ARGs             1
+porechop              1
+total                 8
+
+Select jobs to execute...
+Execute 1 jobs...
+[Tue Jul 22 22:49:38 2025]
+localrule porechop:
+    input: resources/reads/barcode05.fastq.gz
+    output: results/barcode05/trimmed.fastq.gz
+    jobid: 2
+    reason: Missing output files: results/barcode05/trimmed.fastq.gz
+    wildcards: sample=barcode05
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2ac72101414847c11936a83efa1608b6_
+[Tue Jul 22 23:16:46 2025]
+Finished jobid: 2 (Rule: porechop)
+1 of 8 steps (12%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Tue Jul 22 23:16:46 2025]
+localrule nanoplot:
+    input: results/barcode05/trimmed.fastq.gz
+    output: results/barcode05/qc/nanoplot.html
+    jobid: 1
+    reason: Missing output files: results/barcode05/qc/nanoplot.html; Input files updated by another job: results/barcode05/trimmed.fastq.gz
+    wildcards: sample=barcode05
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/358b659c6fdedcb3ca81f22891d4ca33_
+[Tue Jul 22 23:16:46 2025]
+localrule host_depletion:
+    input: results/barcode05/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/barcode05/clean/barcode05_noh.fq.gz
+    jobid: 4
+    reason: Missing output files: results/barcode05/clean/barcode05_noh.fq.gz; Input files updated by another job: results/barcode05/trimmed.fastq.gz
+    wildcards: sample=barcode05
+    threads: 8
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 9:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/358b659c6fdedcb3ca81f22891d4ca33_'; set -euo pipefail;  NanoPlot --fastq results/barcode05/trimmed.fastq.gz -o results/barcode05/qc -t 8' returned non-zero exit status 1.
+[Tue Jul 22 23:16:48 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 1
+    input: results/barcode05/trimmed.fastq.gz
+    output: results/barcode05/qc/nanoplot.html
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/358b659c6fdedcb3ca81f22891d4ca33_
+    shell:
+        NanoPlot --fastq results/barcode05/trimmed.fastq.gz -o results/barcode05/qc -t 8
+        (command exited with non-zero exit code)
+[Tue Jul 22 23:24:26 2025]
+Finished jobid: 4 (Rule: host_depletion)
+2 of 8 steps (25%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Tue Jul 22 23:24:26 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 1
+    input: results/barcode05/trimmed.fastq.gz
+    output: results/barcode05/qc/nanoplot.html
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/358b659c6fdedcb3ca81f22891d4ca33_
+    shell:
+        NanoPlot --fastq results/barcode05/trimmed.fastq.gz -o results/barcode05/qc -t 8
+        (command exited with non-zero exit code)
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-07-22T224415.366630.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

@@ -1,0 +1,122 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+abricate                 8
+all                      1
+flye_assembly            7
+host_depletion           7
+nanoplot                16
+plot_ARGs               10
+plot_ARGs_all            1
+plot_ARGs_all_R          1
+plot_ARGs_by_gene       11
+total                   62
+
+Select jobs to execute...
+Execute 4 jobs...
+[Thu Oct 16 16:52:01 2025]
+localrule plot_ARGs:
+    input: results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    output: results/CMC_BKN/plots/CMC_BKN_resistance_classes.png
+    jobid: 84
+    reason: Missing output files: results/CMC_BKN/plots/CMC_BKN_resistance_classes.png
+    wildcards: sample=CMC_BKN
+    resources: tmpdir=/tmp
+[Thu Oct 16 16:52:01 2025]
+localrule plot_ARGs_by_gene:
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv
+    output: results/CMC_CLY/plots/CMC_CLY_ARGs_by_gene.png
+    jobid: 97
+    reason: Missing output files: results/CMC_CLY/plots/CMC_CLY_ARGs_by_gene.png
+    wildcards: sample=CMC_CLY
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Thu Oct 16 16:52:01 2025]
+localrule abricate:
+    input: results/CMC_MNR/assembly.fasta
+    output: results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv
+    jobid: 21
+    reason: Missing output files: results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv
+    wildcards: sample=CMC_MNR
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+[Thu Oct 16 16:52:01 2025]
+localrule plot_ARGs_by_gene:
+    input: results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    output: results/CMC_BKN/plots/CMC_BKN_ARGs_by_gene.png
+    jobid: 100
+    reason: Missing output files: results/CMC_BKN/plots/CMC_BKN_ARGs_by_gene.png
+    wildcards: sample=CMC_BKN
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+[Thu Oct 16 16:52:04 2025]
+Finished jobid: 84 (Rule: plot_ARGs)
+1 of 62 steps (2%) done
+Execute 1 jobs...
+[Thu Oct 16 16:52:04 2025]
+localrule plot_ARGs:
+    input: results/HI12B/abricate/HI12B_ARG_summary.tsv
+    output: results/HI12B/plots/HI12B_resistance_classes.png
+    jobid: 92
+    reason: Missing output files: results/HI12B/plots/HI12B_resistance_classes.png
+    wildcards: sample=HI12B
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Thu Oct 16 16:52:04 2025]
+Finished jobid: 100 (Rule: plot_ARGs_by_gene)
+2 of 62 steps (3%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Thu Oct 16 16:52:04 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI12B/abricate/HI12B_ARG_summary.tsv
+    output: results/HI12B/plots/HI12B_ARGs_by_gene.png
+    jobid: 108
+    reason: Missing output files: results/HI12B/plots/HI12B_ARGs_by_gene.png
+    wildcards: sample=HI12B
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Thu Oct 16 16:52:05 2025]
+Finished jobid: 97 (Rule: plot_ARGs_by_gene)
+3 of 62 steps (5%) done
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/plot_ARGs.smk", line 10:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_'; set -euo pipefail;  python /data/armel/git/MetagenAMR-main/.snakemake/scripts/tmp8lqzjbhq.plot_resistance_classes.py' returned non-zero exit status 1.
+[Thu Oct 16 16:52:06 2025]
+Error in rule plot_ARGs:
+    message: None
+    jobid: 92
+    input: results/HI12B/abricate/HI12B_ARG_summary.tsv
+    output: results/HI12B/plots/HI12B_resistance_classes.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Thu Oct 16 16:52:07 2025]
+Finished jobid: 108 (Rule: plot_ARGs_by_gene)
+4 of 62 steps (6%) done
+[Thu Oct 16 16:53:50 2025]
+Finished jobid: 21 (Rule: abricate)
+5 of 62 steps (8%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Thu Oct 16 16:53:50 2025]
+Error in rule plot_ARGs:
+    message: None
+    jobid: 92
+    input: results/HI12B/abricate/HI12B_ARG_summary.tsv
+    output: results/HI12B/plots/HI12B_resistance_classes.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-10-16T165159.601022.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

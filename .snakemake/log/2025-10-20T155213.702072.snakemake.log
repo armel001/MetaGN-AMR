@@ -1,0 +1,40 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+plot_ARGs_all_R        1
+total                  2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Oct 20 15:52:15 2025]
+localrule plot_ARGs_all_R:
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv, results/HI01A/abricate/HI01A_ARG_summary.tsv, results/HI02A/abricate/HI02A_ARG_summary.tsv, results/HI03A/abricate/HI03A_ARG_summary.tsv, results/HI04A/abricate/HI04A_ARG_summary.tsv, results/HI05A/abricate/HI05A_ARG_summary.tsv, results/HI07A/abricate/HI07A_ARG_summary.tsv, results/HI09B/abricate/HI09B_ARG_summary.tsv, results/HI12B/abricate/HI12B_ARG_summary.tsv, results/HI14B/abricate/HI14B_ARG_summary.tsv, results/HI15B/abricate/HI15B_ARG_summary.tsv, results/HI16B/abricate/HI16B_ARG_summary.tsv, results/HI17B/abricate/HI17B_ARG_summary.tsv
+    output: results/summary/r_all_ARGs.png, results/summary/r_all_ARGs_counts.tsv
+    jobid: 114
+    reason: Missing output files: results/summary/r_all_ARGs_counts.tsv, results/summary/r_all_ARGs.png
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7086733d53bb4829268fec163c19721_
+[Mon Oct 20 15:52:21 2025]
+Finished jobid: 114 (Rule: plot_ARGs_all_R)
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Oct 20 15:52:21 2025]
+localrule all:
+    input: results/CMC_CLY/qc/CMC_CLY_Nanoplot, results/CMC_MNR/qc/CMC_MNR_Nanoplot, results/CMC_MTM/qc/CMC_MTM_Nanoplot, results/CMC_BKN/qc/CMC_BKN_Nanoplot, results/HI01A/qc/HI01A_Nanoplot, results/HI02A/qc/HI02A_Nanoplot, results/HI03A/qc/HI03A_Nanoplot, results/HI04A/qc/HI04A_Nanoplot, results/HI05A/qc/HI05A_Nanoplot, results/HI07A/qc/HI07A_Nanoplot, results/HI09B/qc/HI09B_Nanoplot, results/HI12B/qc/HI12B_Nanoplot, results/HI14B/qc/HI14B_Nanoplot, results/HI15B/qc/HI15B_Nanoplot, results/HI16B/qc/HI16B_Nanoplot, results/HI17B/qc/HI17B_Nanoplot, results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv, results/HI01A/abricate/HI01A_ARG_summary.tsv, results/HI02A/abricate/HI02A_ARG_summary.tsv, results/HI03A/abricate/HI03A_ARG_summary.tsv, results/HI04A/abricate/HI04A_ARG_summary.tsv, results/HI05A/abricate/HI05A_ARG_summary.tsv, results/HI07A/abricate/HI07A_ARG_summary.tsv, results/HI09B/abricate/HI09B_ARG_summary.tsv, results/HI12B/abricate/HI12B_ARG_summary.tsv, results/HI14B/abricate/HI14B_ARG_summary.tsv, results/HI15B/abricate/HI15B_ARG_summary.tsv, results/HI16B/abricate/HI16B_ARG_summary.tsv, results/HI17B/abricate/HI17B_ARG_summary.tsv, results/CMC_CLY/plots/CMC_CLY_resistance_classes.png, results/CMC_MNR/plots/CMC_MNR_resistance_classes.png, results/CMC_MTM/plots/CMC_MTM_resistance_classes.png, results/CMC_BKN/plots/CMC_BKN_resistance_classes.png, results/HI01A/plots/HI01A_resistance_classes.png, results/HI02A/plots/HI02A_resistance_classes.png, results/HI03A/plots/HI03A_resistance_classes.png, results/HI04A/plots/HI04A_resistance_classes.png, results/HI05A/plots/HI05A_resistance_classes.png, results/HI07A/plots/HI07A_resistance_classes.png, results/HI09B/plots/HI09B_resistance_classes.png, results/HI12B/plots/HI12B_resistance_classes.png, results/HI14B/plots/HI14B_resistance_classes.png, results/HI15B/plots/HI15B_resistance_classes.png, results/HI16B/plots/HI16B_resistance_classes.png, results/HI17B/plots/HI17B_resistance_classes.png, results/CMC_CLY/plots/CMC_CLY_ARGs_by_gene.png, results/CMC_MNR/plots/CMC_MNR_ARGs_by_gene.png, results/CMC_MTM/plots/CMC_MTM_ARGs_by_gene.png, results/CMC_BKN/plots/CMC_BKN_ARGs_by_gene.png, results/HI01A/plots/HI01A_ARGs_by_gene.png, results/HI02A/plots/HI02A_ARGs_by_gene.png, results/HI03A/plots/HI03A_ARGs_by_gene.png, results/HI04A/plots/HI04A_ARGs_by_gene.png, results/HI05A/plots/HI05A_ARGs_by_gene.png, results/HI07A/plots/HI07A_ARGs_by_gene.png, results/HI09B/plots/HI09B_ARGs_by_gene.png, results/HI12B/plots/HI12B_ARGs_by_gene.png, results/HI14B/plots/HI14B_ARGs_by_gene.png, results/HI15B/plots/HI15B_ARGs_by_gene.png, results/HI16B/plots/HI16B_ARGs_by_gene.png, results/HI17B/plots/HI17B_ARGs_by_gene.png, results/summary/all_ARGs.png, results/summary/all_ARGs_counts.tsv, results/summary/r_all_ARGs.png, results/summary/r_all_ARGs_counts.tsv
+    jobid: 0
+    reason: Input files updated by another job: results/summary/r_all_ARGs_counts.tsv, results/summary/r_all_ARGs.png
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+[Mon Oct 20 15:52:21 2025]
+Finished jobid: 0 (Rule: all)
+2 of 2 steps (100%) done
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-10-20T155213.702072.snakemake.log

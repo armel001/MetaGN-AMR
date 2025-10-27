@@ -1,0 +1,173 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+plot_ARGs_all            1
+plot_ARGs_by_gene        3
+total                    5
+
+Select jobs to execute...
+Execute 4 jobs...
+[Sun Jul 27 15:33:33 2025]
+localrule plot_ARGs_by_gene:
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    output: results/barcode05/plots/barcode05_ARGs_by_gene.png
+    jobid: 13
+    reason: Missing output files: results/barcode05/plots/barcode05_ARGs_by_gene.png
+    wildcards: sample=barcode05
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Sun Jul 27 15:33:33 2025]
+localrule plot_ARGs_by_gene:
+    input: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    output: results/barcode06/plots/barcode06_ARGs_by_gene.png
+    jobid: 14
+    reason: Missing output files: results/barcode06/plots/barcode06_ARGs_by_gene.png
+    wildcards: sample=barcode06
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Sun Jul 27 15:33:33 2025]
+localrule plot_ARGs_by_gene:
+    input: results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/barcode07/plots/barcode07_ARGs_by_gene.png
+    jobid: 15
+    reason: Missing output files: results/barcode07/plots/barcode07_ARGs_by_gene.png
+    wildcards: sample=barcode07
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Sun Jul 27 15:33:33 2025]
+localrule plot_ARGs_all:
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv, results/barcode06/abricate/barcode06_ARG_summary.tsv, results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/summary/all_ARGs.png
+    jobid: 16
+    reason: Missing output files: results/summary/all_ARGs.png
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/plot_ARGs_by_gene.smk", line 11:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_'; set -euo pipefail;  
+        python ../scripts/plot_ARGs_by_gene.py results/barcode07/abricate/barcode07_ARG_summary.tsv results/barcode07/plots/barcode07_ARGs_by_gene.png barcode07' returned non-zero exit status 2.
+[Sun Jul 27 15:33:34 2025]
+Error in rule plot_ARGs_by_gene:
+    message: None
+    jobid: 15
+    input: results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/barcode07/plots/barcode07_ARGs_by_gene.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+    shell:
+        
+        python ../scripts/plot_ARGs_by_gene.py results/barcode07/abricate/barcode07_ARG_summary.tsv results/barcode07/plots/barcode07_ARGs_by_gene.png barcode07
+        
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/plot_ARGs_all.smk", line 9:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_'; set -euo pipefail;  
+        mkdir -p results/summary
+        python ../scripts/plot_ARGs_all.py results/summary/all_ARGs.png results/barcode05/abricate/barcode05_ARG_summary.tsv results/barcode06/abricate/barcode06_ARG_summary.tsv results/barcode07/abricate/barcode07_ARG_summary.tsv' returned non-zero exit status 2.
+[Sun Jul 27 15:33:34 2025]
+Error in rule plot_ARGs_all:
+    message: None
+    jobid: 16
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv, results/barcode06/abricate/barcode06_ARG_summary.tsv, results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/summary/all_ARGs.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+    shell:
+        
+        mkdir -p results/summary
+        python ../scripts/plot_ARGs_all.py results/summary/all_ARGs.png results/barcode05/abricate/barcode05_ARG_summary.tsv results/barcode06/abricate/barcode06_ARG_summary.tsv results/barcode07/abricate/barcode07_ARG_summary.tsv
+        
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/plot_ARGs_by_gene.smk", line 11:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_'; set -euo pipefail;  
+        python ../scripts/plot_ARGs_by_gene.py results/barcode06/abricate/barcode06_ARG_summary.tsv results/barcode06/plots/barcode06_ARGs_by_gene.png barcode06' returned non-zero exit status 2.
+[Sun Jul 27 15:33:34 2025]
+Error in rule plot_ARGs_by_gene:
+    message: None
+    jobid: 14
+    input: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    output: results/barcode06/plots/barcode06_ARGs_by_gene.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+    shell:
+        
+        python ../scripts/plot_ARGs_by_gene.py results/barcode06/abricate/barcode06_ARG_summary.tsv results/barcode06/plots/barcode06_ARGs_by_gene.png barcode06
+        
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/plot_ARGs_by_gene.smk", line 11:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_'; set -euo pipefail;  
+        python ../scripts/plot_ARGs_by_gene.py results/barcode05/abricate/barcode05_ARG_summary.tsv results/barcode05/plots/barcode05_ARGs_by_gene.png barcode05' returned non-zero exit status 2.
+[Sun Jul 27 15:33:34 2025]
+Error in rule plot_ARGs_by_gene:
+    message: None
+    jobid: 13
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    output: results/barcode05/plots/barcode05_ARGs_by_gene.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+    shell:
+        
+        python ../scripts/plot_ARGs_by_gene.py results/barcode05/abricate/barcode05_ARG_summary.tsv results/barcode05/plots/barcode05_ARGs_by_gene.png barcode05
+        
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sun Jul 27 15:33:34 2025]
+Error in rule plot_ARGs_by_gene:
+    message: None
+    jobid: 13
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    output: results/barcode05/plots/barcode05_ARGs_by_gene.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+    shell:
+        
+        python ../scripts/plot_ARGs_by_gene.py results/barcode05/abricate/barcode05_ARG_summary.tsv results/barcode05/plots/barcode05_ARGs_by_gene.png barcode05
+        
+        (command exited with non-zero exit code)
+[Sun Jul 27 15:33:34 2025]
+Error in rule plot_ARGs_by_gene:
+    message: None
+    jobid: 14
+    input: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    output: results/barcode06/plots/barcode06_ARGs_by_gene.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+    shell:
+        
+        python ../scripts/plot_ARGs_by_gene.py results/barcode06/abricate/barcode06_ARG_summary.tsv results/barcode06/plots/barcode06_ARGs_by_gene.png barcode06
+        
+        (command exited with non-zero exit code)
+[Sun Jul 27 15:33:34 2025]
+Error in rule plot_ARGs_by_gene:
+    message: None
+    jobid: 15
+    input: results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/barcode07/plots/barcode07_ARGs_by_gene.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+    shell:
+        
+        python ../scripts/plot_ARGs_by_gene.py results/barcode07/abricate/barcode07_ARG_summary.tsv results/barcode07/plots/barcode07_ARGs_by_gene.png barcode07
+        
+        (command exited with non-zero exit code)
+[Sun Jul 27 15:33:34 2025]
+Error in rule plot_ARGs_all:
+    message: None
+    jobid: 16
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv, results/barcode06/abricate/barcode06_ARG_summary.tsv, results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/summary/all_ARGs.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+    shell:
+        
+        mkdir -p results/summary
+        python ../scripts/plot_ARGs_all.py results/summary/all_ARGs.png results/barcode05/abricate/barcode05_ARG_summary.tsv results/barcode06/abricate/barcode06_ARG_summary.tsv results/barcode07/abricate/barcode07_ARG_summary.tsv
+        
+        (command exited with non-zero exit code)
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-07-27T153332.226455.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

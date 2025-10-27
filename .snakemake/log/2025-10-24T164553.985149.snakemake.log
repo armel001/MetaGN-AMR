@@ -1,0 +1,24 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+MissingInputException in rule merge_rgi_results in file "/data/armel/git/MetagenAMR-main/workflow/rules/merge_rgi_results.smk", line 1:
+Missing input files for rule merge_rgi_results:
+    output: results/summary/all_rgi_merged.tsv
+    affected files:
+        results/CMC_MNR/rgi/CMC_MNR.txt
+        results/HI03A/rgi/HI03A.txt
+        results/HI07A/rgi/HI07A.txt
+        results/HI15B/rgi/HI15B.txt
+        results/HI09B/rgi/HI09B.txt
+        results/HI16B/rgi/HI16B.txt
+        results/HI12B/rgi/HI12B.txt
+        results/HI04A/rgi/HI04A.txt
+        results/CMC_MTM/rgi/CMC_MTM.txt
+        results/CMC_BKN/rgi/CMC_BKN.txt
+        results/HI02A/rgi/HI02A.txt
+        results/HI05A/rgi/HI05A.txt
+        results/CMC_CLY/rgi/CMC_CLY.txt
+        results/HI01A/rgi/HI01A.txt
+        results/HI17B/rgi/HI17B.txt
+        results/HI14B/rgi/HI14B.txt

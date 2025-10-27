@@ -1,0 +1,94 @@
+##################################################
+# CONFIGURATION
+##################################################
+configfile: "config/config.yaml"
+
+resources_dict = {
+    "mem_mb": 188000,  # 188 Go
+    "disk_mb": 2000000
+}
+
+##################################################
+# RESOURCES
+##################################################
+
+THREADS = config["resources"]["threads"]
+MEM = config["resources"]["memory"]
+TIME = config["resources"]["time"]
+
+##################################################
+# FUNCTIONS
+##################################################
+# imports
+#from scripts.functions import get_absolute_time
+
+
+##################################################
+# ENVIRONMENT
+##################################################
+ABRICATE = config["envs"]["abricate"]
+FLYE = config["envs"]["flye"]
+PORECHOP = config["envs"]["porechop"]
+PLOT = config["envs"]["python_plot"]
+KRAKEN2 = config["envs"]["kraken2"]
+NANOPLOT = config["envs"]["nanoplot"]
+BRACKEN = config["envs"]["bracken"]
+BCFTOOLS = config["envs"]["bcftools"]
+MEDAKA = config["envs"]["medaka"]
+HOST_DEP = config["envs"]["host_depletion"]
+RGI = config["envs"]["rgi"]
+DAG_ENV = config["envs"]["dag"]
+MULTIQC = config["envs"]["multiqc"]
+
+###################################################
+
+
+############################################################
+# PARAMS #
+##########
+#SEQUENCE_LENGTH = config["params"]["treetime"]["seq_len"]
+
+#ABSOLUTE_TIME = config["params"]["absolute_time"]["date"]
+#FILE = config["params"]["absolute_time"]["file"]
+
+SAMPLES, = glob_wildcards("resources/reads/{sample_id}.fastq.gz")
+
+#MODULES = config["modules"]
+
+##################################################
+
+
+# INCLUDES
+##################################################Pre-Traitement et quality
+include: "rules/porechop.smk"
+include: "rules/nanoplot.smk"
+include: "rules/host_depletion.smk"
+##################################################Assemblage et Alignment 
+include: "rules/flye_assembly.smk"
+include: "rules/minimap2_align.smk"
+include: "rules/medaka.smk"
+include: "rules/bcftools_consensus.smk"
+##################################################Annotation AMR
+include: "rules/abricate.smk"
+include: "rules/rgi.smk"
+include: "rules/merge_rgi_results.smk"
+##################################################Analyses secondaires & visualisation
+include: "rules/plot_ARGs.smk"
+include: "rules/plot_ARGs_by_gene.smk"
+include: "rules/plot_ARGs_all.smk"
+include: "rules/r_plot_ARGs_all.smk"
+##################################################Reporting
+include: "rules/multiqc_nanoplot.smk"
+include: "rules/build_dag.smk"
+
+rule all:
+    input:
+        expand("results/{sample}/abricate/{sample}_ARG_summary.tsv", sample=config["samples_id"]),
+        expand("results/{sample}/plots/{sample}_resistance_classes.png", sample=config["samples_id"]),
+        expand("results/{sample}/plots/{sample}_ARGs_by_gene.png", sample=config["samples_id"]),
+        "results/summary/all_ARGs_counts.tsv",
+#        "results/{sample}/rgi/{sample}_rgi_summary.tsv",
+#        "results/{sample}/rgi/{sample}.txt", 
+        "results/summary/all_rgi_merged.tsv",
+        "results/summary/multiqc_report.html"
+#        "results/workflow_dag.png"

@@ -1,0 +1,20 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Traceback (most recent call last):
+
+  File "/home/armel/miniforge3/envs/snakemake-env/lib/python3.12/site-packages/snakemake/cli.py", line 2165, in args_to_api
+    dag_api.execute_workflow(
+
+  File "/home/armel/miniforge3/envs/snakemake-env/lib/python3.12/site-packages/snakemake/api.py", line 603, in execute_workflow
+    workflow.execute(
+
+  File "/home/armel/miniforge3/envs/snakemake-env/lib/python3.12/site-packages/snakemake/workflow.py", line 1231, in execute
+    self._prepare_dag(
+
+  File "/home/armel/miniforge3/envs/snakemake-env/lib/python3.12/site-packages/snakemake/workflow.py", line 829, in _prepare_dag
+    self._dag = DAG(
+                ^^^^
+
+TypeError: 'str' object is not callable
+

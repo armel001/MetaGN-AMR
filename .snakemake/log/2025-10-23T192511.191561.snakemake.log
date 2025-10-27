@@ -1,0 +1,133 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 22
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+abricate                16
+all                      1
+flye_assembly           16
+host_depletion          12
+merge_rgi_results        1
+plot_ARGs               16
+plot_ARGs_all            1
+plot_ARGs_by_gene       16
+porechop                 1
+rgi                     16
+workflow_summary         1
+total                   97
+
+Select jobs to execute...
+
+[Thu Oct 23 19:25:13 2025]
+rule flye_assembly:
+    input: results/HI04A/clean/HI04A_noh.fq.gz
+    output: results/HI04A/assembly.fasta
+    jobid: 30
+    reason: Missing output files: results/HI04A/assembly.fasta; Updated input files: results/HI04A/clean/HI04A_noh.fq.gz
+    wildcards: sample=HI04A
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+
+[Thu Oct 23 19:25:13 2025]
+rule flye_assembly:
+    input: results/HI16B/clean/HI16B_noh.fq.gz
+    output: results/HI16B/assembly.fasta
+    jobid: 58
+    reason: Missing output files: results/HI16B/assembly.fasta; Updated input files: results/HI16B/clean/HI16B_noh.fq.gz
+    wildcards: sample=HI16B
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+
+[Thu Oct 23 19:25:13 2025]
+rule flye_assembly:
+    input: results/HI05A/clean/HI05A_noh.fq.gz
+    output: results/HI05A/assembly.fasta
+    jobid: 34
+    reason: Missing output files: results/HI05A/assembly.fasta; Updated input files: results/HI05A/clean/HI05A_noh.fq.gz
+    wildcards: sample=HI05A
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+
+[Thu Oct 23 19:25:13 2025]
+rule host_depletion:
+    input: results/HI01A/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI01A/clean/HI01A_noh.fq.gz
+    jobid: 19
+    reason: Forced execution
+    wildcards: sample=HI01A
+    threads: 8
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+
+[Thu Oct 23 19:25:13 2025]
+rule porechop:
+    input: resources/reads/HI17B.fastq.gz
+    output: results/HI17B/trimmed.fastq.gz
+    jobid: 64
+    reason: Missing output files: results/HI17B/trimmed.fastq.gz; Code has changed since last execution
+    wildcards: sample=HI17B
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/2ac72101414847c11936a83efa1608b6_
+
+[Thu Oct 23 19:25:13 2025]
+rule flye_assembly:
+    input: results/CMC_MTM/clean/CMC_MTM_noh.fq.gz
+    output: results/CMC_MTM/assembly.fasta
+    jobid: 10
+    reason: Missing output files: results/CMC_MTM/assembly.fasta; Updated input files: results/CMC_MTM/clean/CMC_MTM_noh.fq.gz
+    wildcards: sample=CMC_MTM
+    resources: tmpdir=/tmp
+
+
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Thu Oct 23 19:25:13 2025]
+rule workflow_summary:
+    output: results/summary/workflow_report.html, results/workflow_dag.png
+    jobid: 115
+    reason: Missing output files: results/workflow_dag.png
+    resources: tmpdir=/tmp
+
+
+Activating conda environment: .snakemake/conda/9c639e334ab76ac4927595f64a8e6cc2_
+[Thu Oct 23 19:25:13 2025]
+rule host_depletion:
+    input: results/HI03A/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI03A/clean/HI03A_noh.fq.gz
+    jobid: 27
+    reason: Code has changed since last execution
+    wildcards: sample=HI03A
+    threads: 8
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+[Thu Oct 23 19:25:14 2025]
+Error in rule workflow_summary:
+    jobid: 115
+    output: results/summary/workflow_report.html, results/workflow_dag.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/9c639e334ab76ac4927595f64a8e6cc2_
+    shell:
+        
+        snakemake --snakefile workflow/Snakefile --report results/summary/workflow_report.html
+        snakemake --snakefile workflow/Snakefile --dag | dot -Tpng > results/workflow_dag.png
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Terminating processes on user request, this might take some time.
+[Thu Oct 23 19:26:40 2025]
+Error in rule flye_assembly:
+    jobid: 10
+    input: results/CMC_MTM/clean/CMC_MTM_noh.fq.gz
+    output: results/CMC_MTM/assembly.fasta
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+    shell:
+        flye --nano-raw results/CMC_MTM/clean/CMC_MTM_noh.fq.gz --out-dir results/CMC_MTM/flye --threads 24 && cp results/CMC_MTM/flye/assembly.fasta results/CMC_MTM/assembly.fasta
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Cancelling snakemake on user request.

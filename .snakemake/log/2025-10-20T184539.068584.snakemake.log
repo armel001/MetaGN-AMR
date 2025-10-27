@@ -1,0 +1,30 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+merge_rgi_results        1
+rgi                     16
+total                   18
+
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Oct 20 18:45:41 2025]
+localrule rgi:
+    input: results/HI02A/assembly.fasta
+    output: results/HI02A/rgi, results/HI02A/rgi/HI02A_rgi_summary.tsv
+    jobid: 131
+    reason: Forced execution
+    wildcards: sample=HI02A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+Terminating processes on user request, this might take some time.

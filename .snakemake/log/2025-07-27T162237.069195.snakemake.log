@@ -1,0 +1,50 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count
+-------------  -------
+all                  1
+plot_ARGs_all        1
+total                2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sun Jul 27 16:22:38 2025]
+localrule plot_ARGs_all:
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv, results/barcode06/abricate/barcode06_ARG_summary.tsv, results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/summary/all_ARGs.png, results/summary/all_ARGs_counts.tsv
+    jobid: 16
+    reason: Missing output files: results/summary/all_ARGs.png
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Waiting at most 5 seconds for missing files:
+results/summary/all_ARGs_counts.tsv (missing locally)
+MissingOutputException in rule plot_ARGs_all in file "/data/armel/git/MetagenAMR-main/workflow/rules/plot_ARGs_all.smk", line 1:
+Job 16  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/summary/all_ARGs_counts.tsv (missing locally, parent dir contents: all_ARGs.png)
+Removing output files of failed job plot_ARGs_all since they might be corrupted:
+results/summary/all_ARGs.png
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sun Jul 27 16:22:47 2025]
+Error in rule plot_ARGs_all:
+    message: None
+    jobid: 16
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv, results/barcode06/abricate/barcode06_ARG_summary.tsv, results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/summary/all_ARGs.png, results/summary/all_ARGs_counts.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+    shell:
+        
+        mkdir -p results/summary
+        python /data/armel/git/MetagenAMR-main/workflow/scripts/plot_ARGs_all.py results/summary/all_ARGs.png results/barcode05/abricate/barcode05_ARG_summary.tsv results/barcode06/abricate/barcode06_ARG_summary.tsv results/barcode07/abricate/barcode07_ARG_summary.tsv
+        
+        (command exited with non-zero exit code)
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-07-27T162237.069195.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

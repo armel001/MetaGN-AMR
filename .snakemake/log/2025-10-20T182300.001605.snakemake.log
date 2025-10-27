@@ -1,0 +1,30 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Creating conda environment workflow/envs/rgi.yaml...
+Downloading and installing remote packages.
+CreateCondaEnvironmentException:
+Could not create conda environment from /data/armel/git/MetagenAMR-main/workflow/rules/../envs/rgi.yaml:
+Command:
+conda env create --quiet --no-default-packages --file "/data/armel/git/MetagenAMR-main/.snakemake/conda/c4b2a1de56be2351c6b5455f8f3db431_.yaml" --prefix "/data/armel/git/MetagenAMR-main/.snakemake/conda/c4b2a1de56be2351c6b5455f8f3db431_"
+Output:
+Channels:
+ - bioconda
+ - conda-forge
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... failed
+
+LibMambaUnsatisfiableError: Encountered problems while solving:
+  - package rgi-6.0.5-pyh05cac1d_0 requires diamond 0.8.36.*, but none of the providers can be installed
+
+Could not solve for environment specs
+The following packages are incompatible
+├─ diamond >=2.0 * is requested and can be installed;
+└─ rgi >=6.0.3 * is not installable because it requires
+   └─ diamond =0.8.36 *, which conflicts with any installable versions previously reported.
+
+

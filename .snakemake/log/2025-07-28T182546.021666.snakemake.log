@@ -1,0 +1,65 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Creating conda environment workflow/envs/r_env.yaml...
+Downloading and installing remote packages.
+Cleaning up conda package tarballs.
+Environment for /data/armel/git/MetagenAMR-main/workflow/rules/../envs/r_env.yaml created (location: .snakemake/conda/c7086733d53bb4829268fec163c19721_)
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+plot_ARGs_all_R        1
+total                  2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Jul 28 18:27:07 2025]
+localrule plot_ARGs_all_R:
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    output: results/summary/r_all_ARGs.png, results/summary/r_all_ARGs_counts.tsv
+    jobid: 26
+    reason: Missing output files: results/summary/r_all_ARGs_counts.tsv, results/summary/r_all_ARGs.png
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/c7086733d53bb4829268fec163c19721_
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/r_plot_ARGs_all.smk", line 10:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7086733d53bb4829268fec163c19721_'; set -euo pipefail;  
+        mkdir -p results/summary
+        Rscript ../scripts/r_plot_ARGs_all.R results/summary/r_all_ARGs.png results/summary/r_all_ARGs_counts.tsv results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv' returned non-zero exit status 2.
+[Mon Jul 28 18:27:09 2025]
+Error in rule plot_ARGs_all_R:
+    message: None
+    jobid: 26
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    output: results/summary/r_all_ARGs.png, results/summary/r_all_ARGs_counts.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7086733d53bb4829268fec163c19721_
+    shell:
+        
+        mkdir -p results/summary
+        Rscript ../scripts/r_plot_ARGs_all.R results/summary/r_all_ARGs.png results/summary/r_all_ARGs_counts.tsv results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+        
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Mon Jul 28 18:27:09 2025]
+Error in rule plot_ARGs_all_R:
+    message: None
+    jobid: 26
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    output: results/summary/r_all_ARGs.png, results/summary/r_all_ARGs_counts.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7086733d53bb4829268fec163c19721_
+    shell:
+        
+        mkdir -p results/summary
+        Rscript ../scripts/r_plot_ARGs_all.R results/summary/r_all_ARGs.png results/summary/r_all_ARGs_counts.tsv results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+        
+        (command exited with non-zero exit code)
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-07-28T182546.021666.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

@@ -1,0 +1,63 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 22
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+abricate                16
+all                      1
+build_dag                1
+flye_assembly           16
+host_depletion          16
+merge_rgi_results        1
+multiqc_nanoplot         1
+nanoplot                 5
+plot_ARGs               16
+plot_ARGs_all            1
+plot_ARGs_all_R          1
+plot_ARGs_by_gene       16
+porechop                 1
+rgi                     16
+total                  108
+
+Select jobs to execute...
+
+[Thu Oct 23 16:20:04 2025]
+rule host_depletion:
+    input: results/HI16B/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI16B/clean/HI16B_noh.fq.gz
+    jobid: 75
+    reason: Code has changed since last execution
+    wildcards: sample=HI16B
+    threads: 8
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+
+[Thu Oct 23 16:20:04 2025]
+rule nanoplot:
+    input: resources/reads/HI05A.fastq.gz
+    output: results/HI05A/qc/HI05A_Nanoplot
+    log: results/HI05A/qc/HI05A_Nanoplot/nanoplot.log
+    jobid: 9
+    reason: Code has changed since last execution
+    wildcards: sample=HI05A
+    threads: 6
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/de891c6cc03ba77d6d59f6373b0f834e_
+
+[Thu Oct 23 16:20:04 2025]
+rule host_depletion:
+    input: results/CMC_MTM/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/CMC_MTM/clean/CMC_MTM_noh.fq.gz
+    jobid: 27
+    reason: Code has changed since last execution
+    wildcards: sample=CMC_MTM
+    threads: 8
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Terminating processes on user request, this might take some time.
+Cancelling snakemake on user request.

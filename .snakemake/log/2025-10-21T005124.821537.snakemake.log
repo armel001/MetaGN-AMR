@@ -1,0 +1,810 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+abricate                 4
+all                      1
+build_dag                1
+flye_assembly            4
+host_depletion           4
+merge_rgi_results        1
+multiqc_nanoplot         1
+plot_ARGs                4
+plot_ARGs_all            1
+plot_ARGs_all_R          1
+plot_ARGs_by_gene        4
+porechop                 3
+rgi                     16
+total                   45
+
+Select jobs to execute...
+Execute 8 jobs...
+[Tue Oct 21 00:51:27 2025]
+localrule rgi:
+    input: results/HI01A/assembly.fasta
+    output: results/HI01A/rgi, results/HI01A/rgi/HI01A_rgi_summary.tsv
+    jobid: 127
+    reason: Missing output files: results/HI01A/rgi/HI01A_rgi_summary.tsv; Code has changed since last execution
+    wildcards: sample=HI01A
+    threads: 8
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+[Tue Oct 21 00:51:27 2025]
+localrule rgi:
+    input: results/HI05A/assembly.fasta
+    output: results/HI05A/rgi, results/HI05A/rgi/HI05A_rgi_summary.tsv
+    jobid: 129
+    reason: Missing output files: results/HI05A/rgi/HI05A_rgi_summary.tsv; Code has changed since last execution
+    wildcards: sample=HI05A
+    threads: 8
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+[Tue Oct 21 00:51:27 2025]
+localrule rgi:
+    input: results/HI12B/assembly.fasta
+    output: results/HI12B/rgi, results/HI12B/rgi/HI12B_rgi_summary.tsv
+    jobid: 122
+    reason: Missing output files: results/HI12B/rgi/HI12B_rgi_summary.tsv; Code has changed since last execution
+    wildcards: sample=HI12B
+    threads: 8
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+[Tue Oct 21 00:51:27 2025]
+localrule rgi:
+    input: results/CMC_MNR/assembly.fasta
+    output: results/CMC_MNR/rgi, results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv
+    jobid: 124
+    reason: Missing output files: results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv; Code has changed since last execution
+    wildcards: sample=CMC_MNR
+    threads: 8
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+[Tue Oct 21 00:51:27 2025]
+localrule rgi:
+    input: results/HI07A/assembly.fasta
+    output: results/HI07A/rgi, results/HI07A/rgi/HI07A_rgi_summary.tsv
+    jobid: 130
+    reason: Missing output files: results/HI07A/rgi/HI07A_rgi_summary.tsv; Code has changed since last execution
+    wildcards: sample=HI07A
+    threads: 8
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+[Tue Oct 21 00:51:27 2025]
+localrule rgi:
+    input: results/CMC_CLY/assembly.fasta
+    output: results/CMC_CLY/rgi, results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv
+    jobid: 123
+    reason: Missing output files: results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv; Code has changed since last execution
+    wildcards: sample=CMC_CLY
+    threads: 8
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+[Tue Oct 21 00:51:27 2025]
+localrule rgi:
+    input: results/CMC_MTM/assembly.fasta
+    output: results/CMC_MTM/rgi, results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv
+    jobid: 125
+    reason: Missing output files: results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv; Code has changed since last execution
+    wildcards: sample=CMC_MTM
+    threads: 8
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+[Tue Oct 21 00:51:27 2025]
+localrule rgi:
+    input: results/HI15B/assembly.fasta
+    output: results/HI15B/rgi, results/HI15B/rgi/HI15B_rgi_summary.tsv
+    jobid: 118
+    reason: Missing output files: results/HI15B/rgi/HI15B_rgi_summary.tsv; Code has changed since last execution
+    wildcards: sample=HI15B
+    threads: 8
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI01A/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI01A/assembly.fasta \
+            --output_file results/HI01A/rgi/HI01A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI01A/rgi/HI01A.json \
+            --output results/HI01A/rgi/HI01A_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 127
+    input: results/HI01A/assembly.fasta
+    output: results/HI01A/rgi, results/HI01A/rgi/HI01A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI01A/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI01A/assembly.fasta \
+            --output_file results/HI01A/rgi/HI01A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI01A/rgi/HI01A.json \
+            --output results/HI01A/rgi/HI01A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI01A/rgi
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/CMC_MNR/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/CMC_MNR/assembly.fasta \
+            --output_file results/CMC_MNR/rgi/CMC_MNR \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/CMC_MNR/rgi/CMC_MNR.json \
+            --output results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 124
+    input: results/CMC_MNR/assembly.fasta
+    output: results/CMC_MNR/rgi, results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_MNR/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/CMC_MNR/assembly.fasta \
+            --output_file results/CMC_MNR/rgi/CMC_MNR \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/CMC_MNR/rgi/CMC_MNR.json \
+            --output results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/CMC_MNR/rgi
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI05A/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI05A/assembly.fasta \
+            --output_file results/HI05A/rgi/HI05A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI05A/rgi/HI05A.json \
+            --output results/HI05A/rgi/HI05A_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 129
+    input: results/HI05A/assembly.fasta
+    output: results/HI05A/rgi, results/HI05A/rgi/HI05A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI05A/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI05A/assembly.fasta \
+            --output_file results/HI05A/rgi/HI05A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI05A/rgi/HI05A.json \
+            --output results/HI05A/rgi/HI05A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI05A/rgi
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI12B/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI12B/assembly.fasta \
+            --output_file results/HI12B/rgi/HI12B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI12B/rgi/HI12B.json \
+            --output results/HI12B/rgi/HI12B_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 122
+    input: results/HI12B/assembly.fasta
+    output: results/HI12B/rgi, results/HI12B/rgi/HI12B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI12B/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI12B/assembly.fasta \
+            --output_file results/HI12B/rgi/HI12B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI12B/rgi/HI12B.json \
+            --output results/HI12B/rgi/HI12B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI12B/rgi
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/CMC_CLY/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/CMC_CLY/assembly.fasta \
+            --output_file results/CMC_CLY/rgi/CMC_CLY \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/CMC_CLY/rgi/CMC_CLY.json \
+            --output results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 123
+    input: results/CMC_CLY/assembly.fasta
+    output: results/CMC_CLY/rgi, results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_CLY/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/CMC_CLY/assembly.fasta \
+            --output_file results/CMC_CLY/rgi/CMC_CLY \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/CMC_CLY/rgi/CMC_CLY.json \
+            --output results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/CMC_MTM/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/CMC_MTM/assembly.fasta \
+            --output_file results/CMC_MTM/rgi/CMC_MTM \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/CMC_MTM/rgi/CMC_MTM.json \
+            --output results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 125
+    input: results/CMC_MTM/assembly.fasta
+    output: results/CMC_MTM/rgi, results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_MTM/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/CMC_MTM/assembly.fasta \
+            --output_file results/CMC_MTM/rgi/CMC_MTM \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/CMC_MTM/rgi/CMC_MTM.json \
+            --output results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/CMC_CLY/rgi
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI07A/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI07A/assembly.fasta \
+            --output_file results/HI07A/rgi/HI07A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI07A/rgi/HI07A.json \
+            --output results/HI07A/rgi/HI07A_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 130
+    input: results/HI07A/assembly.fasta
+    output: results/HI07A/rgi, results/HI07A/rgi/HI07A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI07A/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI07A/assembly.fasta \
+            --output_file results/HI07A/rgi/HI07A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI07A/rgi/HI07A.json \
+            --output results/HI07A/rgi/HI07A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/CMC_MTM/rgi
+Removing output files of failed job rgi since they might be corrupted:
+results/HI07A/rgi
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI15B/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI15B/assembly.fasta \
+            --output_file results/HI15B/rgi/HI15B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI15B/rgi/HI15B.json \
+            --output results/HI15B/rgi/HI15B_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 118
+    input: results/HI15B/assembly.fasta
+    output: results/HI15B/rgi, results/HI15B/rgi/HI15B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI15B/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI15B/assembly.fasta \
+            --output_file results/HI15B/rgi/HI15B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI15B/rgi/HI15B.json \
+            --output results/HI15B/rgi/HI15B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI15B/rgi
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 127
+    input: results/HI01A/assembly.fasta
+    output: results/HI01A/rgi, results/HI01A/rgi/HI01A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI01A/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI01A/assembly.fasta \
+            --output_file results/HI01A/rgi/HI01A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI01A/rgi/HI01A.json \
+            --output results/HI01A/rgi/HI01A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 129
+    input: results/HI05A/assembly.fasta
+    output: results/HI05A/rgi, results/HI05A/rgi/HI05A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI05A/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI05A/assembly.fasta \
+            --output_file results/HI05A/rgi/HI05A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI05A/rgi/HI05A.json \
+            --output results/HI05A/rgi/HI05A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 122
+    input: results/HI12B/assembly.fasta
+    output: results/HI12B/rgi, results/HI12B/rgi/HI12B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI12B/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI12B/assembly.fasta \
+            --output_file results/HI12B/rgi/HI12B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI12B/rgi/HI12B.json \
+            --output results/HI12B/rgi/HI12B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 124
+    input: results/CMC_MNR/assembly.fasta
+    output: results/CMC_MNR/rgi, results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_MNR/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/CMC_MNR/assembly.fasta \
+            --output_file results/CMC_MNR/rgi/CMC_MNR \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/CMC_MNR/rgi/CMC_MNR.json \
+            --output results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 130
+    input: results/HI07A/assembly.fasta
+    output: results/HI07A/rgi, results/HI07A/rgi/HI07A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI07A/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI07A/assembly.fasta \
+            --output_file results/HI07A/rgi/HI07A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI07A/rgi/HI07A.json \
+            --output results/HI07A/rgi/HI07A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 123
+    input: results/CMC_CLY/assembly.fasta
+    output: results/CMC_CLY/rgi, results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_CLY/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/CMC_CLY/assembly.fasta \
+            --output_file results/CMC_CLY/rgi/CMC_CLY \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/CMC_CLY/rgi/CMC_CLY.json \
+            --output results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 125
+    input: results/CMC_MTM/assembly.fasta
+    output: results/CMC_MTM/rgi, results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_MTM/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/CMC_MTM/assembly.fasta \
+            --output_file results/CMC_MTM/rgi/CMC_MTM \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/CMC_MTM/rgi/CMC_MTM.json \
+            --output results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Tue Oct 21 00:51:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 118
+    input: results/HI15B/assembly.fasta
+    output: results/HI15B/rgi, results/HI15B/rgi/HI15B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI15B/rgi
+
+        # RGI main will now look for the local DB in its default configured path 
+        # (e.g., ~/.card/db), established by a previous 'rgi load' run.
+        echo "==> Running RGI against configured local DB." 
+
+        rgi main \
+            --input_sequence results/HI15B/assembly.fasta \
+            --output_file results/HI15B/rgi/HI15B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+            # Removed: --card_json /data/armel/git/MetagenAMR-main/resources/databases/card_db/localDB/card.json
+
+        rgi tab \
+            --input results/HI15B/rgi/HI15B.json \
+            --output results/HI15B/rgi/HI15B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-10-21T005124.821537.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

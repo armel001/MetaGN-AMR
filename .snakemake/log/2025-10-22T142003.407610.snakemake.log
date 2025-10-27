@@ -1,0 +1,2622 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 22
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+abricate                15
+all                      1
+build_dag                1
+flye_assembly           15
+host_depletion          15
+merge_rgi_results        1
+multiqc_nanoplot         1
+nanoplot                 1
+plot_ARGs               15
+plot_ARGs_all            1
+plot_ARGs_all_R          1
+plot_ARGs_by_gene       15
+rgi                     16
+total                   98
+
+Select jobs to execute...
+Execute 3 jobs...
+[Wed Oct 22 14:20:05 2025]
+localrule host_depletion:
+    input: results/CMC_BKN/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/CMC_BKN/clean/CMC_BKN_noh.fq.gz
+    jobid: 31
+    reason: Updated input files: results/CMC_BKN/trimmed.fastq.gz
+    wildcards: sample=CMC_BKN
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+[Wed Oct 22 14:20:05 2025]
+localrule nanoplot:
+    input: resources/reads/HI05A.fastq.gz
+    output: results/HI05A/qc/HI05A_Nanoplot
+    log: results/HI05A/qc/HI05A_Nanoplot/nanoplot.log
+    jobid: 9
+    reason: Forced execution
+    wildcards: sample=HI05A
+    threads: 6
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/de891c6cc03ba77d6d59f6373b0f834e_
+[Wed Oct 22 14:20:05 2025]
+localrule host_depletion:
+    input: results/HI12B/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI12B/clean/HI12B_noh.fq.gz
+    jobid: 63
+    reason: Forced execution
+    wildcards: sample=HI12B
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Select jobs to execute...
+[Wed Oct 22 14:21:08 2025]
+Finished jobid: 9 (Rule: nanoplot)
+1 of 98 steps (1%) done
+Execute 2 jobs...
+[Wed Oct 22 14:21:08 2025]
+localrule multiqc_nanoplot:
+    input: results/HI17B/qc/HI17B_Nanoplot, results/HI16B/qc/HI16B_Nanoplot, results/HI15B/qc/HI15B_Nanoplot, results/CMC_BKN/qc/CMC_BKN_Nanoplot, results/HI14B/qc/HI14B_Nanoplot, results/HI09B/qc/HI09B_Nanoplot, results/HI12B/qc/HI12B_Nanoplot, results/CMC_CLY/qc/CMC_CLY_Nanoplot, results/CMC_MNR/qc/CMC_MNR_Nanoplot, results/CMC_MTM/qc/CMC_MTM_Nanoplot, results/HI03A/qc/HI03A_Nanoplot, results/HI01A/qc/HI01A_Nanoplot, results/HI04A/qc/HI04A_Nanoplot, results/HI05A/qc/HI05A_Nanoplot, results/HI07A/qc/HI07A_Nanoplot, results/HI02A/qc/HI02A_Nanoplot
+    output: results/summary/multiqc_nanoplot.html, results/summary/multiqc_data_nanoplot
+    jobid: 133
+    reason: Missing output files: results/summary/multiqc_nanoplot.html; Input files updated by another job: results/HI05A/qc/HI05A_Nanoplot
+    threads: 2
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/a0c8ecd6a262e1d3e248f6911ae238a5_
+[Wed Oct 22 14:21:08 2025]
+localrule build_dag:
+    output: results/workflow_dag.png
+    jobid: 132
+    reason: Missing output files: results/workflow_dag.png
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/69a93ab51e8a64b6b2f737e3e7392841_
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/build_dag.smk", line 10:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/69a93ab51e8a64b6b2f737e3e7392841_'; set -euo pipefail;  
+        echo "Génération du DAG du pipeline..."
+        snakemake --dag | dot -Tpng > results/workflow_dag.png
+        echo "DAG généré : results/workflow_dag.png"' returned non-zero exit status 127.
+[Wed Oct 22 14:21:09 2025]
+Error in rule build_dag:
+    message: None
+    jobid: 132
+    output: results/workflow_dag.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/69a93ab51e8a64b6b2f737e3e7392841_
+    shell:
+        
+        echo "Génération du DAG du pipeline..."
+        snakemake --dag | dot -Tpng > results/workflow_dag.png
+        echo "DAG généré : results/workflow_dag.png"
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job build_dag since they might be corrupted:
+results/workflow_dag.png
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/multiqc_nanoplot.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/a0c8ecd6a262e1d3e248f6911ae238a5_'; set -euo pipefail;  
+        mkdir -p results/summary
+        echo "Exécution de MultiQC sur les rapports NanoPlot..."
+        multiqc results/ -n results/summary/multiqc_nanoplot.html -o results/summary
+        echo "Rapport MultiQC généré : results/summary/multiqc_nanoplot.html"' returned non-zero exit status 1.
+[Wed Oct 22 14:21:44 2025]
+Error in rule multiqc_nanoplot:
+    message: None
+    jobid: 133
+    input: results/HI17B/qc/HI17B_Nanoplot, results/HI16B/qc/HI16B_Nanoplot, results/HI15B/qc/HI15B_Nanoplot, results/CMC_BKN/qc/CMC_BKN_Nanoplot, results/HI14B/qc/HI14B_Nanoplot, results/HI09B/qc/HI09B_Nanoplot, results/HI12B/qc/HI12B_Nanoplot, results/CMC_CLY/qc/CMC_CLY_Nanoplot, results/CMC_MNR/qc/CMC_MNR_Nanoplot, results/CMC_MTM/qc/CMC_MTM_Nanoplot, results/HI03A/qc/HI03A_Nanoplot, results/HI01A/qc/HI01A_Nanoplot, results/HI04A/qc/HI04A_Nanoplot, results/HI05A/qc/HI05A_Nanoplot, results/HI07A/qc/HI07A_Nanoplot, results/HI02A/qc/HI02A_Nanoplot
+    output: results/summary/multiqc_nanoplot.html, results/summary/multiqc_data_nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/a0c8ecd6a262e1d3e248f6911ae238a5_
+    shell:
+        
+        mkdir -p results/summary
+        echo "Exécution de MultiQC sur les rapports NanoPlot..."
+        multiqc results/ -n results/summary/multiqc_nanoplot.html -o results/summary
+        echo "Rapport MultiQC généré : results/summary/multiqc_nanoplot.html"
+        
+        (command exited with non-zero exit code)
+[Wed Oct 22 14:27:23 2025]
+Finished jobid: 31 (Rule: host_depletion)
+2 of 98 steps (2%) done
+Execute 2 jobs...
+[Wed Oct 22 14:27:23 2025]
+localrule host_depletion:
+    input: results/HI14B/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI14B/clean/HI14B_noh.fq.gz
+    jobid: 67
+    reason: Updated input files: results/HI14B/trimmed.fastq.gz
+    wildcards: sample=HI14B
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+[Wed Oct 22 14:27:24 2025]
+localrule flye_assembly:
+    input: results/CMC_BKN/clean/CMC_BKN_noh.fq.gz
+    output: results/CMC_BKN/assembly.fasta
+    jobid: 30
+    reason: Input files updated by another job: results/CMC_BKN/clean/CMC_BKN_noh.fq.gz
+    wildcards: sample=CMC_BKN
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+Select jobs to execute...
+[Wed Oct 22 14:29:37 2025]
+Finished jobid: 63 (Rule: host_depletion)
+3 of 98 steps (3%) done
+Execute 2 jobs...
+[Wed Oct 22 14:29:37 2025]
+localrule host_depletion:
+    input: results/CMC_MTM/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/CMC_MTM/clean/CMC_MTM_noh.fq.gz
+    jobid: 27
+    reason: Forced execution
+    wildcards: sample=CMC_MTM
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+[Wed Oct 22 14:29:37 2025]
+localrule flye_assembly:
+    input: results/HI12B/clean/HI12B_noh.fq.gz
+    output: results/HI12B/assembly.fasta
+    jobid: 62
+    reason: Input files updated by another job: results/HI12B/clean/HI12B_noh.fq.gz
+    wildcards: sample=HI12B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+Select jobs to execute...
+[Wed Oct 22 14:40:26 2025]
+Finished jobid: 67 (Rule: host_depletion)
+4 of 98 steps (4%) done
+Execute 2 jobs...
+[Wed Oct 22 14:40:26 2025]
+localrule flye_assembly:
+    input: results/HI14B/clean/HI14B_noh.fq.gz
+    output: results/HI14B/assembly.fasta
+    jobid: 66
+    reason: Input files updated by another job: results/HI14B/clean/HI14B_noh.fq.gz
+    wildcards: sample=HI14B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Wed Oct 22 14:40:26 2025]
+localrule host_depletion:
+    input: results/HI01A/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI01A/clean/HI01A_noh.fq.gz
+    jobid: 35
+    reason: Updated input files: results/HI01A/trimmed.fastq.gz
+    wildcards: sample=HI01A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Select jobs to execute...
+[Wed Oct 22 14:52:55 2025]
+Finished jobid: 27 (Rule: host_depletion)
+5 of 98 steps (5%) done
+Execute 2 jobs...
+[Wed Oct 22 14:52:55 2025]
+localrule flye_assembly:
+    input: results/CMC_MTM/clean/CMC_MTM_noh.fq.gz
+    output: results/CMC_MTM/assembly.fasta
+    jobid: 26
+    reason: Input files updated by another job: results/CMC_MTM/clean/CMC_MTM_noh.fq.gz
+    wildcards: sample=CMC_MTM
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Wed Oct 22 14:52:55 2025]
+localrule host_depletion:
+    input: results/HI04A/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI04A/clean/HI04A_noh.fq.gz
+    jobid: 47
+    reason: Forced execution
+    wildcards: sample=HI04A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Select jobs to execute...
+[Wed Oct 22 14:55:49 2025]
+Finished jobid: 47 (Rule: host_depletion)
+6 of 98 steps (6%) done
+Execute 2 jobs...
+[Wed Oct 22 14:55:49 2025]
+localrule rgi:
+    input: results/HI17B/assembly.fasta
+    output: results/HI17B/rgi, results/HI17B/rgi/HI17B_rgi_summary.tsv
+    jobid: 116
+    reason: Missing output files: results/HI17B/rgi/HI17B_rgi_summary.tsv
+    wildcards: sample=HI17B
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+[Wed Oct 22 14:55:49 2025]
+localrule flye_assembly:
+    input: results/HI04A/clean/HI04A_noh.fq.gz
+    output: results/HI04A/assembly.fasta
+    jobid: 46
+    reason: Input files updated by another job: results/HI04A/clean/HI04A_noh.fq.gz
+    wildcards: sample=HI04A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Wed Oct 22 14:59:31 2025]
+Finished jobid: 35 (Rule: host_depletion)
+7 of 98 steps (7%) done
+Execute 2 jobs...
+[Wed Oct 22 14:59:31 2025]
+localrule host_depletion:
+    input: results/CMC_CLY/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/CMC_CLY/clean/CMC_CLY_noh.fq.gz
+    jobid: 19
+    reason: Forced execution
+    wildcards: sample=CMC_CLY
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+[Wed Oct 22 14:59:31 2025]
+localrule flye_assembly:
+    input: results/HI01A/clean/HI01A_noh.fq.gz
+    output: results/HI01A/assembly.fasta
+    jobid: 34
+    reason: Input files updated by another job: results/HI01A/clean/HI01A_noh.fq.gz
+    wildcards: sample=HI01A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+Select jobs to execute...
+[Wed Oct 22 15:08:32 2025]
+Finished jobid: 46 (Rule: flye_assembly)
+8 of 98 steps (8%) done
+Execute 1 jobs...
+[Wed Oct 22 15:08:32 2025]
+localrule abricate:
+    input: results/HI04A/assembly.fasta
+    output: results/HI04A/abricate/HI04A_ARG_summary.tsv
+    jobid: 45
+    reason: Input files updated by another job: results/HI04A/assembly.fasta
+    wildcards: sample=HI04A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Select jobs to execute...
+[Wed Oct 22 15:08:56 2025]
+Finished jobid: 45 (Rule: abricate)
+9 of 98 steps (9%) done
+Execute 1 jobs...
+[Wed Oct 22 15:08:56 2025]
+localrule plot_ARGs:
+    input: results/HI04A/abricate/HI04A_ARG_summary.tsv
+    output: results/HI04A/plots/HI04A_resistance_classes.png
+    jobid: 88
+    reason: Input files updated by another job: results/HI04A/abricate/HI04A_ARG_summary.tsv
+    wildcards: sample=HI04A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 15:09:14 2025]
+Finished jobid: 88 (Rule: plot_ARGs)
+10 of 98 steps (10%) done
+Execute 1 jobs...
+[Wed Oct 22 15:09:14 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI04A/abricate/HI04A_ARG_summary.tsv
+    output: results/HI04A/plots/HI04A_ARGs_by_gene.png
+    jobid: 104
+    reason: Input files updated by another job: results/HI04A/abricate/HI04A_ARG_summary.tsv
+    wildcards: sample=HI04A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+[Wed Oct 22 15:09:25 2025]
+Finished jobid: 104 (Rule: plot_ARGs_by_gene)
+11 of 98 steps (11%) done
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI17B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI17B/assembly.fasta \
+            --output_file results/HI17B/rgi/HI17B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI17B/rgi/HI17B.json \
+            --output results/HI17B/rgi/HI17B_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Wed Oct 22 15:31:46 2025]
+Error in rule rgi:
+    message: None
+    jobid: 116
+    input: results/HI17B/assembly.fasta
+    output: results/HI17B/rgi, results/HI17B/rgi/HI17B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI17B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI17B/assembly.fasta \
+            --output_file results/HI17B/rgi/HI17B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI17B/rgi/HI17B.json \
+            --output results/HI17B/rgi/HI17B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI17B/rgi
+Execute 1 jobs...
+[Wed Oct 22 15:31:46 2025]
+localrule rgi:
+    input: results/HI04A/assembly.fasta
+    output: results/HI04A/rgi, results/HI04A/rgi/HI04A_rgi_summary.tsv
+    jobid: 128
+    reason: Missing output files: results/HI04A/rgi/HI04A_rgi_summary.tsv; Input files updated by another job: results/HI04A/assembly.fasta
+    wildcards: sample=HI04A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI04A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI04A/assembly.fasta \
+            --output_file results/HI04A/rgi/HI04A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI04A/rgi/HI04A.json \
+            --output results/HI04A/rgi/HI04A_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Wed Oct 22 15:33:49 2025]
+Error in rule rgi:
+    message: None
+    jobid: 128
+    input: results/HI04A/assembly.fasta
+    output: results/HI04A/rgi, results/HI04A/rgi/HI04A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI04A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI04A/assembly.fasta \
+            --output_file results/HI04A/rgi/HI04A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI04A/rgi/HI04A.json \
+            --output results/HI04A/rgi/HI04A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI04A/rgi
+Execute 1 jobs...
+[Wed Oct 22 15:33:49 2025]
+localrule host_depletion:
+    input: results/CMC_MNR/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/CMC_MNR/clean/CMC_MNR_noh.fq.gz
+    jobid: 23
+    reason: Forced execution
+    wildcards: sample=CMC_MNR
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Select jobs to execute...
+[Wed Oct 22 15:57:16 2025]
+Finished jobid: 19 (Rule: host_depletion)
+12 of 98 steps (12%) done
+Execute 2 jobs...
+[Wed Oct 22 15:57:16 2025]
+localrule flye_assembly:
+    input: results/CMC_CLY/clean/CMC_CLY_noh.fq.gz
+    output: results/CMC_CLY/assembly.fasta
+    jobid: 18
+    reason: Input files updated by another job: results/CMC_CLY/clean/CMC_CLY_noh.fq.gz
+    wildcards: sample=CMC_CLY
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Wed Oct 22 15:57:16 2025]
+localrule host_depletion:
+    input: results/HI05A/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI05A/clean/HI05A_noh.fq.gz
+    jobid: 51
+    reason: Updated input files: results/HI05A/trimmed.fastq.gz
+    wildcards: sample=HI05A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Select jobs to execute...
+[Wed Oct 22 16:06:48 2025]
+Finished jobid: 51 (Rule: host_depletion)
+13 of 98 steps (13%) done
+Execute 1 jobs...
+[Wed Oct 22 16:06:48 2025]
+localrule host_depletion:
+    input: results/HI15B/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI15B/clean/HI15B_noh.fq.gz
+    jobid: 71
+    reason: Forced execution
+    wildcards: sample=HI15B
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Select jobs to execute...
+[Wed Oct 22 16:13:08 2025]
+Finished jobid: 23 (Rule: host_depletion)
+14 of 98 steps (14%) done
+Execute 1 jobs...
+[Wed Oct 22 16:13:08 2025]
+localrule host_depletion:
+    input: results/HI02A/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI02A/clean/HI02A_noh.fq.gz
+    jobid: 39
+    reason: Updated input files: results/HI02A/trimmed.fastq.gz
+    wildcards: sample=HI02A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Select jobs to execute...
+[Wed Oct 22 16:41:47 2025]
+Finished jobid: 39 (Rule: host_depletion)
+15 of 98 steps (15%) done
+Execute 1 jobs...
+[Wed Oct 22 16:41:48 2025]
+localrule host_depletion:
+    input: results/HI09B/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI09B/clean/HI09B_noh.fq.gz
+    jobid: 59
+    reason: Updated input files: results/HI09B/trimmed.fastq.gz
+    wildcards: sample=HI09B
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Select jobs to execute...
+[Wed Oct 22 17:22:13 2025]
+Finished jobid: 71 (Rule: host_depletion)
+16 of 98 steps (16%) done
+Execute 1 jobs...
+[Wed Oct 22 17:22:13 2025]
+localrule host_depletion:
+    input: results/HI07A/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI07A/clean/HI07A_noh.fq.gz
+    jobid: 55
+    reason: Updated input files: results/HI07A/trimmed.fastq.gz
+    wildcards: sample=HI07A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Select jobs to execute...
+[Wed Oct 22 17:41:17 2025]
+Finished jobid: 59 (Rule: host_depletion)
+17 of 98 steps (17%) done
+Execute 1 jobs...
+[Wed Oct 22 17:41:17 2025]
+localrule host_depletion:
+    input: results/HI16B/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI16B/clean/HI16B_noh.fq.gz
+    jobid: 75
+    reason: Forced execution
+    wildcards: sample=HI16B
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Select jobs to execute...
+[Wed Oct 22 17:43:50 2025]
+Finished jobid: 66 (Rule: flye_assembly)
+18 of 98 steps (18%) done
+Execute 1 jobs...
+[Wed Oct 22 17:43:50 2025]
+localrule flye_assembly:
+    input: results/HI05A/clean/HI05A_noh.fq.gz
+    output: results/HI05A/assembly.fasta
+    jobid: 50
+    reason: Input files updated by another job: results/HI05A/clean/HI05A_noh.fq.gz
+    wildcards: sample=HI05A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+Select jobs to execute...
+[Wed Oct 22 18:06:33 2025]
+Finished jobid: 55 (Rule: host_depletion)
+19 of 98 steps (19%) done
+Execute 1 jobs...
+[Wed Oct 22 18:06:33 2025]
+localrule host_depletion:
+    input: results/HI03A/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI03A/clean/HI03A_noh.fq.gz
+    jobid: 43
+    reason: Updated input files: results/HI03A/trimmed.fastq.gz
+    wildcards: sample=HI03A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Select jobs to execute...
+[Wed Oct 22 18:08:29 2025]
+Finished jobid: 30 (Rule: flye_assembly)
+20 of 98 steps (20%) done
+Execute 1 jobs...
+[Wed Oct 22 18:08:29 2025]
+localrule abricate:
+    input: results/HI14B/assembly.fasta
+    output: results/HI14B/abricate/HI14B_ARG_summary.tsv
+    jobid: 65
+    reason: Input files updated by another job: results/HI14B/assembly.fasta
+    wildcards: sample=HI14B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Select jobs to execute...
+[Wed Oct 22 18:11:25 2025]
+Finished jobid: 65 (Rule: abricate)
+21 of 98 steps (21%) done
+Execute 1 jobs...
+[Wed Oct 22 18:11:25 2025]
+localrule flye_assembly:
+    input: results/HI15B/clean/HI15B_noh.fq.gz
+    output: results/HI15B/assembly.fasta
+    jobid: 70
+    reason: Input files updated by another job: results/HI15B/clean/HI15B_noh.fq.gz
+    wildcards: sample=HI15B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+Select jobs to execute...
+[Wed Oct 22 18:11:49 2025]
+Finished jobid: 62 (Rule: flye_assembly)
+22 of 98 steps (22%) done
+Execute 1 jobs...
+[Wed Oct 22 18:11:49 2025]
+localrule flye_assembly:
+    input: results/HI09B/clean/HI09B_noh.fq.gz
+    output: results/HI09B/assembly.fasta
+    jobid: 58
+    reason: Input files updated by another job: results/HI09B/clean/HI09B_noh.fq.gz
+    wildcards: sample=HI09B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+Select jobs to execute...
+[Wed Oct 22 18:18:41 2025]
+Finished jobid: 50 (Rule: flye_assembly)
+23 of 98 steps (23%) done
+Execute 1 jobs...
+[Wed Oct 22 18:18:42 2025]
+localrule flye_assembly:
+    input: results/HI07A/clean/HI07A_noh.fq.gz
+    output: results/HI07A/assembly.fasta
+    jobid: 54
+    reason: Input files updated by another job: results/HI07A/clean/HI07A_noh.fq.gz
+    wildcards: sample=HI07A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+Select jobs to execute...
+[Wed Oct 22 18:21:26 2025]
+Finished jobid: 75 (Rule: host_depletion)
+24 of 98 steps (24%) done
+Execute 1 jobs...
+[Wed Oct 22 18:21:26 2025]
+localrule rgi:
+    input: results/CMC_BKN/assembly.fasta
+    output: results/CMC_BKN/rgi, results/CMC_BKN/rgi/CMC_BKN_rgi_summary.tsv
+    jobid: 119
+    reason: Missing output files: results/CMC_BKN/rgi/CMC_BKN_rgi_summary.tsv; Input files updated by another job: results/CMC_BKN/assembly.fasta
+    wildcards: sample=CMC_BKN
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+[Wed Oct 22 18:29:22 2025]
+Finished jobid: 34 (Rule: flye_assembly)
+25 of 98 steps (26%) done
+Execute 1 jobs...
+[Wed Oct 22 18:29:22 2025]
+localrule flye_assembly:
+    input: results/HI16B/clean/HI16B_noh.fq.gz
+    output: results/HI16B/assembly.fasta
+    jobid: 74
+    reason: Input files updated by another job: results/HI16B/clean/HI16B_noh.fq.gz
+    wildcards: sample=HI16B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+Select jobs to execute...
+[Wed Oct 22 18:30:19 2025]
+Finished jobid: 43 (Rule: host_depletion)
+26 of 98 steps (27%) done
+Execute 8 jobs...
+[Wed Oct 22 18:30:19 2025]
+localrule flye_assembly:
+    input: results/CMC_MNR/clean/CMC_MNR_noh.fq.gz
+    output: results/CMC_MNR/assembly.fasta
+    jobid: 22
+    reason: Input files updated by another job: results/CMC_MNR/clean/CMC_MNR_noh.fq.gz
+    wildcards: sample=CMC_MNR
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Wed Oct 22 18:30:19 2025]
+localrule abricate:
+    input: results/HI12B/assembly.fasta
+    output: results/HI12B/abricate/HI12B_ARG_summary.tsv
+    jobid: 61
+    reason: Input files updated by another job: results/HI12B/assembly.fasta
+    wildcards: sample=HI12B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+[Wed Oct 22 18:30:19 2025]
+localrule plot_ARGs:
+    input: results/HI14B/abricate/HI14B_ARG_summary.tsv
+    output: results/HI14B/plots/HI14B_resistance_classes.png
+    jobid: 93
+    reason: Input files updated by another job: results/HI14B/abricate/HI14B_ARG_summary.tsv
+    wildcards: sample=HI14B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+[Wed Oct 22 18:30:19 2025]
+localrule abricate:
+    input: results/HI01A/assembly.fasta
+    output: results/HI01A/abricate/HI01A_ARG_summary.tsv
+    jobid: 33
+    reason: Input files updated by another job: results/HI01A/assembly.fasta
+    wildcards: sample=HI01A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 18:30:19 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI14B/abricate/HI14B_ARG_summary.tsv
+    output: results/HI14B/plots/HI14B_ARGs_by_gene.png
+    jobid: 109
+    reason: Input files updated by another job: results/HI14B/abricate/HI14B_ARG_summary.tsv
+    wildcards: sample=HI14B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+[Wed Oct 22 18:30:19 2025]
+localrule abricate:
+    input: results/HI05A/assembly.fasta
+    output: results/HI05A/abricate/HI05A_ARG_summary.tsv
+    jobid: 49
+    reason: Input files updated by another job: results/HI05A/assembly.fasta
+    wildcards: sample=HI05A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 18:30:19 2025]
+localrule abricate:
+    input: results/CMC_BKN/assembly.fasta
+    output: results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    jobid: 29
+    reason: Input files updated by another job: results/CMC_BKN/assembly.fasta
+    wildcards: sample=CMC_BKN
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+[Wed Oct 22 18:30:19 2025]
+localrule flye_assembly:
+    input: results/HI02A/clean/HI02A_noh.fq.gz
+    output: results/HI02A/assembly.fasta
+    jobid: 38
+    reason: Input files updated by another job: results/HI02A/clean/HI02A_noh.fq.gz
+    wildcards: sample=HI02A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 18:30:33 2025]
+Finished jobid: 93 (Rule: plot_ARGs)
+27 of 98 steps (28%) done
+Execute 1 jobs...
+[Wed Oct 22 18:30:33 2025]
+localrule flye_assembly:
+    input: results/HI03A/clean/HI03A_noh.fq.gz
+    output: results/HI03A/assembly.fasta
+    jobid: 42
+    reason: Input files updated by another job: results/HI03A/clean/HI03A_noh.fq.gz
+    wildcards: sample=HI03A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+Select jobs to execute...
+[Wed Oct 22 18:30:36 2025]
+Finished jobid: 109 (Rule: plot_ARGs_by_gene)
+28 of 98 steps (29%) done
+[Wed Oct 22 18:31:14 2025]
+Finished jobid: 49 (Rule: abricate)
+29 of 98 steps (30%) done
+Execute 2 jobs...
+[Wed Oct 22 18:31:14 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI05A/abricate/HI05A_ARG_summary.tsv
+    output: results/HI05A/plots/HI05A_ARGs_by_gene.png
+    jobid: 105
+    reason: Input files updated by another job: results/HI05A/abricate/HI05A_ARG_summary.tsv
+    wildcards: sample=HI05A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+[Wed Oct 22 18:31:14 2025]
+localrule plot_ARGs:
+    input: results/HI05A/abricate/HI05A_ARG_summary.tsv
+    output: results/HI05A/plots/HI05A_resistance_classes.png
+    jobid: 89
+    reason: Input files updated by another job: results/HI05A/abricate/HI05A_ARG_summary.tsv
+    wildcards: sample=HI05A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 18:31:31 2025]
+Finished jobid: 105 (Rule: plot_ARGs_by_gene)
+30 of 98 steps (31%) done
+[Wed Oct 22 18:31:31 2025]
+Finished jobid: 89 (Rule: plot_ARGs)
+31 of 98 steps (32%) done
+[Wed Oct 22 18:33:42 2025]
+Finished jobid: 61 (Rule: abricate)
+32 of 98 steps (33%) done
+Execute 2 jobs...
+[Wed Oct 22 18:33:42 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI12B/abricate/HI12B_ARG_summary.tsv
+    output: results/HI12B/plots/HI12B_ARGs_by_gene.png
+    jobid: 108
+    reason: Input files updated by another job: results/HI12B/abricate/HI12B_ARG_summary.tsv
+    wildcards: sample=HI12B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 18:33:42 2025]
+localrule plot_ARGs:
+    input: results/HI12B/abricate/HI12B_ARG_summary.tsv
+    output: results/HI12B/plots/HI12B_resistance_classes.png
+    jobid: 92
+    reason: Input files updated by another job: results/HI12B/abricate/HI12B_ARG_summary.tsv
+    wildcards: sample=HI12B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 18:34:00 2025]
+Finished jobid: 92 (Rule: plot_ARGs)
+33 of 98 steps (34%) done
+[Wed Oct 22 18:34:03 2025]
+Finished jobid: 108 (Rule: plot_ARGs_by_gene)
+34 of 98 steps (35%) done
+[Wed Oct 22 18:42:19 2025]
+Finished jobid: 33 (Rule: abricate)
+35 of 98 steps (36%) done
+Execute 2 jobs...
+[Wed Oct 22 18:42:19 2025]
+localrule plot_ARGs:
+    input: results/HI01A/abricate/HI01A_ARG_summary.tsv
+    output: results/HI01A/plots/HI01A_resistance_classes.png
+    jobid: 85
+    reason: Input files updated by another job: results/HI01A/abricate/HI01A_ARG_summary.tsv
+    wildcards: sample=HI01A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+[Wed Oct 22 18:42:19 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI01A/abricate/HI01A_ARG_summary.tsv
+    output: results/HI01A/plots/HI01A_ARGs_by_gene.png
+    jobid: 101
+    reason: Input files updated by another job: results/HI01A/abricate/HI01A_ARG_summary.tsv
+    wildcards: sample=HI01A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 18:42:38 2025]
+Finished jobid: 85 (Rule: plot_ARGs)
+36 of 98 steps (37%) done
+[Wed Oct 22 18:42:39 2025]
+Finished jobid: 101 (Rule: plot_ARGs_by_gene)
+37 of 98 steps (38%) done
+[Wed Oct 22 18:44:57 2025]
+Finished jobid: 29 (Rule: abricate)
+38 of 98 steps (39%) done
+Execute 2 jobs...
+[Wed Oct 22 18:44:57 2025]
+localrule plot_ARGs:
+    input: results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    output: results/CMC_BKN/plots/CMC_BKN_resistance_classes.png
+    jobid: 84
+    reason: Input files updated by another job: results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    wildcards: sample=CMC_BKN
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+[Wed Oct 22 18:44:57 2025]
+localrule plot_ARGs_by_gene:
+    input: results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    output: results/CMC_BKN/plots/CMC_BKN_ARGs_by_gene.png
+    jobid: 100
+    reason: Input files updated by another job: results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv
+    wildcards: sample=CMC_BKN
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 18:45:20 2025]
+Finished jobid: 84 (Rule: plot_ARGs)
+39 of 98 steps (40%) done
+[Wed Oct 22 18:45:24 2025]
+Finished jobid: 100 (Rule: plot_ARGs_by_gene)
+40 of 98 steps (41%) done
+[Wed Oct 22 20:26:54 2025]
+Finished jobid: 38 (Rule: flye_assembly)
+41 of 98 steps (42%) done
+Execute 1 jobs...
+[Wed Oct 22 20:26:54 2025]
+localrule abricate:
+    input: results/HI02A/assembly.fasta
+    output: results/HI02A/abricate/HI02A_ARG_summary.tsv
+    jobid: 37
+    reason: Input files updated by another job: results/HI02A/assembly.fasta
+    wildcards: sample=HI02A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Select jobs to execute...
+[Wed Oct 22 20:30:48 2025]
+Finished jobid: 37 (Rule: abricate)
+42 of 98 steps (43%) done
+Execute 2 jobs...
+[Wed Oct 22 20:30:48 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI02A/abricate/HI02A_ARG_summary.tsv
+    output: results/HI02A/plots/HI02A_ARGs_by_gene.png
+    jobid: 102
+    reason: Input files updated by another job: results/HI02A/abricate/HI02A_ARG_summary.tsv
+    wildcards: sample=HI02A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 20:30:48 2025]
+localrule plot_ARGs:
+    input: results/HI02A/abricate/HI02A_ARG_summary.tsv
+    output: results/HI02A/plots/HI02A_resistance_classes.png
+    jobid: 86
+    reason: Input files updated by another job: results/HI02A/abricate/HI02A_ARG_summary.tsv
+    wildcards: sample=HI02A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 20:31:19 2025]
+Finished jobid: 86 (Rule: plot_ARGs)
+43 of 98 steps (44%) done
+[Wed Oct 22 20:31:20 2025]
+Finished jobid: 102 (Rule: plot_ARGs_by_gene)
+44 of 98 steps (45%) done
+[Wed Oct 22 20:59:19 2025]
+Finished jobid: 42 (Rule: flye_assembly)
+45 of 98 steps (46%) done
+Execute 1 jobs...
+[Wed Oct 22 20:59:19 2025]
+localrule abricate:
+    input: results/HI03A/assembly.fasta
+    output: results/HI03A/abricate/HI03A_ARG_summary.tsv
+    jobid: 41
+    reason: Input files updated by another job: results/HI03A/assembly.fasta
+    wildcards: sample=HI03A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Select jobs to execute...
+[Wed Oct 22 21:00:47 2025]
+Finished jobid: 54 (Rule: flye_assembly)
+46 of 98 steps (47%) done
+Execute 1 jobs...
+[Wed Oct 22 21:00:47 2025]
+localrule abricate:
+    input: results/HI07A/assembly.fasta
+    output: results/HI07A/abricate/HI07A_ARG_summary.tsv
+    jobid: 53
+    reason: Input files updated by another job: results/HI07A/assembly.fasta
+    wildcards: sample=HI07A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Select jobs to execute...
+[Wed Oct 22 21:03:04 2025]
+Finished jobid: 41 (Rule: abricate)
+47 of 98 steps (48%) done
+Execute 2 jobs...
+[Wed Oct 22 21:03:04 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI03A/abricate/HI03A_ARG_summary.tsv
+    output: results/HI03A/plots/HI03A_ARGs_by_gene.png
+    jobid: 103
+    reason: Input files updated by another job: results/HI03A/abricate/HI03A_ARG_summary.tsv
+    wildcards: sample=HI03A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 21:03:04 2025]
+localrule plot_ARGs:
+    input: results/HI03A/abricate/HI03A_ARG_summary.tsv
+    output: results/HI03A/plots/HI03A_resistance_classes.png
+    jobid: 87
+    reason: Input files updated by another job: results/HI03A/abricate/HI03A_ARG_summary.tsv
+    wildcards: sample=HI03A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 21:03:28 2025]
+Finished jobid: 103 (Rule: plot_ARGs_by_gene)
+48 of 98 steps (49%) done
+[Wed Oct 22 21:03:36 2025]
+Finished jobid: 87 (Rule: plot_ARGs)
+49 of 98 steps (50%) done
+[Wed Oct 22 21:07:12 2025]
+Finished jobid: 53 (Rule: abricate)
+50 of 98 steps (51%) done
+Execute 1 jobs...
+[Wed Oct 22 21:07:12 2025]
+localrule rgi:
+    input: results/HI07A/assembly.fasta
+    output: results/HI07A/rgi, results/HI07A/rgi/HI07A_rgi_summary.tsv
+    jobid: 130
+    reason: Missing output files: results/HI07A/rgi/HI07A_rgi_summary.tsv; Input files updated by another job: results/HI07A/assembly.fasta
+    wildcards: sample=HI07A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+[Wed Oct 22 21:09:50 2025]
+Finished jobid: 26 (Rule: flye_assembly)
+51 of 98 steps (52%) done
+Execute 1 jobs...
+[Wed Oct 22 21:09:50 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI07A/abricate/HI07A_ARG_summary.tsv
+    output: results/HI07A/plots/HI07A_ARGs_by_gene.png
+    jobid: 106
+    reason: Input files updated by another job: results/HI07A/abricate/HI07A_ARG_summary.tsv
+    wildcards: sample=HI07A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+[Wed Oct 22 21:10:17 2025]
+Finished jobid: 106 (Rule: plot_ARGs_by_gene)
+52 of 98 steps (53%) done
+Execute 1 jobs...
+[Wed Oct 22 21:10:17 2025]
+localrule plot_ARGs:
+    input: results/HI07A/abricate/HI07A_ARG_summary.tsv
+    output: results/HI07A/plots/HI07A_resistance_classes.png
+    jobid: 90
+    reason: Input files updated by another job: results/HI07A/abricate/HI07A_ARG_summary.tsv
+    wildcards: sample=HI07A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 21:10:38 2025]
+Finished jobid: 90 (Rule: plot_ARGs)
+53 of 98 steps (54%) done
+Execute 1 jobs...
+[Wed Oct 22 21:10:38 2025]
+localrule abricate:
+    input: results/CMC_MTM/assembly.fasta
+    output: results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv
+    jobid: 25
+    reason: Input files updated by another job: results/CMC_MTM/assembly.fasta
+    wildcards: sample=CMC_MTM
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Select jobs to execute...
+[Wed Oct 22 21:14:37 2025]
+Finished jobid: 58 (Rule: flye_assembly)
+54 of 98 steps (55%) done
+Execute 1 jobs...
+[Wed Oct 22 21:14:37 2025]
+localrule abricate:
+    input: results/HI09B/assembly.fasta
+    output: results/HI09B/abricate/HI09B_ARG_summary.tsv
+    jobid: 57
+    reason: Input files updated by another job: results/HI09B/assembly.fasta
+    wildcards: sample=HI09B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Select jobs to execute...
+[Wed Oct 22 21:15:14 2025]
+Finished jobid: 57 (Rule: abricate)
+55 of 98 steps (56%) done
+Execute 1 jobs...
+[Wed Oct 22 21:15:14 2025]
+localrule plot_ARGs:
+    input: results/HI09B/abricate/HI09B_ARG_summary.tsv
+    output: results/HI09B/plots/HI09B_resistance_classes.png
+    jobid: 91
+    reason: Input files updated by another job: results/HI09B/abricate/HI09B_ARG_summary.tsv
+    wildcards: sample=HI09B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 21:15:21 2025]
+Finished jobid: 91 (Rule: plot_ARGs)
+56 of 98 steps (57%) done
+Execute 1 jobs...
+[Wed Oct 22 21:15:21 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI09B/abricate/HI09B_ARG_summary.tsv
+    output: results/HI09B/plots/HI09B_ARGs_by_gene.png
+    jobid: 107
+    reason: Input files updated by another job: results/HI09B/abricate/HI09B_ARG_summary.tsv
+    wildcards: sample=HI09B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+[Wed Oct 22 21:15:28 2025]
+Finished jobid: 107 (Rule: plot_ARGs_by_gene)
+57 of 98 steps (58%) done
+[Wed Oct 22 21:24:15 2025]
+Finished jobid: 25 (Rule: abricate)
+58 of 98 steps (59%) done
+Execute 2 jobs...
+[Wed Oct 22 21:24:15 2025]
+localrule plot_ARGs:
+    input: results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv
+    output: results/CMC_MTM/plots/CMC_MTM_resistance_classes.png
+    jobid: 83
+    reason: Input files updated by another job: results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv
+    wildcards: sample=CMC_MTM
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+[Wed Oct 22 21:24:15 2025]
+localrule plot_ARGs_by_gene:
+    input: results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv
+    output: results/CMC_MTM/plots/CMC_MTM_ARGs_by_gene.png
+    jobid: 99
+    reason: Input files updated by another job: results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv
+    wildcards: sample=CMC_MTM
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 21:24:32 2025]
+Finished jobid: 83 (Rule: plot_ARGs)
+59 of 98 steps (60%) done
+[Wed Oct 22 21:24:36 2025]
+Finished jobid: 99 (Rule: plot_ARGs_by_gene)
+60 of 98 steps (61%) done
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/CMC_BKN/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_BKN/assembly.fasta \
+            --output_file results/CMC_BKN/rgi/CMC_BKN \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_BKN/rgi/CMC_BKN.json \
+            --output results/CMC_BKN/rgi/CMC_BKN_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Wed Oct 22 21:48:43 2025]
+Error in rule rgi:
+    message: None
+    jobid: 119
+    input: results/CMC_BKN/assembly.fasta
+    output: results/CMC_BKN/rgi, results/CMC_BKN/rgi/CMC_BKN_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_BKN/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_BKN/assembly.fasta \
+            --output_file results/CMC_BKN/rgi/CMC_BKN \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_BKN/rgi/CMC_BKN.json \
+            --output results/CMC_BKN/rgi/CMC_BKN_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/CMC_BKN/rgi
+Execute 1 jobs...
+[Wed Oct 22 21:48:44 2025]
+localrule rgi:
+    input: results/CMC_MTM/assembly.fasta
+    output: results/CMC_MTM/rgi, results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv
+    jobid: 125
+    reason: Missing output files: results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv; Input files updated by another job: results/CMC_MTM/assembly.fasta
+    wildcards: sample=CMC_MTM
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI07A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI07A/assembly.fasta \
+            --output_file results/HI07A/rgi/HI07A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI07A/rgi/HI07A.json \
+            --output results/HI07A/rgi/HI07A_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Wed Oct 22 21:58:03 2025]
+Error in rule rgi:
+    message: None
+    jobid: 130
+    input: results/HI07A/assembly.fasta
+    output: results/HI07A/rgi, results/HI07A/rgi/HI07A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI07A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI07A/assembly.fasta \
+            --output_file results/HI07A/rgi/HI07A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI07A/rgi/HI07A.json \
+            --output results/HI07A/rgi/HI07A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI07A/rgi
+Execute 1 jobs...
+[Wed Oct 22 21:58:03 2025]
+localrule rgi:
+    input: results/HI09B/assembly.fasta
+    output: results/HI09B/rgi, results/HI09B/rgi/HI09B_rgi_summary.tsv
+    jobid: 121
+    reason: Missing output files: results/HI09B/rgi/HI09B_rgi_summary.tsv; Input files updated by another job: results/HI09B/assembly.fasta
+    wildcards: sample=HI09B
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI09B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI09B/assembly.fasta \
+            --output_file results/HI09B/rgi/HI09B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI09B/rgi/HI09B.json \
+            --output results/HI09B/rgi/HI09B_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Wed Oct 22 22:28:51 2025]
+Error in rule rgi:
+    message: None
+    jobid: 121
+    input: results/HI09B/assembly.fasta
+    output: results/HI09B/rgi, results/HI09B/rgi/HI09B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI09B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI09B/assembly.fasta \
+            --output_file results/HI09B/rgi/HI09B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI09B/rgi/HI09B.json \
+            --output results/HI09B/rgi/HI09B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI09B/rgi
+Execute 1 jobs...
+[Wed Oct 22 22:28:51 2025]
+localrule rgi:
+    input: results/HI03A/assembly.fasta
+    output: results/HI03A/rgi, results/HI03A/rgi/HI03A_rgi_summary.tsv
+    jobid: 126
+    reason: Missing output files: results/HI03A/rgi/HI03A_rgi_summary.tsv; Input files updated by another job: results/HI03A/assembly.fasta
+    wildcards: sample=HI03A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI03A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI03A/assembly.fasta \
+            --output_file results/HI03A/rgi/HI03A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI03A/rgi/HI03A.json \
+            --output results/HI03A/rgi/HI03A_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Wed Oct 22 23:30:35 2025]
+Error in rule rgi:
+    message: None
+    jobid: 126
+    input: results/HI03A/assembly.fasta
+    output: results/HI03A/rgi, results/HI03A/rgi/HI03A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI03A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI03A/assembly.fasta \
+            --output_file results/HI03A/rgi/HI03A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI03A/rgi/HI03A.json \
+            --output results/HI03A/rgi/HI03A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI03A/rgi
+Execute 1 jobs...
+[Wed Oct 22 23:30:35 2025]
+localrule rgi:
+    input: results/HI02A/assembly.fasta
+    output: results/HI02A/rgi, results/HI02A/rgi/HI02A_rgi_summary.tsv
+    jobid: 131
+    reason: Missing output files: results/HI02A/rgi/HI02A_rgi_summary.tsv; Input files updated by another job: results/HI02A/assembly.fasta
+    wildcards: sample=HI02A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+[Wed Oct 22 23:43:34 2025]
+Finished jobid: 70 (Rule: flye_assembly)
+61 of 98 steps (62%) done
+Execute 1 jobs...
+[Wed Oct 22 23:43:35 2025]
+localrule abricate:
+    input: results/HI15B/assembly.fasta
+    output: results/HI15B/abricate/HI15B_ARG_summary.tsv
+    jobid: 69
+    reason: Input files updated by another job: results/HI15B/assembly.fasta
+    wildcards: sample=HI15B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Select jobs to execute...
+[Wed Oct 22 23:45:34 2025]
+Finished jobid: 69 (Rule: abricate)
+62 of 98 steps (63%) done
+Execute 2 jobs...
+[Wed Oct 22 23:45:34 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI15B/abricate/HI15B_ARG_summary.tsv
+    output: results/HI15B/plots/HI15B_ARGs_by_gene.png
+    jobid: 110
+    reason: Input files updated by another job: results/HI15B/abricate/HI15B_ARG_summary.tsv
+    wildcards: sample=HI15B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 23:45:34 2025]
+localrule plot_ARGs:
+    input: results/HI15B/abricate/HI15B_ARG_summary.tsv
+    output: results/HI15B/plots/HI15B_resistance_classes.png
+    jobid: 94
+    reason: Input files updated by another job: results/HI15B/abricate/HI15B_ARG_summary.tsv
+    wildcards: sample=HI15B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 22 23:45:51 2025]
+Finished jobid: 110 (Rule: plot_ARGs_by_gene)
+63 of 98 steps (64%) done
+[Wed Oct 22 23:45:52 2025]
+Finished jobid: 94 (Rule: plot_ARGs)
+64 of 98 steps (65%) done
+[Thu Oct 23 00:04:02 2025]
+Finished jobid: 74 (Rule: flye_assembly)
+65 of 98 steps (66%) done
+Execute 1 jobs...
+[Thu Oct 23 00:04:02 2025]
+localrule abricate:
+    input: results/HI16B/assembly.fasta
+    output: results/HI16B/abricate/HI16B_ARG_summary.tsv
+    jobid: 73
+    reason: Input files updated by another job: results/HI16B/assembly.fasta
+    wildcards: sample=HI16B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI02A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI02A/assembly.fasta \
+            --output_file results/HI02A/rgi/HI02A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI02A/rgi/HI02A.json \
+            --output results/HI02A/rgi/HI02A_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Thu Oct 23 00:05:10 2025]
+Error in rule rgi:
+    message: None
+    jobid: 131
+    input: results/HI02A/assembly.fasta
+    output: results/HI02A/rgi, results/HI02A/rgi/HI02A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI02A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI02A/assembly.fasta \
+            --output_file results/HI02A/rgi/HI02A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI02A/rgi/HI02A.json \
+            --output results/HI02A/rgi/HI02A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI02A/rgi
+Execute 1 jobs...
+[Thu Oct 23 00:05:10 2025]
+localrule rgi:
+    input: results/HI15B/assembly.fasta
+    output: results/HI15B/rgi, results/HI15B/rgi/HI15B_rgi_summary.tsv
+    jobid: 118
+    reason: Missing output files: results/HI15B/rgi/HI15B_rgi_summary.tsv; Input files updated by another job: results/HI15B/assembly.fasta
+    wildcards: sample=HI15B
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+[Thu Oct 23 00:08:36 2025]
+Finished jobid: 73 (Rule: abricate)
+66 of 98 steps (67%) done
+Execute 2 jobs...
+[Thu Oct 23 00:08:36 2025]
+localrule plot_ARGs:
+    input: results/HI16B/abricate/HI16B_ARG_summary.tsv
+    output: results/HI16B/plots/HI16B_resistance_classes.png
+    jobid: 95
+    reason: Input files updated by another job: results/HI16B/abricate/HI16B_ARG_summary.tsv
+    wildcards: sample=HI16B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+[Thu Oct 23 00:08:36 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI16B/abricate/HI16B_ARG_summary.tsv
+    output: results/HI16B/plots/HI16B_ARGs_by_gene.png
+    jobid: 111
+    reason: Input files updated by another job: results/HI16B/abricate/HI16B_ARG_summary.tsv
+    wildcards: sample=HI16B
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Thu Oct 23 00:08:49 2025]
+Finished jobid: 111 (Rule: plot_ARGs_by_gene)
+67 of 98 steps (68%) done
+[Thu Oct 23 00:08:49 2025]
+Finished jobid: 95 (Rule: plot_ARGs)
+68 of 98 steps (69%) done
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI15B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI15B/assembly.fasta \
+            --output_file results/HI15B/rgi/HI15B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI15B/rgi/HI15B.json \
+            --output results/HI15B/rgi/HI15B_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Thu Oct 23 00:29:27 2025]
+Error in rule rgi:
+    message: None
+    jobid: 118
+    input: results/HI15B/assembly.fasta
+    output: results/HI15B/rgi, results/HI15B/rgi/HI15B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI15B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI15B/assembly.fasta \
+            --output_file results/HI15B/rgi/HI15B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI15B/rgi/HI15B.json \
+            --output results/HI15B/rgi/HI15B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI15B/rgi
+Execute 1 jobs...
+[Thu Oct 23 00:29:27 2025]
+localrule rgi:
+    input: results/HI16B/assembly.fasta
+    output: results/HI16B/rgi, results/HI16B/rgi/HI16B_rgi_summary.tsv
+    jobid: 117
+    reason: Missing output files: results/HI16B/rgi/HI16B_rgi_summary.tsv; Input files updated by another job: results/HI16B/assembly.fasta
+    wildcards: sample=HI16B
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+[Thu Oct 23 00:29:59 2025]
+Finished jobid: 22 (Rule: flye_assembly)
+69 of 98 steps (70%) done
+Execute 1 jobs...
+[Thu Oct 23 00:29:59 2025]
+localrule abricate:
+    input: results/CMC_MNR/assembly.fasta
+    output: results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv
+    jobid: 21
+    reason: Input files updated by another job: results/CMC_MNR/assembly.fasta
+    wildcards: sample=CMC_MNR
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Select jobs to execute...
+[Thu Oct 23 00:34:51 2025]
+Finished jobid: 21 (Rule: abricate)
+70 of 98 steps (71%) done
+Execute 2 jobs...
+[Thu Oct 23 00:34:51 2025]
+localrule plot_ARGs:
+    input: results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv
+    output: results/CMC_MNR/plots/CMC_MNR_resistance_classes.png
+    jobid: 82
+    reason: Input files updated by another job: results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv
+    wildcards: sample=CMC_MNR
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+[Thu Oct 23 00:34:51 2025]
+localrule plot_ARGs_by_gene:
+    input: results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv
+    output: results/CMC_MNR/plots/CMC_MNR_ARGs_by_gene.png
+    jobid: 98
+    reason: Input files updated by another job: results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv
+    wildcards: sample=CMC_MNR
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Thu Oct 23 00:34:59 2025]
+Finished jobid: 82 (Rule: plot_ARGs)
+71 of 98 steps (72%) done
+[Thu Oct 23 00:35:00 2025]
+Finished jobid: 98 (Rule: plot_ARGs_by_gene)
+72 of 98 steps (73%) done
+[Thu Oct 23 00:38:50 2025]
+Finished jobid: 18 (Rule: flye_assembly)
+73 of 98 steps (74%) done
+Execute 1 jobs...
+[Thu Oct 23 00:38:50 2025]
+localrule abricate:
+    input: results/CMC_CLY/assembly.fasta
+    output: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv
+    jobid: 17
+    reason: Input files updated by another job: results/CMC_CLY/assembly.fasta
+    wildcards: sample=CMC_CLY
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+Select jobs to execute...
+[Thu Oct 23 00:43:55 2025]
+Finished jobid: 17 (Rule: abricate)
+74 of 98 steps (76%) done
+Execute 4 jobs...
+[Thu Oct 23 00:43:55 2025]
+localrule plot_ARGs:
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv
+    output: results/CMC_CLY/plots/CMC_CLY_resistance_classes.png
+    jobid: 81
+    reason: Input files updated by another job: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv
+    wildcards: sample=CMC_CLY
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+[Thu Oct 23 00:43:55 2025]
+localrule plot_ARGs_by_gene:
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv
+    output: results/CMC_CLY/plots/CMC_CLY_ARGs_by_gene.png
+    jobid: 97
+    reason: Input files updated by another job: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv
+    wildcards: sample=CMC_CLY
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Thu Oct 23 00:43:55 2025]
+localrule plot_ARGs_all_R:
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv, results/HI01A/abricate/HI01A_ARG_summary.tsv, results/HI02A/abricate/HI02A_ARG_summary.tsv, results/HI03A/abricate/HI03A_ARG_summary.tsv, results/HI04A/abricate/HI04A_ARG_summary.tsv, results/HI05A/abricate/HI05A_ARG_summary.tsv, results/HI07A/abricate/HI07A_ARG_summary.tsv, results/HI09B/abricate/HI09B_ARG_summary.tsv, results/HI12B/abricate/HI12B_ARG_summary.tsv, results/HI14B/abricate/HI14B_ARG_summary.tsv, results/HI15B/abricate/HI15B_ARG_summary.tsv, results/HI16B/abricate/HI16B_ARG_summary.tsv, results/HI17B/abricate/HI17B_ARG_summary.tsv
+    output: results/summary/r_all_ARGs.png, results/summary/r_all_ARGs_counts.tsv
+    jobid: 114
+    reason: Input files updated by another job: results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/HI03A/abricate/HI03A_ARG_summary.tsv, results/HI01A/abricate/HI01A_ARG_summary.tsv, results/HI04A/abricate/HI04A_ARG_summary.tsv, results/HI15B/abricate/HI15B_ARG_summary.tsv, results/HI16B/abricate/HI16B_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv, results/HI14B/abricate/HI14B_ARG_summary.tsv, results/HI07A/abricate/HI07A_ARG_summary.tsv, results/HI09B/abricate/HI09B_ARG_summary.tsv, results/HI05A/abricate/HI05A_ARG_summary.tsv, results/HI02A/abricate/HI02A_ARG_summary.tsv, results/HI12B/abricate/HI12B_ARG_summary.tsv
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7086733d53bb4829268fec163c19721_
+[Thu Oct 23 00:43:55 2025]
+localrule plot_ARGs_all:
+    input: results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv, results/HI01A/abricate/HI01A_ARG_summary.tsv, results/HI02A/abricate/HI02A_ARG_summary.tsv, results/HI03A/abricate/HI03A_ARG_summary.tsv, results/HI04A/abricate/HI04A_ARG_summary.tsv, results/HI05A/abricate/HI05A_ARG_summary.tsv, results/HI07A/abricate/HI07A_ARG_summary.tsv, results/HI09B/abricate/HI09B_ARG_summary.tsv, results/HI12B/abricate/HI12B_ARG_summary.tsv, results/HI14B/abricate/HI14B_ARG_summary.tsv, results/HI15B/abricate/HI15B_ARG_summary.tsv, results/HI16B/abricate/HI16B_ARG_summary.tsv, results/HI17B/abricate/HI17B_ARG_summary.tsv
+    output: results/summary/all_ARGs.png, results/summary/all_ARGs_counts.tsv
+    jobid: 113
+    reason: Input files updated by another job: results/CMC_MNR/abricate/CMC_MNR_ARG_summary.tsv, results/HI03A/abricate/HI03A_ARG_summary.tsv, results/HI01A/abricate/HI01A_ARG_summary.tsv, results/HI04A/abricate/HI04A_ARG_summary.tsv, results/HI15B/abricate/HI15B_ARG_summary.tsv, results/HI16B/abricate/HI16B_ARG_summary.tsv, results/CMC_MTM/abricate/CMC_MTM_ARG_summary.tsv, results/CMC_CLY/abricate/CMC_CLY_ARG_summary.tsv, results/CMC_BKN/abricate/CMC_BKN_ARG_summary.tsv, results/HI14B/abricate/HI14B_ARG_summary.tsv, results/HI07A/abricate/HI07A_ARG_summary.tsv, results/HI09B/abricate/HI09B_ARG_summary.tsv, results/HI05A/abricate/HI05A_ARG_summary.tsv, results/HI02A/abricate/HI02A_ARG_summary.tsv, results/HI12B/abricate/HI12B_ARG_summary.tsv
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Thu Oct 23 00:43:59 2025]
+Finished jobid: 81 (Rule: plot_ARGs)
+75 of 98 steps (77%) done
+[Thu Oct 23 00:43:59 2025]
+Finished jobid: 97 (Rule: plot_ARGs_by_gene)
+76 of 98 steps (78%) done
+[Thu Oct 23 00:44:03 2025]
+Finished jobid: 114 (Rule: plot_ARGs_all_R)
+77 of 98 steps (79%) done
+[Thu Oct 23 00:44:04 2025]
+Finished jobid: 113 (Rule: plot_ARGs_all)
+78 of 98 steps (80%) done
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/CMC_MTM/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_MTM/assembly.fasta \
+            --output_file results/CMC_MTM/rgi/CMC_MTM \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_MTM/rgi/CMC_MTM.json \
+            --output results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Thu Oct 23 00:50:41 2025]
+Error in rule rgi:
+    message: None
+    jobid: 125
+    input: results/CMC_MTM/assembly.fasta
+    output: results/CMC_MTM/rgi, results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_MTM/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_MTM/assembly.fasta \
+            --output_file results/CMC_MTM/rgi/CMC_MTM \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_MTM/rgi/CMC_MTM.json \
+            --output results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/CMC_MTM/rgi
+Execute 1 jobs...
+[Thu Oct 23 00:50:41 2025]
+localrule rgi:
+    input: results/CMC_CLY/assembly.fasta
+    output: results/CMC_CLY/rgi, results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv
+    jobid: 123
+    reason: Missing output files: results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv; Input files updated by another job: results/CMC_CLY/assembly.fasta
+    wildcards: sample=CMC_CLY
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI16B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI16B/assembly.fasta \
+            --output_file results/HI16B/rgi/HI16B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI16B/rgi/HI16B.json \
+            --output results/HI16B/rgi/HI16B_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Thu Oct 23 00:57:27 2025]
+Error in rule rgi:
+    message: None
+    jobid: 117
+    input: results/HI16B/assembly.fasta
+    output: results/HI16B/rgi, results/HI16B/rgi/HI16B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI16B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI16B/assembly.fasta \
+            --output_file results/HI16B/rgi/HI16B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI16B/rgi/HI16B.json \
+            --output results/HI16B/rgi/HI16B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI16B/rgi
+Execute 1 jobs...
+[Thu Oct 23 00:57:27 2025]
+localrule rgi:
+    input: results/CMC_MNR/assembly.fasta
+    output: results/CMC_MNR/rgi, results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv
+    jobid: 124
+    reason: Missing output files: results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv; Input files updated by another job: results/CMC_MNR/assembly.fasta
+    wildcards: sample=CMC_MNR
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/CMC_MNR/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_MNR/assembly.fasta \
+            --output_file results/CMC_MNR/rgi/CMC_MNR \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_MNR/rgi/CMC_MNR.json \
+            --output results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Thu Oct 23 01:26:16 2025]
+Error in rule rgi:
+    message: None
+    jobid: 124
+    input: results/CMC_MNR/assembly.fasta
+    output: results/CMC_MNR/rgi, results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_MNR/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_MNR/assembly.fasta \
+            --output_file results/CMC_MNR/rgi/CMC_MNR \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_MNR/rgi/CMC_MNR.json \
+            --output results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/CMC_MNR/rgi
+Execute 1 jobs...
+[Thu Oct 23 01:26:16 2025]
+localrule rgi:
+    input: results/HI12B/assembly.fasta
+    output: results/HI12B/rgi, results/HI12B/rgi/HI12B_rgi_summary.tsv
+    jobid: 122
+    reason: Missing output files: results/HI12B/rgi/HI12B_rgi_summary.tsv; Input files updated by another job: results/HI12B/assembly.fasta
+    wildcards: sample=HI12B
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI12B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI12B/assembly.fasta \
+            --output_file results/HI12B/rgi/HI12B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI12B/rgi/HI12B.json \
+            --output results/HI12B/rgi/HI12B_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Thu Oct 23 01:42:03 2025]
+Error in rule rgi:
+    message: None
+    jobid: 122
+    input: results/HI12B/assembly.fasta
+    output: results/HI12B/rgi, results/HI12B/rgi/HI12B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI12B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI12B/assembly.fasta \
+            --output_file results/HI12B/rgi/HI12B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI12B/rgi/HI12B.json \
+            --output results/HI12B/rgi/HI12B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI12B/rgi
+Execute 1 jobs...
+[Thu Oct 23 01:42:03 2025]
+localrule rgi:
+    input: results/HI05A/assembly.fasta
+    output: results/HI05A/rgi, results/HI05A/rgi/HI05A_rgi_summary.tsv
+    jobid: 129
+    reason: Missing output files: results/HI05A/rgi/HI05A_rgi_summary.tsv; Input files updated by another job: results/HI05A/assembly.fasta
+    wildcards: sample=HI05A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI05A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI05A/assembly.fasta \
+            --output_file results/HI05A/rgi/HI05A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI05A/rgi/HI05A.json \
+            --output results/HI05A/rgi/HI05A_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Thu Oct 23 01:44:33 2025]
+Error in rule rgi:
+    message: None
+    jobid: 129
+    input: results/HI05A/assembly.fasta
+    output: results/HI05A/rgi, results/HI05A/rgi/HI05A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI05A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI05A/assembly.fasta \
+            --output_file results/HI05A/rgi/HI05A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI05A/rgi/HI05A.json \
+            --output results/HI05A/rgi/HI05A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI05A/rgi
+Execute 1 jobs...
+[Thu Oct 23 01:44:33 2025]
+localrule rgi:
+    input: results/HI01A/assembly.fasta
+    output: results/HI01A/rgi, results/HI01A/rgi/HI01A_rgi_summary.tsv
+    jobid: 127
+    reason: Missing output files: results/HI01A/rgi/HI01A_rgi_summary.tsv; Input files updated by another job: results/HI01A/assembly.fasta
+    wildcards: sample=HI01A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/CMC_CLY/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_CLY/assembly.fasta \
+            --output_file results/CMC_CLY/rgi/CMC_CLY \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_CLY/rgi/CMC_CLY.json \
+            --output results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Thu Oct 23 02:01:16 2025]
+Error in rule rgi:
+    message: None
+    jobid: 123
+    input: results/CMC_CLY/assembly.fasta
+    output: results/CMC_CLY/rgi, results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_CLY/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_CLY/assembly.fasta \
+            --output_file results/CMC_CLY/rgi/CMC_CLY \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_CLY/rgi/CMC_CLY.json \
+            --output results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/CMC_CLY/rgi
+Execute 1 jobs...
+[Thu Oct 23 02:01:16 2025]
+localrule rgi:
+    input: results/HI14B/assembly.fasta
+    output: results/HI14B/rgi, results/HI14B/rgi/HI14B_rgi_summary.tsv
+    jobid: 120
+    reason: Missing output files: results/HI14B/rgi/HI14B_rgi_summary.tsv; Input files updated by another job: results/HI14B/assembly.fasta
+    wildcards: sample=HI14B
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI01A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI01A/assembly.fasta \
+            --output_file results/HI01A/rgi/HI01A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI01A/rgi/HI01A.json \
+            --output results/HI01A/rgi/HI01A_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Thu Oct 23 02:04:51 2025]
+Error in rule rgi:
+    message: None
+    jobid: 127
+    input: results/HI01A/assembly.fasta
+    output: results/HI01A/rgi, results/HI01A/rgi/HI01A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI01A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI01A/assembly.fasta \
+            --output_file results/HI01A/rgi/HI01A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI01A/rgi/HI01A.json \
+            --output results/HI01A/rgi/HI01A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI01A/rgi
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 14:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI14B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI14B/assembly.fasta \
+            --output_file results/HI14B/rgi/HI14B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI14B/rgi/HI14B.json \
+            --output results/HI14B/rgi/HI14B_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 120
+    input: results/HI14B/assembly.fasta
+    output: results/HI14B/rgi, results/HI14B/rgi/HI14B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI14B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI14B/assembly.fasta \
+            --output_file results/HI14B/rgi/HI14B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI14B/rgi/HI14B.json \
+            --output results/HI14B/rgi/HI14B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI14B/rgi
+Exiting because a job execution failed. Look below for error messages
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 127
+    input: results/HI01A/assembly.fasta
+    output: results/HI01A/rgi, results/HI01A/rgi/HI01A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI01A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI01A/assembly.fasta \
+            --output_file results/HI01A/rgi/HI01A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI01A/rgi/HI01A.json \
+            --output results/HI01A/rgi/HI01A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 120
+    input: results/HI14B/assembly.fasta
+    output: results/HI14B/rgi, results/HI14B/rgi/HI14B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI14B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI14B/assembly.fasta \
+            --output_file results/HI14B/rgi/HI14B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI14B/rgi/HI14B.json \
+            --output results/HI14B/rgi/HI14B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 129
+    input: results/HI05A/assembly.fasta
+    output: results/HI05A/rgi, results/HI05A/rgi/HI05A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI05A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI05A/assembly.fasta \
+            --output_file results/HI05A/rgi/HI05A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI05A/rgi/HI05A.json \
+            --output results/HI05A/rgi/HI05A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule build_dag:
+    message: None
+    jobid: 132
+    output: results/workflow_dag.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/69a93ab51e8a64b6b2f737e3e7392841_
+    shell:
+        
+        echo "Génération du DAG du pipeline..."
+        snakemake --dag | dot -Tpng > results/workflow_dag.png
+        echo "DAG généré : results/workflow_dag.png"
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 122
+    input: results/HI12B/assembly.fasta
+    output: results/HI12B/rgi, results/HI12B/rgi/HI12B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI12B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI12B/assembly.fasta \
+            --output_file results/HI12B/rgi/HI12B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI12B/rgi/HI12B.json \
+            --output results/HI12B/rgi/HI12B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 131
+    input: results/HI02A/assembly.fasta
+    output: results/HI02A/rgi, results/HI02A/rgi/HI02A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI02A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI02A/assembly.fasta \
+            --output_file results/HI02A/rgi/HI02A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI02A/rgi/HI02A.json \
+            --output results/HI02A/rgi/HI02A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 124
+    input: results/CMC_MNR/assembly.fasta
+    output: results/CMC_MNR/rgi, results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_MNR/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_MNR/assembly.fasta \
+            --output_file results/CMC_MNR/rgi/CMC_MNR \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_MNR/rgi/CMC_MNR.json \
+            --output results/CMC_MNR/rgi/CMC_MNR_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 123
+    input: results/CMC_CLY/assembly.fasta
+    output: results/CMC_CLY/rgi, results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_CLY/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_CLY/assembly.fasta \
+            --output_file results/CMC_CLY/rgi/CMC_CLY \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_CLY/rgi/CMC_CLY.json \
+            --output results/CMC_CLY/rgi/CMC_CLY_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 117
+    input: results/HI16B/assembly.fasta
+    output: results/HI16B/rgi, results/HI16B/rgi/HI16B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI16B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI16B/assembly.fasta \
+            --output_file results/HI16B/rgi/HI16B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI16B/rgi/HI16B.json \
+            --output results/HI16B/rgi/HI16B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 126
+    input: results/HI03A/assembly.fasta
+    output: results/HI03A/rgi, results/HI03A/rgi/HI03A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI03A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI03A/assembly.fasta \
+            --output_file results/HI03A/rgi/HI03A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI03A/rgi/HI03A.json \
+            --output results/HI03A/rgi/HI03A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 119
+    input: results/CMC_BKN/assembly.fasta
+    output: results/CMC_BKN/rgi, results/CMC_BKN/rgi/CMC_BKN_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_BKN/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_BKN/assembly.fasta \
+            --output_file results/CMC_BKN/rgi/CMC_BKN \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_BKN/rgi/CMC_BKN.json \
+            --output results/CMC_BKN/rgi/CMC_BKN_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 128
+    input: results/HI04A/assembly.fasta
+    output: results/HI04A/rgi, results/HI04A/rgi/HI04A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI04A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI04A/assembly.fasta \
+            --output_file results/HI04A/rgi/HI04A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI04A/rgi/HI04A.json \
+            --output results/HI04A/rgi/HI04A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 121
+    input: results/HI09B/assembly.fasta
+    output: results/HI09B/rgi, results/HI09B/rgi/HI09B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI09B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI09B/assembly.fasta \
+            --output_file results/HI09B/rgi/HI09B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI09B/rgi/HI09B.json \
+            --output results/HI09B/rgi/HI09B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 130
+    input: results/HI07A/assembly.fasta
+    output: results/HI07A/rgi, results/HI07A/rgi/HI07A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI07A/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI07A/assembly.fasta \
+            --output_file results/HI07A/rgi/HI07A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI07A/rgi/HI07A.json \
+            --output results/HI07A/rgi/HI07A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule multiqc_nanoplot:
+    message: None
+    jobid: 133
+    input: results/HI17B/qc/HI17B_Nanoplot, results/HI16B/qc/HI16B_Nanoplot, results/HI15B/qc/HI15B_Nanoplot, results/CMC_BKN/qc/CMC_BKN_Nanoplot, results/HI14B/qc/HI14B_Nanoplot, results/HI09B/qc/HI09B_Nanoplot, results/HI12B/qc/HI12B_Nanoplot, results/CMC_CLY/qc/CMC_CLY_Nanoplot, results/CMC_MNR/qc/CMC_MNR_Nanoplot, results/CMC_MTM/qc/CMC_MTM_Nanoplot, results/HI03A/qc/HI03A_Nanoplot, results/HI01A/qc/HI01A_Nanoplot, results/HI04A/qc/HI04A_Nanoplot, results/HI05A/qc/HI05A_Nanoplot, results/HI07A/qc/HI07A_Nanoplot, results/HI02A/qc/HI02A_Nanoplot
+    output: results/summary/multiqc_nanoplot.html, results/summary/multiqc_data_nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/a0c8ecd6a262e1d3e248f6911ae238a5_
+    shell:
+        
+        mkdir -p results/summary
+        echo "Exécution de MultiQC sur les rapports NanoPlot..."
+        multiqc results/ -n results/summary/multiqc_nanoplot.html -o results/summary
+        echo "Rapport MultiQC généré : results/summary/multiqc_nanoplot.html"
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 116
+    input: results/HI17B/assembly.fasta
+    output: results/HI17B/rgi, results/HI17B/rgi/HI17B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI17B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI17B/assembly.fasta \
+            --output_file results/HI17B/rgi/HI17B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI17B/rgi/HI17B.json \
+            --output results/HI17B/rgi/HI17B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 125
+    input: results/CMC_MTM/assembly.fasta
+    output: results/CMC_MTM/rgi, results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/CMC_MTM/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/CMC_MTM/assembly.fasta \
+            --output_file results/CMC_MTM/rgi/CMC_MTM \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/CMC_MTM/rgi/CMC_MTM.json \
+            --output results/CMC_MTM/rgi/CMC_MTM_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+[Thu Oct 23 02:11:23 2025]
+Error in rule rgi:
+    message: None
+    jobid: 118
+    input: results/HI15B/assembly.fasta
+    output: results/HI15B/rgi, results/HI15B/rgi/HI15B_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/c7d5ca7f7ac662505bab4dd15d603f7c_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI15B/rgi
+
+        echo "==> Running RGI against configured local DB."
+
+        rgi main \
+            --input_sequence results/HI15B/assembly.fasta \
+            --output_file results/HI15B/rgi/HI15B \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean
+
+        rgi tab \
+            --input results/HI15B/rgi/HI15B.json \
+            --output results/HI15B/rgi/HI15B_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-10-22T142003.407610.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

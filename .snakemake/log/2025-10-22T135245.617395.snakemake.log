@@ -1,0 +1,75 @@
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however crucial for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+abricate                16
+all                      1
+build_dag                1
+flye_assembly           16
+host_depletion          16
+merge_rgi_results        1
+multiqc_nanoplot         1
+nanoplot                 5
+plot_ARGs               16
+plot_ARGs_all            1
+plot_ARGs_all_R          1
+plot_ARGs_by_gene       16
+porechop                 1
+rgi                     16
+total                  108
+
+Select jobs to execute...
+
+[Wed Oct 22 13:52:48 2025]
+rule host_depletion:
+    input: results/HI16B/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI16B/clean/HI16B_noh.fq.gz
+    jobid: 75
+    reason: Updated input files: results/HI16B/trimmed.fastq.gz
+    wildcards: sample=HI16B
+    threads: 8
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+
+[Wed Oct 22 13:52:48 2025]
+rule host_depletion:
+    input: results/CMC_CLY/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/CMC_CLY/clean/CMC_CLY_noh.fq.gz
+    jobid: 19
+    reason: Updated input files: results/CMC_CLY/trimmed.fastq.gz
+    wildcards: sample=CMC_CLY
+    threads: 8
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+
+[Wed Oct 22 13:52:48 2025]
+rule host_depletion:
+    input: results/HI15B/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/HI15B/clean/HI15B_noh.fq.gz
+    jobid: 71
+    reason: Updated input files: results/HI15B/trimmed.fastq.gz
+    wildcards: sample=HI15B
+    threads: 8
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+
+[Wed Oct 22 13:52:49 2025]
+rule host_depletion:
+    input: results/CMC_MTM/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/CMC_MTM/clean/CMC_MTM_noh.fq.gz
+    jobid: 27
+    reason: Updated input files: results/CMC_MTM/trimmed.fastq.gz
+    wildcards: sample=CMC_MTM
+    threads: 8
+    resources: tmpdir=/tmp
+
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+Terminating processes on user request, this might take some time.
+Cancelling snakemake on user request.

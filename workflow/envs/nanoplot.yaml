@@ -1,0 +1,11 @@
+# ../envs/nanoplot.yaml
+name: nanoplot-env
+channels: [conda-forge, bioconda, defaults]
+dependencies:
+  - python=3.10
+  - nanoplot=1.46.1
+  - matplotlib-base>=3.6
+  - pandas>=1.5
+  - numpy>=1.23
+  - fonts-conda-ecosystem
+  - font-ttf-dejavu-sans-mono

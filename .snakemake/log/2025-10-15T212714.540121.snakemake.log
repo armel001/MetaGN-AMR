@@ -1,0 +1,370 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+abricate                14
+all                      1
+flye_assembly           13
+host_depletion           7
+nanoplot                 8
+plot_ARGs               15
+plot_ARGs_all            1
+plot_ARGs_all_R          1
+plot_ARGs_by_gene       15
+porechop                 5
+total                   80
+
+Select jobs to execute...
+Execute 16 jobs...
+[Wed Oct 15 21:27:17 2025]
+localrule flye_assembly:
+    input: results/HI02A/clean/HI02A_noh.fq.gz
+    output: results/HI02A/assembly.fasta
+    jobid: 38
+    reason: Missing output files: results/HI02A/assembly.fasta
+    wildcards: sample=HI02A
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Wed Oct 15 21:27:17 2025]
+localrule nanoplot:
+    input: resources/reads/HI04A.fastq.gz
+    output: results/HI04A/qc/HI04A_Nanoplot
+    jobid: 8
+    reason: Software environment definition has changed since last execution
+    wildcards: sample=HI04A
+    resources: tmpdir=/tmp
+Skipped removing non-empty directory results/HI04A/qc/HI04A_Nanoplot
+Activating conda environment: .snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+[Wed Oct 15 21:27:17 2025]
+localrule porechop:
+    input: resources/reads/HI09B.fastq.gz
+    output: results/HI09B/trimmed.fastq.gz
+    jobid: 60
+    reason: Missing output files: results/HI09B/trimmed.fastq.gz
+    wildcards: sample=HI09B
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2ac72101414847c11936a83efa1608b6_
+[Wed Oct 15 21:27:17 2025]
+localrule nanoplot:
+    input: resources/reads/HI07A.fastq.gz
+    output: results/HI07A/qc/HI07A_Nanoplot
+    jobid: 10
+    reason: Software environment definition has changed since last execution
+    wildcards: sample=HI07A
+    resources: tmpdir=/tmp
+Skipped removing non-empty directory results/HI07A/qc/HI07A_Nanoplot
+Activating conda environment: .snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+[Wed Oct 15 21:27:17 2025]
+localrule flye_assembly:
+    input: results/HI12B/clean/HI12B_noh.fq.gz
+    output: results/HI12B/assembly.fasta
+    jobid: 62
+    reason: Missing output files: results/HI12B/assembly.fasta
+    wildcards: sample=HI12B
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Wed Oct 15 21:27:17 2025]
+localrule porechop:
+    input: resources/reads/HI05A.fastq.gz
+    output: results/HI05A/trimmed.fastq.gz
+    jobid: 52
+    reason: Missing output files: results/HI05A/trimmed.fastq.gz
+    wildcards: sample=HI05A
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2ac72101414847c11936a83efa1608b6_
+[Wed Oct 15 21:27:17 2025]
+localrule nanoplot:
+    input: resources/reads/HI09B.fastq.gz
+    output: results/HI09B/qc/HI09B_Nanoplot
+    jobid: 11
+    reason: Software environment definition has changed since last execution
+    wildcards: sample=HI09B
+    resources: tmpdir=/tmp
+Skipped removing non-empty directory results/HI09B/qc/HI09B_Nanoplot
+Activating conda environment: .snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+[Wed Oct 15 21:27:17 2025]
+localrule plot_ARGs:
+    input: results/HI17B/abricate/HI17B_ARG_summary.tsv
+    output: results/HI17B/plots/HI17B_resistance_classes.png
+    jobid: 96
+    reason: Missing output files: results/HI17B/plots/HI17B_resistance_classes.png
+    wildcards: sample=HI17B
+    resources: tmpdir=/tmp
+[Wed Oct 15 21:27:17 2025]
+localrule nanoplot:
+    input: resources/reads/HI12B.fastq.gz
+    output: results/HI12B/qc/HI12B_Nanoplot
+    jobid: 12
+    reason: Missing output files: results/HI12B/qc/HI12B_Nanoplot
+    wildcards: sample=HI12B
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+[Wed Oct 15 21:27:17 2025]
+localrule plot_ARGs_by_gene:
+    input: results/HI17B/abricate/HI17B_ARG_summary.tsv
+    output: results/HI17B/plots/HI17B_ARGs_by_gene.png
+    jobid: 112
+    reason: Missing output files: results/HI17B/plots/HI17B_ARGs_by_gene.png
+    wildcards: sample=HI17B
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Wed Oct 15 21:27:17 2025]
+localrule nanoplot:
+    input: resources/reads/CMC_CLY.fastq.gz
+    output: results/CMC_CLY/qc/CMC_CLY_Nanoplot
+    jobid: 1
+    reason: Software environment definition has changed since last execution
+    wildcards: sample=CMC_CLY
+    resources: tmpdir=/tmp
+Skipped removing non-empty directory results/CMC_CLY/qc/CMC_CLY_Nanoplot
+Activating conda environment: .snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+[Wed Oct 15 21:27:17 2025]
+localrule flye_assembly:
+    input: results/CMC_MTM/clean/CMC_MTM_noh.fq.gz
+    output: results/CMC_MTM/assembly.fasta
+    jobid: 26
+    reason: Missing output files: results/CMC_MTM/assembly.fasta
+    wildcards: sample=CMC_MTM
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Wed Oct 15 21:27:17 2025]
+localrule flye_assembly:
+    input: results/CMC_CLY/clean/CMC_CLY_noh.fq.gz
+    output: results/CMC_CLY/assembly.fasta
+    jobid: 18
+    reason: Missing output files: results/CMC_CLY/assembly.fasta
+    wildcards: sample=CMC_CLY
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Wed Oct 15 21:27:17 2025]
+localrule porechop:
+    input: resources/reads/HI15B.fastq.gz
+    output: results/HI15B/trimmed.fastq.gz
+    jobid: 72
+    reason: Missing output files: results/HI15B/trimmed.fastq.gz
+    wildcards: sample=HI15B
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2ac72101414847c11936a83efa1608b6_
+[Wed Oct 15 21:27:17 2025]
+localrule flye_assembly:
+    input: results/HI07A/clean/HI07A_noh.fq.gz
+    output: results/HI07A/assembly.fasta
+    jobid: 54
+    reason: Missing output files: results/HI07A/assembly.fasta
+    wildcards: sample=HI07A
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Wed Oct 15 21:27:17 2025]
+localrule porechop:
+    input: resources/reads/HI03A.fastq.gz
+    output: results/HI03A/trimmed.fastq.gz
+    jobid: 44
+    reason: Missing output files: results/HI03A/trimmed.fastq.gz
+    wildcards: sample=HI03A
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2ac72101414847c11936a83efa1608b6_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Select jobs to execute...
+[Wed Oct 15 21:27:20 2025]
+Finished jobid: 112 (Rule: plot_ARGs_by_gene)
+1 of 80 steps (1%) done
+Execute 1 jobs...
+[Wed Oct 15 21:27:20 2025]
+localrule nanoplot:
+    input: resources/reads/HI02A.fastq.gz
+    output: results/HI02A/qc/HI02A_Nanoplot
+    jobid: 6
+    reason: Software environment definition has changed since last execution
+    wildcards: sample=HI02A
+    resources: tmpdir=/tmp
+Skipped removing non-empty directory results/HI02A/qc/HI02A_Nanoplot
+Activating conda environment: .snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+[Wed Oct 15 21:27:20 2025]
+Finished jobid: 96 (Rule: plot_ARGs)
+2 of 80 steps (2%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Oct 15 21:27:20 2025]
+localrule nanoplot:
+    input: resources/reads/HI14B.fastq.gz
+    output: results/HI14B/qc/HI14B_Nanoplot
+    jobid: 13
+    reason: Software environment definition has changed since last execution
+    wildcards: sample=HI14B
+    resources: tmpdir=/tmp
+Skipped removing non-empty directory results/HI14B/qc/HI14B_Nanoplot
+Activating conda environment: .snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+Select jobs to execute...
+ImproperOutputException in rule nanoplot in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 1:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule nanoplot:
+    output: results/HI04A/qc/HI04A_Nanoplot
+    wildcards: sample=HI04A
+    affected files:
+        results/HI04A/qc/HI04A_Nanoplot
+Removing output files of failed job nanoplot since they might be corrupted:
+results/HI04A/qc/HI04A_Nanoplot
+Skipped removing non-empty directory results/HI04A/qc/HI04A_Nanoplot
+ImproperOutputException in rule nanoplot in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 1:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule nanoplot:
+    output: results/HI02A/qc/HI02A_Nanoplot
+    wildcards: sample=HI02A
+    affected files:
+        results/HI02A/qc/HI02A_Nanoplot
+Removing output files of failed job nanoplot since they might be corrupted:
+results/HI02A/qc/HI02A_Nanoplot
+Skipped removing non-empty directory results/HI02A/qc/HI02A_Nanoplot
+ImproperOutputException in rule nanoplot in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 1:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule nanoplot:
+    output: results/HI14B/qc/HI14B_Nanoplot
+    wildcards: sample=HI14B
+    affected files:
+        results/HI14B/qc/HI14B_Nanoplot
+Removing output files of failed job nanoplot since they might be corrupted:
+results/HI14B/qc/HI14B_Nanoplot
+Skipped removing non-empty directory results/HI14B/qc/HI14B_Nanoplot
+ImproperOutputException in rule nanoplot in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 1:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule nanoplot:
+    output: results/HI09B/qc/HI09B_Nanoplot
+    wildcards: sample=HI09B
+    affected files:
+        results/HI09B/qc/HI09B_Nanoplot
+Removing output files of failed job nanoplot since they might be corrupted:
+results/HI09B/qc/HI09B_Nanoplot
+Skipped removing non-empty directory results/HI09B/qc/HI09B_Nanoplot
+ImproperOutputException in rule nanoplot in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 1:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule nanoplot:
+    output: results/HI12B/qc/HI12B_Nanoplot
+    wildcards: sample=HI12B
+    affected files:
+        results/HI12B/qc/HI12B_Nanoplot
+Removing output files of failed job nanoplot since they might be corrupted:
+results/HI12B/qc/HI12B_Nanoplot
+Skipped removing non-empty directory results/HI12B/qc/HI12B_Nanoplot
+ImproperOutputException in rule nanoplot in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 1:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule nanoplot:
+    output: results/HI07A/qc/HI07A_Nanoplot
+    wildcards: sample=HI07A
+    affected files:
+        results/HI07A/qc/HI07A_Nanoplot
+Removing output files of failed job nanoplot since they might be corrupted:
+results/HI07A/qc/HI07A_Nanoplot
+Skipped removing non-empty directory results/HI07A/qc/HI07A_Nanoplot
+ImproperOutputException in rule nanoplot in file "/data/armel/git/MetagenAMR-main/workflow/rules/nanoplot.smk", line 1:
+Outputs of incorrect type (directories when expecting files or vice versa). Output directories must be flagged with directory(). for rule nanoplot:
+    output: results/CMC_CLY/qc/CMC_CLY_Nanoplot
+    wildcards: sample=CMC_CLY
+    affected files:
+        results/CMC_CLY/qc/CMC_CLY_Nanoplot
+Removing output files of failed job nanoplot since they might be corrupted:
+results/CMC_CLY/qc/CMC_CLY_Nanoplot
+Skipped removing non-empty directory results/CMC_CLY/qc/CMC_CLY_Nanoplot
+[Wed Oct 15 22:09:56 2025]
+Finished jobid: 52 (Rule: porechop)
+3 of 80 steps (4%) done
+[Wed Oct 15 22:15:16 2025]
+Finished jobid: 44 (Rule: porechop)
+4 of 80 steps (5%) done
+[Wed Oct 15 23:03:22 2025]
+Finished jobid: 38 (Rule: flye_assembly)
+5 of 80 steps (6%) done
+[Wed Oct 15 23:42:53 2025]
+Finished jobid: 72 (Rule: porechop)
+6 of 80 steps (8%) done
+[Wed Oct 15 23:44:05 2025]
+Finished jobid: 54 (Rule: flye_assembly)
+7 of 80 steps (9%) done
+[Wed Oct 15 23:45:47 2025]
+Finished jobid: 60 (Rule: porechop)
+8 of 80 steps (10%) done
+[Thu Oct 16 00:47:58 2025]
+Finished jobid: 62 (Rule: flye_assembly)
+9 of 80 steps (11%) done
+[Thu Oct 16 01:34:26 2025]
+Finished jobid: 26 (Rule: flye_assembly)
+10 of 80 steps (12%) done
+[Thu Oct 16 02:19:16 2025]
+Finished jobid: 18 (Rule: flye_assembly)
+11 of 80 steps (14%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Thu Oct 16 02:19:16 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 8
+    input: resources/reads/HI04A.fastq.gz
+    output: results/HI04A/qc/HI04A_Nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+    shell:
+        NanoPlot --fastq resources/reads/HI04A.fastq.gz -o results/HI04A/qc/HI04A_Nanoplot -t 24
+        (command exited with non-zero exit code)
+[Thu Oct 16 02:19:16 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 10
+    input: resources/reads/HI07A.fastq.gz
+    output: results/HI07A/qc/HI07A_Nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+    shell:
+        NanoPlot --fastq resources/reads/HI07A.fastq.gz -o results/HI07A/qc/HI07A_Nanoplot -t 24
+        (command exited with non-zero exit code)
+[Thu Oct 16 02:19:16 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 11
+    input: resources/reads/HI09B.fastq.gz
+    output: results/HI09B/qc/HI09B_Nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+    shell:
+        NanoPlot --fastq resources/reads/HI09B.fastq.gz -o results/HI09B/qc/HI09B_Nanoplot -t 24
+        (command exited with non-zero exit code)
+[Thu Oct 16 02:19:16 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 12
+    input: resources/reads/HI12B.fastq.gz
+    output: results/HI12B/qc/HI12B_Nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+    shell:
+        NanoPlot --fastq resources/reads/HI12B.fastq.gz -o results/HI12B/qc/HI12B_Nanoplot -t 24
+        (command exited with non-zero exit code)
+[Thu Oct 16 02:19:16 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 1
+    input: resources/reads/CMC_CLY.fastq.gz
+    output: results/CMC_CLY/qc/CMC_CLY_Nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+    shell:
+        NanoPlot --fastq resources/reads/CMC_CLY.fastq.gz -o results/CMC_CLY/qc/CMC_CLY_Nanoplot -t 24
+        (command exited with non-zero exit code)
+[Thu Oct 16 02:19:16 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 13
+    input: resources/reads/HI14B.fastq.gz
+    output: results/HI14B/qc/HI14B_Nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+    shell:
+        NanoPlot --fastq resources/reads/HI14B.fastq.gz -o results/HI14B/qc/HI14B_Nanoplot -t 24
+        (command exited with non-zero exit code)
+[Thu Oct 16 02:19:16 2025]
+Error in rule nanoplot:
+    message: None
+    jobid: 6
+    input: resources/reads/HI02A.fastq.gz
+    output: results/HI02A/qc/HI02A_Nanoplot
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/79c2eb8154b0a09d65b384d594021e7c_
+    shell:
+        NanoPlot --fastq resources/reads/HI02A.fastq.gz -o results/HI02A/qc/HI02A_Nanoplot -t 24
+        (command exited with non-zero exit code)
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-10-15T212714.540121.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

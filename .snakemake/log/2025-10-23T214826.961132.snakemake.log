@@ -1,0 +1,18 @@
+Building DAG of jobs...
+Traceback (most recent call last):
+
+  File "/home/armel/miniforge3/envs/snakemake-env/lib/python3.12/site-packages/snakemake/cli.py", line 2125, in args_to_api
+    dag_api.printdag()
+
+  File "/home/armel/miniforge3/envs/snakemake-env/lib/python3.12/site-packages/snakemake/api.py", line 614, in _handle_no_exec
+    return method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/home/armel/miniforge3/envs/snakemake-env/lib/python3.12/site-packages/snakemake/api.py", line 662, in printdag
+    self.workflow_api._workflow.printdag()
+
+  File "/home/armel/miniforge3/envs/snakemake-env/lib/python3.12/site-packages/snakemake/workflow.py", line 996, in printdag
+    print(self.dag)
+
+BrokenPipeError: [Errno 32] Broken pipe
+

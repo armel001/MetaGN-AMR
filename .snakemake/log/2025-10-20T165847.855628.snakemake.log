@@ -1,0 +1,115 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+merge_rgi_results        1
+rgi                     16
+total                   18
+
+Select jobs to execute...
+Execute 1 jobs...
+[Mon Oct 20 16:58:50 2025]
+localrule rgi:
+    input: results/HI02A/assembly.fasta
+    output: results/HI02A/rgi, results/HI02A/rgi/HI02A_rgi_summary.tsv
+    jobid: 131
+    reason: Missing output files: results/HI02A/rgi/HI02A_rgi_summary.tsv; Params have changed since last execution: Union of exclusive params before and now across all output: before: '/resources/databases/card_db/' now: '/resources/databases/card_db/.' 
+    wildcards: sample=HI02A
+    threads: 8
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/63104dfe5c94a50ef14cd95f0277ab33_
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/rgi.smk", line 13:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/63104dfe5c94a50ef14cd95f0277ab33_'; set -euo pipefail;  
+        set -euo pipefail
+        mkdir -p results/HI02A/rgi
+
+        # Exécution principale
+        rgi main \
+            --input_sequence results/HI02A/assembly.fasta \
+            --output_file results/HI02A/rgi/HI02A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean \
+            --database /resources/databases/card_db/.
+
+        # Conversion TSV
+        rgi tab \
+            --input results/HI02A/rgi/HI02A.json \
+            --output results/HI02A/rgi/HI02A_rgi_summary.tsv \
+            --include_loose' returned non-zero exit status 2.
+[Mon Oct 20 16:58:53 2025]
+Error in rule rgi:
+    message: None
+    jobid: 131
+    input: results/HI02A/assembly.fasta
+    output: results/HI02A/rgi, results/HI02A/rgi/HI02A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/63104dfe5c94a50ef14cd95f0277ab33_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI02A/rgi
+
+        # Exécution principale
+        rgi main \
+            --input_sequence results/HI02A/assembly.fasta \
+            --output_file results/HI02A/rgi/HI02A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean \
+            --database /resources/databases/card_db/.
+
+        # Conversion TSV
+        rgi tab \
+            --input results/HI02A/rgi/HI02A.json \
+            --output results/HI02A/rgi/HI02A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Removing output files of failed job rgi since they might be corrupted:
+results/HI02A/rgi
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Mon Oct 20 16:58:53 2025]
+Error in rule rgi:
+    message: None
+    jobid: 131
+    input: results/HI02A/assembly.fasta
+    output: results/HI02A/rgi, results/HI02A/rgi/HI02A_rgi_summary.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/63104dfe5c94a50ef14cd95f0277ab33_
+    shell:
+        
+        set -euo pipefail
+        mkdir -p results/HI02A/rgi
+
+        # Exécution principale
+        rgi main \
+            --input_sequence results/HI02A/assembly.fasta \
+            --output_file results/HI02A/rgi/HI02A \
+            --input_type contig \
+            --num_threads 8 \
+            --local \
+            --clean \
+            --database /resources/databases/card_db/.
+
+        # Conversion TSV
+        rgi tab \
+            --input results/HI02A/rgi/HI02A.json \
+            --output results/HI02A/rgi/HI02A_rgi_summary.tsv \
+            --include_loose
+        
+        (command exited with non-zero exit code)
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-10-20T165847.855628.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

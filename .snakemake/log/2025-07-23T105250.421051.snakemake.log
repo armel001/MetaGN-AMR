@@ -1,0 +1,63 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job          count
+---------  -------
+abricate         1
+all              1
+plot_ARGs        1
+total            3
+
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jul 23 10:52:52 2025]
+localrule abricate:
+    input: results/barcode05/assembly.fasta
+    output: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    jobid: 1
+    reason: Missing output files: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    wildcards: sample=barcode05
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+[Wed Jul 23 10:54:43 2025]
+Finished jobid: 1 (Rule: abricate)
+1 of 3 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jul 23 10:54:43 2025]
+localrule plot_ARGs:
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    output: results/barcode05/plots/barcode05_resistance_classes.png
+    jobid: 5
+    reason: Missing output files: results/barcode05/plots/barcode05_resistance_classes.png; Input files updated by another job: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    wildcards: sample=barcode05
+    resources: tmpdir=/tmp
+RuleException:
+WorkflowError in file "/data/armel/git/MetagenAMR-main/workflow/rules/plot_ARGs.smk", line 10:
+Failed to open source file /data/armel/git/MetagenAMR-main/workflow/rules/scripts/plot_resistance_classes.py
+FileNotFoundError: [Errno 2] No such file or directory: '/data/armel/git/MetagenAMR-main/workflow/rules/scripts/plot_resistance_classes.py'
+[Wed Jul 23 10:54:43 2025]
+Error in rule plot_ARGs:
+    message: None
+    jobid: 5
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    output: results/barcode05/plots/barcode05_resistance_classes.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/648a792305b94d4621100f75306660c6_
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Wed Jul 23 10:54:43 2025]
+Error in rule plot_ARGs:
+    message: None
+    jobid: 5
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    output: results/barcode05/plots/barcode05_resistance_classes.png
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/648a792305b94d4621100f75306660c6_
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-07-23T105250.421051.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

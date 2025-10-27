@@ -1,0 +1,13 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+MissingInputException in rule all in file "/data/armel/git/MetagenAMR-main/workflow/Snakefile", line 67:
+Missing input files for rule all:
+    affected files:
+        results/barcode06/plots/barcode06_ARGs_by_genes.png
+        results/barcode07/plots/barcode07_ARGs_all.png
+        results/barcode07/plots/barcode07_ARGs_by_genes.png
+        results/barcode06/plots/barcode06_ARGs_all.png
+        results/barcode05/plots/barcode05_ARGs_by_genes.png
+        results/barcode05/plots/barcode05_ARGs_all.png

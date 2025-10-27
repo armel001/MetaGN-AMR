@@ -1,0 +1,181 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+abricate                 3
+all                      1
+plot_ARGs                3
+plot_ARGs_all            1
+plot_ARGs_by_gene        3
+total                   11
+
+Select jobs to execute...
+Execute 3 jobs...
+[Sun Jul 27 16:57:13 2025]
+localrule abricate:
+    input: results/barcode05/assembly.fasta
+    output: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    jobid: 1
+    reason: Missing output files: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    wildcards: sample=barcode05
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+[Sun Jul 27 16:57:13 2025]
+localrule abricate:
+    input: results/barcode06/assembly.fasta
+    output: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    jobid: 4
+    reason: Missing output files: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    wildcards: sample=barcode06
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+[Sun Jul 27 16:57:13 2025]
+localrule abricate:
+    input: results/barcode07/assembly.fasta
+    output: results/barcode07/abricate/barcode07_ARG_summary.tsv
+    jobid: 7
+    reason: Missing output files: results/barcode07/abricate/barcode07_ARG_summary.tsv
+    wildcards: sample=barcode07
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+[Sun Jul 27 16:59:07 2025]
+Finished jobid: 1 (Rule: abricate)
+1 of 11 steps (9%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Jul 27 16:59:07 2025]
+localrule plot_ARGs_by_gene:
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    output: results/barcode05/plots/barcode05_ARGs_by_gene.png
+    jobid: 13
+    reason: Missing output files: results/barcode05/plots/barcode05_ARGs_by_gene.png; Input files updated by another job: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    wildcards: sample=barcode05
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Sun Jul 27 16:59:07 2025]
+localrule plot_ARGs:
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    output: results/barcode05/plots/barcode05_resistance_classes.png
+    jobid: 10
+    reason: Missing output files: results/barcode05/plots/barcode05_resistance_classes.png; Input files updated by another job: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    wildcards: sample=barcode05
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Sun Jul 27 16:59:10 2025]
+Finished jobid: 10 (Rule: plot_ARGs)
+2 of 11 steps (18%) done
+[Sun Jul 27 16:59:11 2025]
+Finished jobid: 13 (Rule: plot_ARGs_by_gene)
+3 of 11 steps (27%) done
+[Sun Jul 27 17:00:01 2025]
+Finished jobid: 4 (Rule: abricate)
+4 of 11 steps (36%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sun Jul 27 17:00:01 2025]
+localrule plot_ARGs:
+    input: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    output: results/barcode06/plots/barcode06_resistance_classes.png
+    jobid: 11
+    reason: Input files updated by another job: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    wildcards: sample=barcode06
+    resources: tmpdir=/tmp
+[Sun Jul 27 17:00:01 2025]
+localrule plot_ARGs_by_gene:
+    input: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    output: results/barcode06/plots/barcode06_ARGs_by_gene.png
+    jobid: 14
+    reason: Input files updated by another job: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    wildcards: sample=barcode06
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Sun Jul 27 17:00:04 2025]
+Finished jobid: 11 (Rule: plot_ARGs)
+5 of 11 steps (45%) done
+[Sun Jul 27 17:00:05 2025]
+Finished jobid: 14 (Rule: plot_ARGs_by_gene)
+6 of 11 steps (55%) done
+[Sun Jul 27 17:01:16 2025]
+Finished jobid: 7 (Rule: abricate)
+7 of 11 steps (64%) done
+Select jobs to execute...
+Execute 3 jobs...
+[Sun Jul 27 17:01:16 2025]
+localrule plot_ARGs:
+    input: results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/barcode07/plots/barcode07_resistance_classes.png
+    jobid: 12
+    reason: Input files updated by another job: results/barcode07/abricate/barcode07_ARG_summary.tsv
+    wildcards: sample=barcode07
+    resources: tmpdir=/tmp
+[Sun Jul 27 17:01:16 2025]
+localrule plot_ARGs_by_gene:
+    input: results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/barcode07/plots/barcode07_ARGs_by_gene.png
+    jobid: 15
+    reason: Input files updated by another job: results/barcode07/abricate/barcode07_ARG_summary.tsv
+    wildcards: sample=barcode07
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+[Sun Jul 27 17:01:16 2025]
+localrule plot_ARGs_all:
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv, results/barcode06/abricate/barcode06_ARG_summary.tsv, results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/summary/all_ARGs.png, results/summary/all_ARGs_counts.tsv
+    jobid: 16
+    reason: Missing output files: results/summary/all_ARGs.png, results/summary/all_ARGs_counts.tsv; Input files updated by another job: results/barcode06/abricate/barcode06_ARG_summary.tsv, results/barcode07/abricate/barcode07_ARG_summary.tsv, results/barcode05/abricate/barcode05_ARG_summary.tsv
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+Activating conda environment: .snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+RuleException:
+CalledProcessError in file "/data/armel/git/MetagenAMR-main/workflow/rules/plot_ARGs_all.smk", line 10:
+Command 'source /home/armel/miniforge3/envs/snakemake-env/bin/activate '/data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_'; set -euo pipefail;  
+        mkdir -p results/summary
+        python /data/armel/git/MetagenAMR-main/workflow/scripts/plot_ARGs_all.py results/summary/all_ARGs.png results/barcode05/abricate/barcode05_ARG_summary.tsv results/barcode06/abricate/barcode06_ARG_summary.tsv results/barcode07/abricate/barcode07_ARG_summary.tsv' returned non-zero exit status 1.
+[Sun Jul 27 17:01:18 2025]
+Error in rule plot_ARGs_all:
+    message: None
+    jobid: 16
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv, results/barcode06/abricate/barcode06_ARG_summary.tsv, results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/summary/all_ARGs.png, results/summary/all_ARGs_counts.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+    shell:
+        
+        mkdir -p results/summary
+        python /data/armel/git/MetagenAMR-main/workflow/scripts/plot_ARGs_all.py results/summary/all_ARGs.png results/barcode05/abricate/barcode05_ARG_summary.tsv results/barcode06/abricate/barcode06_ARG_summary.tsv results/barcode07/abricate/barcode07_ARG_summary.tsv
+        
+        (command exited with non-zero exit code)
+[Sun Jul 27 17:01:18 2025]
+Finished jobid: 12 (Rule: plot_ARGs)
+8 of 11 steps (73%) done
+[Sun Jul 27 17:01:19 2025]
+Finished jobid: 15 (Rule: plot_ARGs_by_gene)
+9 of 11 steps (82%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sun Jul 27 17:01:19 2025]
+Error in rule plot_ARGs_all:
+    message: None
+    jobid: 16
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv, results/barcode06/abricate/barcode06_ARG_summary.tsv, results/barcode07/abricate/barcode07_ARG_summary.tsv
+    output: results/summary/all_ARGs.png, results/summary/all_ARGs_counts.tsv
+    conda-env: /data/armel/git/MetagenAMR-main/.snakemake/conda/f550386a40310a0327be21f8ca3f63dd_
+    shell:
+        
+        mkdir -p results/summary
+        python /data/armel/git/MetagenAMR-main/workflow/scripts/plot_ARGs_all.py results/summary/all_ARGs.png results/barcode05/abricate/barcode05_ARG_summary.tsv results/barcode06/abricate/barcode06_ARG_summary.tsv results/barcode07/abricate/barcode07_ARG_summary.tsv
+        
+        (command exited with non-zero exit code)
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-07-27T165711.819515.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

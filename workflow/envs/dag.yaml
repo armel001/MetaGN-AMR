@@ -1,0 +1,9 @@
+# workflow/envs/dag.yaml
+name: dag
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - snakemake
+  - graphviz

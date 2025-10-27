@@ -1,0 +1,103 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count
+--------------  -------
+abricate              1
+all                   1
+flye_assembly         1
+host_depletion        1
+plot_ARGs             1
+porechop              1
+total                 6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jul 23 11:22:17 2025]
+localrule porechop:
+    input: resources/reads/barcode06.fastq.gz
+    output: results/barcode06/trimmed.fastq.gz
+    jobid: 8
+    reason: Missing output files: results/barcode06/trimmed.fastq.gz
+    wildcards: sample=barcode06
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2ac72101414847c11936a83efa1608b6_
+[Wed Jul 23 12:16:53 2025]
+Finished jobid: 8 (Rule: porechop)
+1 of 6 steps (17%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jul 23 12:16:53 2025]
+localrule host_depletion:
+    input: results/barcode06/trimmed.fastq.gz, resources/references/GRCh38_no_alt.mmi
+    output: results/barcode06/clean/barcode06_noh.fq.gz
+    jobid: 7
+    reason: Missing output files: results/barcode06/clean/barcode06_noh.fq.gz; Input files updated by another job: results/barcode06/trimmed.fastq.gz
+    wildcards: sample=barcode06
+    threads: 8
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/9a23c77602d9d35c4fdf433a71fcdfe1_
+[Wed Jul 23 12:27:40 2025]
+Finished jobid: 7 (Rule: host_depletion)
+2 of 6 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jul 23 12:27:40 2025]
+localrule flye_assembly:
+    input: results/barcode06/clean/barcode06_noh.fq.gz
+    output: results/barcode06/assembly.fasta
+    jobid: 6
+    reason: Missing output files: results/barcode06/assembly.fasta; Input files updated by another job: results/barcode06/clean/barcode06_noh.fq.gz
+    wildcards: sample=barcode06
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/2b8d26851d42507ad652f148d31ace33_
+[Wed Jul 23 13:37:26 2025]
+Finished jobid: 6 (Rule: flye_assembly)
+3 of 6 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jul 23 13:37:26 2025]
+localrule abricate:
+    input: results/barcode06/assembly.fasta
+    output: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    jobid: 5
+    reason: Missing output files: results/barcode06/abricate/barcode06_ARG_summary.tsv; Input files updated by another job: results/barcode06/assembly.fasta
+    wildcards: sample=barcode06
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/01528871480f2915ea4485b3da11c9ff_
+[Wed Jul 23 13:40:07 2025]
+Finished jobid: 5 (Rule: abricate)
+4 of 6 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jul 23 13:40:07 2025]
+localrule plot_ARGs:
+    input: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    output: results/barcode06/plots/barcode06_resistance_classes.png
+    jobid: 10
+    reason: Missing output files: results/barcode06/plots/barcode06_resistance_classes.png; Input files updated by another job: results/barcode06/abricate/barcode06_ARG_summary.tsv
+    wildcards: sample=barcode06
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/648a792305b94d4621100f75306660c6_
+Activating conda environment: .snakemake/conda/648a792305b94d4621100f75306660c6_
+[Wed Jul 23 13:40:10 2025]
+Finished jobid: 10 (Rule: plot_ARGs)
+5 of 6 steps (83%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jul 23 13:40:10 2025]
+localrule all:
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv, results/barcode06/abricate/barcode06_ARG_summary.tsv, results/barcode05/plots/barcode05_resistance_classes.png, results/barcode06/plots/barcode06_resistance_classes.png
+    jobid: 0
+    reason: Input files updated by another job: results/barcode06/plots/barcode06_resistance_classes.png, results/barcode06/abricate/barcode06_ARG_summary.tsv
+    resources: tmpdir=/tmp
+[Wed Jul 23 13:40:10 2025]
+Finished jobid: 0 (Rule: all)
+6 of 6 steps (100%) done
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-07-23T112215.602744.snakemake.log

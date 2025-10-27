@@ -1,0 +1,7 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+WildcardError in rule plot_ARGs_all in file "/data/armel/git/MetagenAMR-main/workflow/rules/plot_ARGs_all.smk", line 1:
+Wildcards in input files cannot be determined from output files: (rule plot_ARGs_all, line 1, /data/armel/git/MetagenAMR-main/workflow/rules/plot_ARGs_all.smk)
+'sample'

@@ -1,0 +1,59 @@
+---
+# MODULES
+#modules:
+#  assembly: true # 
+#  amr_arg: true # 
+#  build_consensus: false # Perform a subsampling before tree (dafault: false)
+
+
+# MY ENVS
+envs:
+  abricate: "envs/abricate.yaml" # Abricate env
+  kraken2: "envs/kraken2.yaml" # Kraken2 env
+  nanoplot: "envs/nanoplot.yaml" # NanoPlot env
+  porechop: "envs/porechop.yaml" # Porechop env
+  medaka: "envs/medaka.yaml" # Medaka env
+  minimap2: "envs/minimap2.yaml" # Minimap2 env
+  flye: "envs/flye.yaml" # Flye env
+  bcftools: "envs/bcftools.yaml" # BCFtools env
+  python_plot: "envs/python_plot.yaml" # Python env
+  bracken: "envs/bracken.yaml" # Bracken env
+  host_depletion: "envs/host_depletion.yaml" # Host depletion env
+  rgi: "envs/rgi.yaml"
+  dag: "envs/dag.yaml"
+  multiqc: "envs/multiqc.yaml"
+
+# MY SAMPLES
+samples_id: # choose samples to run the pipeline, available options
+  - CMC_CLY
+  - CMC_MNR
+  - CMC_MTM
+  - CMC_BKN
+  - HI01A
+  - HI02A
+  - HI03A
+  - HI04A
+  - HI05A
+  - HI07A
+  - HI09B
+  - HI12B
+  - HI14B
+  - HI15B
+  - HI16B
+  - HI17B
+
+######################################
+# DRAFT FOR LATER #
+###################
+resources:
+  threads: 24 
+  memory: 8G
+  time: 1-00:00:00
+
+
+#params:
+#  iqtree:
+#    threads: 4
+#    model: 'GTR+G'
+#    bootstrap: 100
+#    seed: 12345

@@ -1,0 +1,74 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+abricate                 4
+all                      1
+flye_assembly            4
+host_depletion           4
+merge_rgi_results        1
+nanoplot                 2
+plot_ARGs                4
+plot_ARGs_all            1
+plot_ARGs_all_R          1
+plot_ARGs_by_gene        4
+porechop                 4
+rgi                     16
+total                   46
+
+Select jobs to execute...
+Execute 3 jobs...
+[Mon Oct 20 23:09:54 2025]
+localrule nanoplot:
+    input: resources/reads/HI05A.fastq.gz
+    output: results/HI05A/qc/HI05A_Nanoplot
+    log: results/HI05A/qc/HI05A_Nanoplot/nanoplot.log
+    jobid: 9
+    reason: Forced execution
+    wildcards: sample=HI05A
+    threads: 6
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/de891c6cc03ba77d6d59f6373b0f834e_
+[Mon Oct 20 23:09:54 2025]
+localrule porechop:
+    input: resources/reads/HI04A.fastq.gz
+    output: results/HI04A/trimmed.fastq.gz
+    jobid: 48
+    reason: Missing output files: results/HI04A/trimmed.fastq.gz; Software environment definition has changed since last execution
+    wildcards: sample=HI04A
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2ac72101414847c11936a83efa1608b6_
+[Mon Oct 20 23:09:54 2025]
+localrule porechop:
+    input: resources/reads/CMC_BKN.fastq.gz
+    output: results/CMC_BKN/trimmed.fastq.gz
+    jobid: 32
+    reason: Missing output files: results/CMC_BKN/trimmed.fastq.gz; Software environment definition has changed since last execution
+    wildcards: sample=CMC_BKN
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/2ac72101414847c11936a83efa1608b6_
+Select jobs to execute...
+[Mon Oct 20 23:10:58 2025]
+Finished jobid: 9 (Rule: nanoplot)
+1 of 46 steps (2%) done
+Execute 1 jobs...
+[Mon Oct 20 23:10:58 2025]
+localrule nanoplot:
+    input: resources/reads/CMC_MTM.fastq.gz
+    output: results/CMC_MTM/qc/CMC_MTM_Nanoplot
+    log: results/CMC_MTM/qc/CMC_MTM_Nanoplot/nanoplot.log
+    jobid: 3
+    reason: Forced execution
+    wildcards: sample=CMC_MTM
+    threads: 6
+    resources: tmpdir=/data/armel/git/MetagenAMR-main/results/HI09B/qc/HI09B_Nanoplot/tmp
+Activating conda environment: .snakemake/conda/de891c6cc03ba77d6d59f6373b0f834e_
+Select jobs to execute...
+Terminating processes on user request, this might take some time.

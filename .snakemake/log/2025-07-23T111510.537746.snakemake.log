@@ -1,0 +1,42 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: stallion.srvint.efrei.fr
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Job stats:
+job          count
+---------  -------
+all              1
+plot_ARGs        1
+total            2
+
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jul 23 11:15:12 2025]
+localrule plot_ARGs:
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv
+    output: results/barcode05/plots/barcode05_resistance_classes.png
+    jobid: 5
+    reason: Missing output files: results/barcode05/plots/barcode05_resistance_classes.png
+    wildcards: sample=barcode05
+    resources: tmpdir=/tmp
+Activating conda environment: .snakemake/conda/648a792305b94d4621100f75306660c6_
+Activating conda environment: .snakemake/conda/648a792305b94d4621100f75306660c6_
+[Wed Jul 23 11:15:16 2025]
+Finished jobid: 5 (Rule: plot_ARGs)
+1 of 2 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Wed Jul 23 11:15:16 2025]
+localrule all:
+    input: results/barcode05/abricate/barcode05_ARG_summary.tsv, results/barcode05/plots/barcode05_resistance_classes.png
+    jobid: 0
+    reason: Input files updated by another job: results/barcode05/plots/barcode05_resistance_classes.png
+    resources: tmpdir=/tmp
+[Wed Jul 23 11:15:16 2025]
+Finished jobid: 0 (Rule: all)
+2 of 2 steps (100%) done
+Complete log(s): /data/armel/git/MetagenAMR-main/.snakemake/log/2025-07-23T111510.537746.snakemake.log
