@@ -2,12 +2,8 @@
 /results/*
 /documentations/*
 /resources/*
-/results01/*
-/results_kekeli/*
 /.snakemake/*
 card*
-/results01_barcode5-6-7/*
-/results_kekeli_mem/*
 wildcard/*
 wildcard_annotation.log
 wildcard_data.tar.bz2

@@ -1,6 +1,6 @@
 rule host_depletion:
     input:
-        reads="results/{sample}/fp_trimmed.fastq.gz",
+        reads="results/{sample}/fastplong/fp_trimmed.fastq.gz",
         host_ref="resources/references/GRCh38_no_alt.mmi"
     output:
         clean_reads="results/{sample}/clean/{sample}_noh.fq.gz"
