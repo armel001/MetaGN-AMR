@@ -1,9 +1,0 @@
-Assuming unrestricted shared filesystem usage.
-None
-host: stallion.srvint.efrei.fr
-Building DAG of jobs...
-Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
-LockException:
-Error: Directory cannot be locked. Please make sure that no other Snakemake process is trying to create the same files in the following directory:
-/data/armel/git/MetagenAMR-main
-If you are sure that no other instances of snakemake are running on this directory, the remaining lock was likely caused by a kill signal or a power loss. It can be removed with the --unlock argument.

@@ -1,7 +1,0 @@
-Assuming unrestricted shared filesystem usage.
-None
-host: stallion.srvint.efrei.fr
-Building DAG of jobs...
-WildcardError in rule all in file "/data/armel/git/MetagenAMR-main/workflow/Snakefile", line 84:
-Wildcards in input files cannot be determined from output files: (rule all, line 118, /data/armel/git/MetagenAMR-main/workflow/Snakefile)
-'sample'

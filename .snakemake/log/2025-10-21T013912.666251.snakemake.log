@@ -1,4 +1,0 @@
-RuleException in file /data/armel/git/MetagenAMR-main/workflow/rules/merge_rgi_results.smk, line 8:
-Conda environments are only allowed with shell, script, notebook, or wrapper directives (not with run or template_engine).
-  File "/data/armel/git/MetagenAMR-main/workflow/Snakefile", line 73, in <module>
-  File "/data/armel/git/MetagenAMR-main/workflow/rules/merge_rgi_results.smk", line 8, in <module>

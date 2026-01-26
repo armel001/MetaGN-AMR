@@ -1,4 +1,0 @@
-WildcardError in file /data/armel/git/MetagenAMR-main/workflow/rules/multiqc_nanoplot.smk, line 3:
-No values given for wildcard 'wilcards'.
-  File "/data/armel/git/MetagenAMR-main/workflow/Snakefile", line 81, in <module>
-  File "/data/armel/git/MetagenAMR-main/workflow/rules/multiqc_nanoplot.smk", line 3, in <module>

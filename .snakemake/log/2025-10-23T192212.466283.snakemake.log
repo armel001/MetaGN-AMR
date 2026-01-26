@@ -1,5 +1,0 @@
-Building DAG of jobs...
-MissingInputException in rule all in file /data/armel/git/MetagenAMR-main/workflow/Snakefile, line 84:
-Missing input files for rule all:
-    affected files:
-        results/summary/multiqc_nanoplot.html

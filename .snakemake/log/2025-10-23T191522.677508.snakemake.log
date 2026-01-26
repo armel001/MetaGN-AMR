@@ -1,4 +1,0 @@
-Building DAG of jobs...
-WildcardError in rule multiqc_nanoplot in file /data/armel/git/MetagenAMR-main/workflow/rules/multiqc_nanoplot.smk, line 1:
-Wildcards in input files cannot be determined from output files:
-'sample'
