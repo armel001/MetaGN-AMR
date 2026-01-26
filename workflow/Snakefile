@@ -14,7 +14,7 @@ resources_dict = {
 
 THREADS = config["resources"]["threads"]
 MEM = config["resources"]["memory"]
-TIME = config["resources"]["time"]
+#TIME = config["resources"]["time"]
 
 ##################################################
 # FUNCTIONS
@@ -60,9 +60,10 @@ SAMPLES, = glob_wildcards("resources/reads/{sample_id}.fastq.gz")
 
 # INCLUDES
 ##################################################Pre-Traitement et quality
-include: "rules/porechop.smk"
+include: "rules/fastplong.smk"
 include: "rules/nanoplot.smk"
 include: "rules/host_depletion.smk"
+include: "rules/rename_reads.smk"
 ##################################################Assemblage et Alignment 
 include: "rules/flye_assembly.smk"
 include: "rules/minimap2_align.smk"
@@ -71,6 +72,7 @@ include: "rules/bcftools_consensus.smk"
 ##################################################Annotation AMR
 include: "rules/abricate.smk"
 include: "rules/rgi.smk"
+include: "rules/rgi_bwt.smk"
 include: "rules/merge_rgi_results.smk"
 ##################################################Analyses secondaires & visualisation
 include: "rules/plot_ARGs.smk"
@@ -80,15 +82,23 @@ include: "rules/r_plot_ARGs_all.smk"
 ##################################################Reporting
 include: "rules/multiqc_nanoplot.smk"
 include: "rules/build_dag.smk"
+#################################################Taxonomic classification
+include: "rules/kraken2.smk"
+include: "rules/bracken.smk"
+
+
 
 rule all:
     input:
+#        "results/summary/",
         expand("results/{sample}/abricate/{sample}_ARG_summary.tsv", sample=config["samples_id"]),
         expand("results/{sample}/plots/{sample}_resistance_classes.png", sample=config["samples_id"]),
         expand("results/{sample}/plots/{sample}_ARGs_by_gene.png", sample=config["samples_id"]),
         "results/summary/all_ARGs_counts.tsv",
-#        "results/{sample}/rgi/{sample}_rgi_summary.tsv",
-#        "results/{sample}/rgi/{sample}.txt", 
-        "results/summary/all_rgi_merged.tsv",
-        "results/summary/multiqc_report.html"
+#        expand("results/{sample}/rgi/{sample}_rgi_summary.tsv", sample=config["samples_id"]),
+        expand("results/{sample}/rgi/{sample}.txt", sample=config["samples_id"]), 
+#        "results/summary/all_rgi_merged.tsv",
+        expand("results/{sample}/kraken/{sample}_output.txt", sample=config["samples_id"]),
+        expand("results/{sample}/bracken/{sample}_species.txt", sample=config["samples_id"]),
+        expand("results/{sample}/rgi_bwt", sample=config["samples_id"])
 #        "results/workflow_dag.png"
