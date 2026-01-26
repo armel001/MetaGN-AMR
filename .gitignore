@@ -2,7 +2,7 @@
 /results/*
 /documentations/*
 /resources/*
-/.snakemake/*
+.snakemake
 card*
 wildcard/*
 wildcard_annotation.log
