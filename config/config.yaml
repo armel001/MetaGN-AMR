@@ -61,3 +61,38 @@ kraken_confidence: 0.1
 
 bracken_read_len: 2500
 bracken_level: "S"  # S=Espèce, G=Genre, F=Famille
+
+# Paramètres RGI
+rgi:
+  min_identity: 90
+  min_coverage: 80
+  model_types:
+    - "protein homolog model"
+    - "protein variant model"
+    - "rRNA gene variant model"
+  
+# Colomn to keep
+  columns_to_keep:
+    # Identifiants
+    - "orf_id"
+    - "contig"
+    
+    # resistance gene
+    - "best_hit_aro"
+    - "aro"
+    
+    # Quality
+    - "best_identities"
+    - "percentage_length_of_reference_sequence"
+    
+    # Fonctionnal classification 
+    - "drug_class"
+    - "resistance_mechanism"
+    - "amr_gene_family"
+    
+    #Others
+    - "model_type"
+    # - "snps_in_best_hit_aro"
+    # - "start"
+    # - "stop"
+    # - "strand"

@@ -1,8 +1,8 @@
 rule rename_reads:
     input:
-        "resources/reads/{sample}.fastq.gz"
+        "resources/reads/{sample}_noh.fq.gz"
     output:
-        "resources/reads/{sample}.renamed.fastq.gz"
+        "resources/reads/rename_reads/{sample}.renamed.fastq.gz"
     shell:
         r"""
         zcat {input} \

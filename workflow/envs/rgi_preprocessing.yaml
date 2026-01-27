@@ -1,0 +1,9 @@
+name: python_filter
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pandas=2.0
+  - numpy=1.24

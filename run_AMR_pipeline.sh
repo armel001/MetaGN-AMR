@@ -4,9 +4,10 @@
 
 
 #################### RUN PIPELINE ##########################
-snakemake --use-conda -j 22 --rerun-incomplete
+snakemake --until aggregate_rgi_samples  --cores 22 --use-conda
 
 #################### RUN DAG ###############################
-snakemake --report results/summary/workflow_report.html
-snakemake --dag | dot -Tpng > results/workflow_dag.png
+mkdir -p results/summary results
+snakemake --snakefile workflow/Snakefile --report results/summary/workflow_report.html
+snakemake --snakefile workflow/Snakefile --dag | dot -Tpng > results/workflow_dag.png
 #################### END  ##################################

@@ -7,7 +7,7 @@ rule rgi:
         report_dir = directory("results/{sample}/rgi")
     conda:
         "../envs/rgi.yaml"
-    threads: 8
+    threads: 20
     shell:
         r"""
         set -euo pipefail

@@ -18,6 +18,9 @@ rule rgi_bwt:
             --output_file {output.report_dir}/{wildcards.sample} \
             --threads {threads} \
             --local \
+            --include_other_models \
+            -n 20 \
+            --include_wildcard \
             --clean
         """
 
