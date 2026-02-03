@@ -4,7 +4,7 @@ rule host_depletion:
         host_ref="resources/references/GRCh38_no_alt.mmi"
     output:
         clean_reads="results/{sample}/clean/{sample}_noh.fq.gz"
-    threads: 24
+    threads: 40
     conda:
         "../envs/host_depletion.yaml"
     shell:

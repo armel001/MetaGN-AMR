@@ -39,7 +39,8 @@ HOST_DEP = config["envs"]["host_depletion"]
 RGI = config["envs"]["rgi"]
 DAG_ENV = config["envs"]["dag"]
 MULTIQC = config["envs"]["multiqc"]
-
+PYTHON_FILTER = config["envs"]["python_filter"]
+TAXO_ANALYSIS = config["envs"]["taxo_analysis"]
 ###################################################
 
 
@@ -55,6 +56,8 @@ SAMPLES, = glob_wildcards("resources/reads/{sample_id}.fastq.gz")
 
 #MODULES = config["modules"]
 
+
+TAXONOMIC_LEVELS = ["S", "G", "F", "P"]
 ##################################################
 
 
@@ -64,6 +67,7 @@ include: "rules/fastplong.smk"
 include: "rules/nanoplot.smk"
 include: "rules/host_depletion.smk"
 include: "rules/rename_reads.smk"
+include: "rules/extract_read_stats.smk" 
 ##################################################Assemblage et Alignment 
 include: "rules/flye_assembly.smk"
 include: "rules/minimap2_align.smk"
@@ -76,9 +80,6 @@ include: "rules/rgi_filter.smk"
 include: "rules/rgi_select_columns.smk"
 
 ##################################################Analyses secondaires & visualisation
-include: "rules/plot_ARGs.smk"
-include: "rules/plot_ARGs_by_gene.smk"
-include: "rules/plot_ARGs_all.smk"
 include: "rules/r_plot_ARGs_all.smk"
 
 ##################################################Reporting
@@ -88,7 +89,7 @@ include: "rules/build_dag.smk"
 #################################################Taxonomic classification
 include: "rules/kraken2.smk"
 include: "rules/bracken.smk"
-
+include: "rules/taxonomy.smk" 
 #################################################SUMMARY
 include: "rules/rgi_aggregate.smk"
 
@@ -96,11 +97,23 @@ include: "rules/rgi_aggregate.smk"
 
 rule all:
     input:
+        expand("results/{sample}/qc/{sample}_Nanoplot/NanoPlot-report.html", sample=config["samples_id"]),
         expand("results/{sample}/rgi/{sample}.txt", sample=config["samples_id"]), 
         expand("results/{sample}/kraken/{sample}_output.txt", sample=config["samples_id"]),
-        expand("results/{sample}/bracken/{sample}_species.txt", sample=config["samples_id"]),
+#        expand("results/{sample}/bracken/{sample}_species.txt", sample=config["samples_id"]),
 #        expand("results/{sample}/rgi_bwt", sample=config["samples_id"]),
         expand("results/{sample}/rgi_preprocessing/{sample}_filtered.txt", sample=config["samples_id"]),
         expand("results/{sample}/rgi_preprocessing/{sample}_selected.txt", sample=config["samples_id"]),
+        expand("results/{sample}/stats/{sample}_read_stats.txt", sample=config["samples_id"]),
         "results/summary/rgi_all_samples.tsv",
-        "results/summary/rgi_aggr_summary.txt"
+        "results/summary/rgi_aggr_summary.txt",
+        "results/stats/sequencing_stats.tsv",
+        expand("results/{sample}/bracken/{sample}_{level}.txt",
+               sample=config["samples_id"], 
+               level=TAXONOMIC_LEVELS),
+        expand("results/taxonomy/abundance_matrix_{level}_filtered.tsv", 
+               level=TAXONOMIC_LEVELS),
+        expand("results/taxonomy/abundance_matrix_{level}_relative.tsv", 
+               level=TAXONOMIC_LEVELS),
+        "results/taxonomy/alpha_diversity.tsv",
+        "results/summary/taxonomy_summary.txt"

@@ -4,7 +4,7 @@
 
 
 #################### RUN PIPELINE ##########################
-snakemake --until aggregate_rgi_samples  --cores 22 --use-conda
+snakemake  --cores 22 --use-conda --rerun-triggers mtime
 
 #################### RUN DAG ###############################
 mkdir -p results/summary results

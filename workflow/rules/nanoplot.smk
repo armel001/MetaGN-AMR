@@ -1,51 +1,40 @@
 rule nanoplot:
     input:
-        "resources/reads/{sample}.fastq.gz"
+        fastq = "results/{sample}/clean/{sample}_noh.fq.gz"
     output:
-        directory("results/{sample}/qc/{sample}_Nanoplot")
-    threads: 6
+        stats = "results/{sample}/qc/{sample}_Nanoplot/NanoStats.txt",
+        report = "results/{sample}/qc/{sample}_Nanoplot/NanoPlot-report.html"
+    params:
+        outdir = lambda wildcards: f"results/{wildcards.sample}/qc/{wildcards.sample}_Nanoplot"
+    threads: 20
+    resources:
+        mem_mb = 16000
     conda:
         "../envs/nanoplot.yaml"
     log:
-        "results/{sample}/qc/{sample}_Nanoplot/nanoplot.log"
+        "logs/nanoplot/{sample}.log"
+    benchmark:
+        "benchmarks/nanoplot/{sample}.txt"
     shell:
-        r"""
-        set -euo pipefail
-
-        outdir="{output}"
-        fq="{input}"
-        logf="{log}"
-
-        rm -rf "$outdir"
-        mkdir -p "$outdir/tmp" "$outdir/.mplconfig"
-
-        export TMPDIR="$outdir/tmp"
+        """
+        rm -rf {params.outdir}
+        mkdir -p {params.outdir}
+        
+        export TMPDIR={params.outdir}/tmp
         export MPLBACKEND=Agg
-        export MPLCONFIGDIR="$outdir/.mplconfig"
-
-        # Exécution + redirection vers le log (pas d'option --logfile)
-        set +e
+        export MPLCONFIGDIR={params.outdir}/.mplconfig
+        
         NanoPlot \
-          --fastq "$fq" \
-          -o "$outdir" \
+          --fastq {input.fastq} \
+          -o {params.outdir} \
           --threads {threads} \
           --huge \
           -f png \
           --verbose \
-        > "$logf" 2>&1
-        rc=$?
-        set -e
-
-        # Fallback: garder le pipeline vivant si NanoPlot échoue
-        if [ $rc -ne 0 ]; then
-            echo "[nanoplot] exit code $rc — generating placeholder" | tee -a "$logf"
-            cat > "$outdir/index.html" <<HTML
-<!doctype html><meta charset="utf-8">
-<h3>NanoPlot — {wildcards.sample}</h3>
-<p>Execution failed; keeping pipeline alive with a placeholder.</p>
-<pre>
-$(tail -n 200 "$logf" || true)
-</pre>
-HTML
-        fi
+        > {log} 2>&1 || {{
+            echo "Number of reads: 0" > {output.stats}
+            echo "<html><body>NanoPlot failed</body></html>" > {output.report}
+        }}
+        
+        rm -rf {params.outdir}/tmp {params.outdir}/.mplconfig
         """

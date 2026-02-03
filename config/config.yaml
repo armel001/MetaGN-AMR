@@ -22,13 +22,17 @@ envs:
   rgi: "envs/rgi.yaml"
   dag: "envs/dag.yaml"
   multiqc: "envs/multiqc.yaml"
+  python_filter: "envs/python_filter.yaml"
+  taxo_analysis: "envs/taxo_analysis.yaml"
 
 # MY SAMPLES
 samples_id: # choose samples to run the pipeline, available options
- # - CMC_CLY
- # - CMC_MNR
- # - CMC_MTM
+  - CMC_CLY
+  - CMC_MNR
+  - CMC_MTM
   - CMC_BKN
+ # - EPU02A
+ # - EPU03A
  # - HI01A
  # - HI02A
  # - HI03A
@@ -41,6 +45,7 @@ samples_id: # choose samples to run the pipeline, available options
  # - HI15B
  # - HI16B
  # - HI17B
+
 
 ######################################
 # GLOBAL RESOURCES 
@@ -60,7 +65,7 @@ kraken_confidence: 0.1
 # --- Bracken Params ---
 
 bracken_read_len: 2500
-bracken_level: "S"  # S=Espèce, G=Genre, F=Famille
+bracken_level: "S, G, F, P"  # S=Espèce, G=Genre, F=Famille
 
 # Paramètres RGI
 rgi:
@@ -96,3 +101,9 @@ rgi:
     # - "start"
     # - "stop"
     # - "strand"
+# Paramètres de filtrage taxonomique
+min_reads_per_taxon: 100      # Minimum 100 reads au total
+min_samples_present: 2        # Présent dans au moins 2 échantillons
+min_relative_abundance: 0.001 # Minimum 0.1% dans au moins un échantillon
+
+bracken_threshold: 10

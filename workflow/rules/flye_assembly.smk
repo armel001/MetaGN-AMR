@@ -6,4 +6,5 @@ rule flye_assembly:
     conda:
         "../envs/flye.yaml"
     shell:
-        "flye --nano-raw {input} --out-dir results/{wildcards.sample}/flye --threads 24 && cp results/{wildcards.sample}/flye/assembly.fasta {output}"
+        "flye --nano-raw {input} --out-dir results/{wildcards.sample}/flye \
+         --threads 40 && cp results/{wildcards.sample}/flye/assembly.fasta {output}"
