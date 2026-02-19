@@ -1,0 +1,13 @@
+name: r_analysis
+channels:
+  - conda-forge
+  - r
+  - defaults
+
+dependencies:
+  - r-base=4.3
+  - r-tidyverse=2.0
+  - r-readr
+  - r-dplyr
+  - r-tidyr
+  - r-stringr

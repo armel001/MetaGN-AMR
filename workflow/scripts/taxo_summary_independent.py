@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate comprehensive taxonomic analysis summary report
+Generate taxonomy summary report for independent filtering approach
 """
 
 import pandas as pd
@@ -12,11 +12,12 @@ import sys
 kraken_reports = snakemake.input.kraken_reports
 diversity_file = snakemake.input.diversity
 matrix_files = snakemake.input.matrices
+filtering_stats_files = snakemake.input.filtering_stats
 output_file = snakemake.output.summary
 
 def parse_kraken_report(report_path):
     """Parse Kraken2 report and extract classification statistics"""
-    stats = {'total_reads': 0, 'classified': 0, 'unclassified': 0,
+    stats = {'total_reads': 0, 'classified': 0, 'unclassified': 0, 
              'classification_rate': 0, 'top_taxa': {}}
     
     try:
@@ -114,10 +115,15 @@ avg_classification = (total_classified / total_reads * 100) if total_reads > 0 e
 # Generate report
 with open(output_file, 'w') as f:
     f.write("=" * 80 + "\n")
-    f.write("METAGENOMIC TAXONOMIC ANALYSIS - SUMMARY REPORT\n")
+    f.write("TAXONOMIC ANALYSIS - INDEPENDENT SAMPLES APPROACH\n")
     f.write("=" * 80 + "\n")
     f.write(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-    f.write(f"Samples analyzed: {len(kraken_stats)}\n\n")
+    f.write(f"Samples: {len(kraken_stats)}\n\n")
+    
+    f.write("FILTERING STRATEGY:\n")
+    f.write("  Approach: Biologically heterogeneous/independent samples\n")
+    f.write("  Principle: Preserve environment-specific biomarkers\n")
+    f.write("  Criteria: Robustness in AT LEAST ONE sample\n\n")
     
     # Section 1: Classification
     f.write("=" * 80 + "\n")
@@ -125,47 +131,23 @@ with open(output_file, 'w') as f:
     f.write("=" * 80 + "\n\n")
     
     f.write("Overall:\n")
-    f.write(f"  Total reads sequenced  : {total_reads:,}\n")
-    f.write(f"  Classified reads       : {total_classified:,} ({avg_classification:.2f}%)\n")
-    f.write(f"  Unclassified reads     : {total_unclassified:,} ({100-avg_classification:.2f}%)\n\n")
+    f.write(f"  Total reads       : {total_reads:,}\n")
+    f.write(f"  Classified        : {total_classified:,} ({avg_classification:.2f}%)\n")
+    f.write(f"  Unclassified      : {total_unclassified:,}\n\n")
     
     f.write("Per sample:\n")
     f.write("-" * 80 + "\n")
-    f.write(f"{'Sample':<25} {'Total':>15} {'Classified':>15} {'Unclassified':>15} {'Rate (%)':>10}\n")
+    f.write(f"{'Sample':<25} {'Total reads':>15} {'Classified':>15} {'Rate (%)':>10}\n")
     f.write("-" * 80 + "\n")
     
     for _, row in kraken_df.iterrows():
         f.write(f"{row['sample']:<25} {row['total_reads']:>15,} "
-                f"{row['classified']:>15,} {row['unclassified']:>15,} "
-                f"{row['classification_rate']:>10.2f}\n")
-    
-    # High-level taxa
-    f.write("\n\nHigh-level taxa detected (all samples):\n")
-    f.write("-" * 80 + "\n")
-    
-    all_top_taxa = {}
-    for stats in kraken_stats:
-        for rank, taxa_dict in stats['top_taxa'].items():
-            if rank not in all_top_taxa:
-                all_top_taxa[rank] = {}
-            for taxon, count in taxa_dict.items():
-                if taxon not in all_top_taxa[rank]:
-                    all_top_taxa[rank][taxon] = 0
-                all_top_taxa[rank][taxon] += count
-    
-    rank_names = {'D': 'Domains', 'K': 'Kingdoms', 'P': 'Phyla'}
-    
-    for rank in ['D', 'K', 'P']:
-        if rank in all_top_taxa and all_top_taxa[rank]:
-            f.write(f"\n{rank_names.get(rank, rank)}:\n")
-            for taxon, count in sorted(all_top_taxa[rank].items(), key=lambda x: x[1], reverse=True):
-                pct = (count / total_classified * 100) if total_classified > 0 else 0
-                f.write(f"  {taxon:<50} {count:>12,} reads ({pct:>6.2f}%)\n")
+                f"{row['classified']:>15,} {row['classification_rate']:>10.2f}\n")
     
     # Section 2: Diversity
     if not diversity_df.empty:
         f.write("\n\n" + "=" * 80 + "\n")
-        f.write("2. ALPHA DIVERSITY INDICES (SPECIES LEVEL)\n")
+        f.write("2. ALPHA DIVERSITY (POST-FILTERING)\n")
         f.write("=" * 80 + "\n\n")
         
         f.write("Summary statistics:\n")
@@ -188,7 +170,7 @@ with open(output_file, 'w') as f:
     
     # Section 3: Composition
     f.write("\n\n" + "=" * 80 + "\n")
-    f.write("3. TAXONOMIC COMPOSITION BY LEVEL\n")
+    f.write("3. TAXONOMIC COMPOSITION (POST-FILTERING)\n")
     f.write("=" * 80 + "\n\n")
     
     if matrix_stats:
@@ -201,40 +183,19 @@ with open(output_file, 'w') as f:
                 f.write(f"{level_names.get(level, level):<20} {stats['n_taxa']:>10,} "
                         f"{stats['total_reads']:>15,} {stats['mean_taxa_per_sample']:>20.1f}\n")
     
-    # Section 4: Quality
+    # Section 4: Filtering details
     f.write("\n\n" + "=" * 80 + "\n")
-    f.write("4. DATA QUALITY ASSESSMENT\n")
+    f.write("4. FILTERING STATISTICS BY TAXONOMIC LEVEL\n")
     f.write("=" * 80 + "\n\n")
     
-    min_reads = kraken_df['total_reads'].min()
-    max_reads = kraken_df['total_reads'].max()
-    mean_reads = kraken_df['total_reads'].mean()
-    read_ratio = max_reads / min_reads if min_reads > 0 else 0
-    
-    f.write("Sequencing depth:\n")
-    f.write(f"  Minimum    : {min_reads:,} reads\n")
-    f.write(f"  Maximum    : {max_reads:,} reads\n")
-    f.write(f"  Mean       : {mean_reads:,.0f} reads\n")
-    f.write(f"  Max/min    : {read_ratio:.2f}x\n")
-    
-    if read_ratio > 5:
-        f.write(f"  ⚠ High variability (>{5}x) - normalization recommended\n")
-    elif read_ratio > 2:
-        f.write(f"  ℹ Moderate variability - normalization for statistics\n")
-    else:
-        f.write(f"  ✓ Homogeneous depth\n")
-    
-    f.write(f"\nClassification rate:\n")
-    f.write(f"  Mean  : {avg_classification:.2f}%\n")
-    f.write(f"  Range : {kraken_df['classification_rate'].min():.2f}% - "
-            f"{kraken_df['classification_rate'].max():.2f}%\n")
-    
-    if avg_classification < 10:
-        f.write(f"  ⚠ Very low for poorly characterized environments\n")
-    elif avg_classification < 30:
-        f.write(f"  ℹ Normal for complex environmental samples\n")
-    else:
-        f.write(f"  ✓ Good for environmental samples\n")
+    for stats_file in filtering_stats_files:
+        level = Path(stats_file).stem.split('_')[2]
+        f.write(f"\n--- {level_names.get(level, level)} level ---\n")
+        try:
+            with open(stats_file, 'r') as sf:
+                f.write(sf.read())
+        except Exception as e:
+            f.write(f"Error: {e}\n")
     
     # Section 5: Output files
     f.write("\n\n" + "=" * 80 + "\n")
@@ -243,23 +204,23 @@ with open(output_file, 'w') as f:
     
     f.write("Filtered abundance matrices:\n")
     for level in ['P', 'F', 'G', 'S']:
-        f.write(f"  results/taxonomy/abundance_matrix_{level}_filtered.tsv\n")
+        f.write(f"  results/taxonomy/abundance_matrix_{level}_filtered_independent.tsv\n")
     
     f.write("\nRelative abundance (%):\n")
     for level in ['P', 'F', 'G', 'S']:
-        f.write(f"  results/taxonomy/abundance_matrix_{level}_relative.tsv\n")
+        f.write(f"  results/taxonomy/abundance_matrix_{level}_relative_independent.tsv\n")
     
-    f.write("\nCLR-transformed (for PCA/PCoA):\n")
+    f.write("\nCLR-transformed:\n")
     for level in ['P', 'F', 'G', 'S']:
-        f.write(f"  results/taxonomy/abundance_matrix_{level}_clr.tsv\n")
+        f.write(f"  results/taxonomy/abundance_matrix_{level}_clr_independent.tsv\n")
     
     f.write("\nDiversity:\n")
-    f.write("  results/taxonomy/alpha_diversity.tsv\n")
+    f.write("  results/taxonomy/alpha_diversity_independent.tsv\n")
+    
+    f.write("\nFiltering statistics:\n")
+    for level in ['P', 'F', 'G', 'S']:
+        f.write(f"  results/taxonomy/filtering_stats_{level}_independent.txt\n")
     
     f.write("\n" + "=" * 80 + "\n")
 
 print(f"Summary saved: {output_file}")
-print(f"Samples: {len(kraken_stats)} | Total reads: {total_reads:,} | "
-      f"Classification: {avg_classification:.2f}%")
-if not diversity_df.empty:
-    print(f"Mean Shannon: {diversity_df['shannon_diversity'].mean():.3f}")

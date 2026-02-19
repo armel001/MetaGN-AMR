@@ -1,19 +1,25 @@
 rule fastplong:
     input:
-        "resources/reads/{sample}.fastq.gz"
+        ancient("/data/armel/mythesis-data/data/{sample}.fastq.gz")
     output:
-        fq="results/{sample}/fastplong/fp_trimmed.fastq.gz",
-        html="results/{sample}/fastplong/fastplong.html",
-        json="results/{sample}/fastplong/fastplong.json"
+        fq   = temp("results/{sample}/fastplong/fp_trimmed.fastq.gz"),
+        html = "results/{sample}/fastplong/fastplong.html",
+        json = "results/{sample}/fastplong/fastplong.json"
     conda:
         "../envs/fastplong.yaml"
     threads: 16
+    resources:
+        mem_mb  = 16000,   # 16 Gb RAM
+        disk_mb = 60000    # 60 Gb espace temporaire
     log:
         "logs/fastplong/{sample}.log"
+    benchmark:
+        "benchmarks/fastplong/{sample}.txt"
     shell:
-        r"""
-        mkdir -p $(dirname {output.fq})
-        mkdir -p $(dirname {log})
+        """
+        echo "[$(date)] Starting fastplong for {wildcards.sample}" > {log}
+        echo "[$(date)] Input: {input}" >> {log}
+
         fastplong \
             -i {input} \
             -o {output.fq} \
@@ -21,5 +27,13 @@ rule fastplong:
             -t {threads} \
             -h {output.html} \
             -j {output.json} \
-            &> {log}
+            2>> {log}
+
+        echo "[$(date)] Reads before filtering:" >> {log}
+        echo "  $(zcat {input} | awk 'NR%4==1' | wc -l) reads" >> {log}
+
+        echo "[$(date)] Reads after filtering:" >> {log}
+        echo "  $(zcat {output.fq} | awk 'NR%4==1' | wc -l) reads" >> {log}
+
+        echo "[$(date)] fastplong completed for {wildcards.sample}" >> {log}
         """

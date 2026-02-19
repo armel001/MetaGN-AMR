@@ -24,28 +24,33 @@ envs:
   multiqc: "envs/multiqc.yaml"
   python_filter: "envs/python_filter.yaml"
   taxo_analysis: "envs/taxo_analysis.yaml"
+  r_analysis: "envs/r_analysis.yaml"
+  python_viz: "envs/python_viz.yaml"
 
 # MY SAMPLES
 samples_id: # choose samples to run the pipeline, available options
-  - CMC_CLY
-  - CMC_MNR
-  - CMC_MTM
-  - CMC_BKN
+#  - CMC_CLY
+#  - CMC_MNR
+#  - CMC_MTM
+#  - CMC_BKN
  # - EPU02A
  # - EPU03A
- # - HI01A
- # - HI02A
- # - HI03A
- # - HI04A
- # - HI05A
- # - HI07A
- # - HI09B
- # - HI12B
- # - HI14B
- # - HI15B
- # - HI16B
- # - HI17B
-
+  - HI01A
+  - HI02A
+  - HI03A
+  - HI04A
+  - HI05A
+  - HI06A
+  - HI07A 
+  - HI08A
+  - HI09B
+  - HI12B
+  - HI14B
+  - HI15B
+  - HI16B
+  - HI17B
+  - HI20B
+  - HI22B
 
 ######################################
 # GLOBAL RESOURCES 
@@ -54,6 +59,21 @@ resources:
   threads: 32
   memory: 180000  # Garde une petite marge sur tes 190 Go
   tmp_dir: "/data/armel/tmp"
+
+
+
+# Flye assembly
+# ⚠️Modifié le 2026-02-17 :
+# --meta ajouté        
+# --iterations 3       : compense Dorado fast@v4.3.0 + filtre Q10
+# Résultats différents des assemblages précédents si re-run
+flye_mode      : "--nano-raw"
+flye_iterations: 3
+flye_meta      : "--meta"
+
+
+
+
 
 # --- Chemins des bases de données ---
 kraken_db: "/data/armel/mythesis-data/db/my_k2_db"
@@ -69,8 +89,8 @@ bracken_level: "S, G, F, P"  # S=Espèce, G=Genre, F=Famille
 
 # Paramètres RGI
 rgi:
-  min_identity: 90
-  min_coverage: 80
+  min_identity: 80
+  min_coverage: 70
   model_types:
     - "protein homolog model"
     - "protein variant model"
@@ -101,9 +121,41 @@ rgi:
     # - "start"
     # - "stop"
     # - "strand"
+
 # Paramètres de filtrage taxonomique
-min_reads_per_taxon: 100      # Minimum 100 reads au total
+
+min_reads_per_taxon: 50      # Minimum 50 reads au total
 min_samples_present: 2        # Présent dans au moins 2 échantillons
 min_relative_abundance: 0.001 # Minimum 0.1% dans au moins un échantillon
 
 bracken_threshold: 10
+
+
+# ============================================================================
+# NOUVEAU : FILTRAGE INDÉPENDANT (échantillons hétérogènes)
+# ============================================================================
+
+# Un taxon est conservé s'il satisfait ces critères dans AU MOINS 1 échantillon
+
+min_reads_per_sample: 50              # ≥50 reads dans ≥1 échantillon
+min_rel_abundance_per_sample: 0.001   # ≥0.1% dans ≥1 échantillon
+min_samples_independent: 1            # Accepter singletons robustes
+absolute_min_total_reads: 10          # Éliminer bruit absolu (<10 reads partout)
+
+#STRATEGIE DE FILTRATION
+filtering_strategy: "standard"   # "standard", "independent", ou "both"
+
+# Figure settings
+fig_dpi: 300
+fig_top_genera: 15
+fig_top_species: 20
+fig_heatmap_top_n: 30
+
+priority_pathogens:
+  - "Escherichia coli"
+  - "Klebsiella pneumoniae"
+  - "Pseudomonas aeruginosa"
+  - "Clostridioides difficile"
+  - "Clostridium perfringens"
+  - "Acinetobacter baumannii"
+  - "Enterococcus faecium"
